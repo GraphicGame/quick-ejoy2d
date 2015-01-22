@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include "winfw.h"
 
-#define CLASSNAME L"EJOY"
-#define WINDOWNAME L"EJOY"
+#define CLASSNAME L"quick-ejoy2d"
+#define WINDOWNAME L"quick-ejoy2d"
 #define WINDOWSTYLE (WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX)
 
 static void

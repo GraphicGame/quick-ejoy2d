@@ -9,6 +9,7 @@
 #include "shader.h"
 #include "texture.h"
 #include "ppm.h"
+#include "lpng.h"
 #include "spritepack.h"
 #include "sprite.h"
 #include "lmatrix.h"
@@ -124,6 +125,9 @@ ejoy2d_game() {
 	luaL_requiref(L, "ejoy2d.renderbuffer", ejoy2d_renderbuffer, 0);
 	luaL_requiref(L, "ejoy2d.matrix.c", ejoy2d_matrix, 0);
 	luaL_requiref(L, "ejoy2d.particle.c", ejoy2d_particle, 0);
+
+	/** added by quick-ejoy2d */
+	luaL_requiref(L, "ejoy2d.png", lua_png, 0);
 
 	lua_settop(L,0);
 

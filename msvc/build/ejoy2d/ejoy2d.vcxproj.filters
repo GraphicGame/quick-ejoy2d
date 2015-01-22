@@ -21,6 +21,18 @@
     <Filter Include="lib\src\render">
       <UniqueIdentifier>{190d12fe-25b2-430a-8db5-9ee3abf54a20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="quick">
+      <UniqueIdentifier>{c779aad1-8440-484b-b856-ebdc67a8c27a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="quick\3rd">
+      <UniqueIdentifier>{6e47b360-a22b-45ae-872f-deb9463f96a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="quick\3rd\libpng">
+      <UniqueIdentifier>{23320b2d-1707-4c19-8fb7-6a51fa488dc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="quick\3rd\zlib">
+      <UniqueIdentifier>{fa9cd16f-c118-42f4-b567-75d37148dcc0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\mingw\window.c">
@@ -100,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\lib\render\render.c">
       <Filter>lib\src\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\lpng.c">
+      <Filter>quick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +213,60 @@
     </ClInclude>
     <ClInclude Include="..\..\..\lib\render\render.h">
       <Filter>lib\src\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\crc32.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\deflate.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\inffast.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\inffixed.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\inflate.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\inftrees.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\trees.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\zconf.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\zlib.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\zlib\zutil.h">
+      <Filter>quick\3rd\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\libpng\png.h">
+      <Filter>quick\3rd\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pngconf.h">
+      <Filter>quick\3rd\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pngdebug.h">
+      <Filter>quick\3rd\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pnginfo.h">
+      <Filter>quick\3rd\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pnglibconf.h">
+      <Filter>quick\3rd\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pngpriv.h">
+      <Filter>quick\3rd\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pngstruct.h">
+      <Filter>quick\3rd\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\lpng.h">
+      <Filter>quick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

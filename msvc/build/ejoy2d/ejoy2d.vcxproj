@@ -36,6 +36,7 @@
     <ClCompile Include="..\..\..\mingw\window.c" />
     <ClCompile Include="..\..\..\mingw\winfont.c" />
     <ClCompile Include="..\..\..\mingw\winfw.c" />
+    <ClCompile Include="..\..\..\quick\lpng.c" />
     <ClCompile Include="..\..\src\ejoy2d\winmain.c" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +67,24 @@
     <ClInclude Include="..\..\..\lib\spritepack.h" />
     <ClInclude Include="..\..\..\lib\texture.h" />
     <ClInclude Include="..\..\..\mingw\winfw.h" />
+    <ClInclude Include="..\..\..\quick\3rd\libpng\png.h" />
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pngconf.h" />
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pngdebug.h" />
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pnginfo.h" />
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pnglibconf.h" />
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pngpriv.h" />
+    <ClInclude Include="..\..\..\quick\3rd\libpng\pngstruct.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\crc32.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\deflate.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\inffast.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\inffixed.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\inflate.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\inftrees.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\trees.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\zconf.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\zlib.h" />
+    <ClInclude Include="..\..\..\quick\3rd\zlib\zutil.h" />
+    <ClInclude Include="..\..\..\quick\lpng.h" />
     <ClInclude Include="..\..\include\lauxlib.h" />
     <ClInclude Include="..\..\include\lua.h" />
     <ClInclude Include="..\..\include\lualib.h" />
@@ -127,14 +146,14 @@
       <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJOY2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(EJOY2D_GLEW);$(EJOY2D)\include\;$(EJOY2D_ROOT)\lib\;$(EJOY2D_ROOT)\lib\render;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EJOY2D_GLEW);$(EJOY2D)\include\;$(EJOY2D_ROOT)\lib\;$(EJOY2D_ROOT)\lib\render;$(EJOY2D_ROOT)\quick\3rd\libpng;$(EJOY2D_ROOT)\quick\3rd\zlib;$(EJOY2D_ROOT)\quick;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(EJOY2D_LIB)</AdditionalLibraryDirectories>
       <OutputFile>$(EJOY2D_ROOT)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libpng.lib;zlib.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

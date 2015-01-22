@@ -74,7 +74,7 @@ texture_load(int id, enum TEXTURE_FORMAT pixel_format, int pixel_width, int pixe
 	struct texture * tex = &POOL.tex[id];
 	if (id >= POOL.count) {
 		POOL.count = id + 1;
-	} 
+	}
 	tex->fb = 0;
 	tex->width = pixel_width;
 	tex->height = pixel_height;
