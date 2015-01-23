@@ -7,6 +7,7 @@ local sprite = require "ejoy2d.sprite"
 
 local config = require "ejoy2d.quick_ejoy2d_config";
 local png = require "ejoy2d.png"
+local jpg = require "ejoy2d.jpg"
 
 -- This limit defined in texture.c
 local MAX_TEXTURE = 128
@@ -22,11 +23,14 @@ local function require_tex(filename)
 	assert(tex < MAX_TEXTURE)
 	table.insert(textures, filename)
 
-	if not config.use_png then
-		ppm.texture(tex,filename)
-	else
-		print("use png...!!!")
+	if config.use_ppm then
+		ppm.texture(tex, filename)
+	elseif config.use_png then
 		png.texture(tex, filename)
+	elseif config.use_jpg then
+		jpg.texture(tex, filename)
+	else
+		print('fuck off...')		
 	end
 
 	return tex

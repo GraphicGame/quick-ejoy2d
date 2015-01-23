@@ -10,6 +10,7 @@
 #include "texture.h"
 #include "ppm.h"
 #include "lpng.h"
+#include "ljpeg.h"
 #include "spritepack.h"
 #include "sprite.h"
 #include "lmatrix.h"
@@ -128,6 +129,7 @@ ejoy2d_game() {
 
 	/** added by quick-ejoy2d */
 	luaL_requiref(L, "ejoy2d.png", lua_png, 0);
+	luaL_requiref(L, "ejoy2d.jpg", lua_jpeg, 0);
 
 	lua_settop(L,0);
 

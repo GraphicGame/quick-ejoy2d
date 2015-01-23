@@ -21,7 +21,7 @@ struct png {
 };
 
 static int
-_loadpng(const char* filename, struct png* png, png_byte *out_pixel_depth, png_byte *out_chanels_count) {
+_loadpng(const char* filename, struct png *png, png_byte *out_pixel_depth, png_byte *out_chanels_count) {
 	// open file
 	FILE* fp = fopen(filename, "rb");
 	if (!fp) { return 0; }
