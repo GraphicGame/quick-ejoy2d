@@ -99,6 +99,8 @@ lua_loadtexture(lua_State *L) {
 
 static int
 lua_unload_tex(lua_State *L) {
+	int id = (int)luaL_checkinteger(L, 1);
+	texture_unload(id);
 	return 0;
 }
 
