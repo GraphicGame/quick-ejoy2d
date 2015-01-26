@@ -5,9 +5,9 @@ local config = {}
 config.use_ppm = false;
 
 --use png ?
-config.use_png = false
+config.use_png = true;
 
 --use jpg ?
-config.use_jpg = true;
+config.use_jpg = false;
 
 return config
