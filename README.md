@@ -1,6 +1,6 @@
 quick-ejoy2d
 ============
-quick-ejoy2d完全的基于ejoy2d官方的渲染内核，计划补充如下一些引擎功能：
+quick-ejoy2d完全的基于ejoy2d官方( https://github.com/ejoy/ejoy2d )的渲染内核，计划补充如下一些引擎功能：
 
 1. (已完成)支持png和jpg.
 2. 开发一个ui库.
