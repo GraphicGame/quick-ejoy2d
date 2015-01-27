@@ -13,6 +13,9 @@
 #ifndef ZUTIL_H
 #define ZUTIL_H
 
+/** Warning::the following line added by quick-ejoy2d-Graphics. */
+#define Z_SOLO
+
 #ifdef HAVE_HIDDEN
 #  define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
 #else

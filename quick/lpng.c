@@ -111,7 +111,7 @@ _loadpng(const char* filename, struct png *png, png_byte *out_pixel_depth, png_b
 	return 1;
 }
 
-static TEXTURE_FORMAT
+static enum TEXTURE_FORMAT
 _get_png_texture_format(png_byte pixel_depth, png_byte chanels_count) {
 	if (chanels_count == 3) {
 		return TEXTURE_RGB;
@@ -139,7 +139,7 @@ lua_loadtexture(lua_State *L) {
 	}
 
 	int tex_format = _get_png_texture_format(pixel_depth, chanels_count);
-	const char *err = texture_load(id, (TEXTURE_FORMAT)tex_format, png.width, png.height, png.buffer, lua_toboolean(L, 3));
+	const char *err = texture_load(id, (enum TEXTURE_FORMAT)tex_format, png.width, png.height, png.buffer, lua_toboolean(L, 3));
 	free(png.buffer);
 	if (err) {
 		return luaL_error(L, "%s", err);

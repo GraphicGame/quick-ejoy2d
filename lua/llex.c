@@ -200,9 +200,13 @@ static void buffreplace (LexState *ls, char from, char to) {
     if (p[n] == from) p[n] = to;
 }
 
-
+/** Waring::the macor:getlocaledecpoint() modified by quick-ejoy2d-Graphics. */
 #if !defined(getlocaledecpoint)
+#ifdef WIN32
 #define getlocaledecpoint()	(localeconv()->decimal_point[0])
+#else	
+#define getlocaledecpoint() '.'
+#endif
 #endif
 
 
