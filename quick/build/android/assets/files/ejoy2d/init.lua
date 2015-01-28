@@ -1,5 +1,6 @@
 local shader = require "ejoy2d.shader"
 local fw = require "ejoy2d.framework"
+local utils = require "ejoy2d.utils"
 
 function fw.EJOY2D_INIT()
 --	shader.init()
@@ -47,6 +48,14 @@ end
 
 function ejoy2d.define_shader(args)
 	return shader.define(args)
+end
+
+function ejoy2d.setFPS(fps)
+	return utils.setFPS(fps)
+end
+
+function ejoy2d.getFPS()
+	return utils.getFPS()
 end
 
 return ejoy2d

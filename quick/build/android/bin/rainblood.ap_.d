@@ -17,12 +17,14 @@ D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\src 
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\init.lua \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\matrix.lua \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\particle.lua \
-D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\quick_ejoy2d_config.lua \
+D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\quick \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\richtext.lua \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\shader.lua \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\simplepackage.lua \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\sprite.lua \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\spritepack.lua \
+D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\quick\init.lua \
+D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\ejoy2d\quick\quick_ejoy2d_config.lua \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\res\rb_back.1.pgm \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\res\rb_back.1.png \
 D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\build\android\assets\files\res\rb_back.1.ppm \

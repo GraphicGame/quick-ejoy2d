@@ -2,7 +2,7 @@ local ej = require "ejoy2d"
 local fw = require "ejoy2d.framework"
 local pack = require "ejoy2d.simplepackage"
 
-ej.setFPS(60)
+ej.setFPS(30)
 print("fps=>" .. ej.getFPS())
 
 pack.load {

@@ -31,6 +31,7 @@ LOCAL_SRC_FILES += \
                   ../../../../lib/texture.c \
                   ../../../lpng.c \
                   ../../../ljpeg.c \
+                  ../../../lutils.c \
                   ../../__engine/platform/winfw.c \
                   ../../../../quick/3rd/zlib/adler32.c \
                   ../../../../quick/3rd/zlib/compress.c \

@@ -2,6 +2,9 @@ local ej = require "ejoy2d"
 local fw = require "ejoy2d.framework"
 local pack = require "ejoy2d.simplepackage"
 
+local FPS = 30
+ej.setFPS(FPS)
+
 pack.load {
 	--pattern = fw.WorkDir.."quick/build/rainblood/res/?",
 	pattern = fw.WorkDir.."res/?",
@@ -124,7 +127,7 @@ local backgroud_pos = { x = 0, y = 8, scale = 1};
 
 local label = ej.sprite("rb_back", "label");
 local label_pos = {x = 10, y = 10, scale = 1};
-label.text = " HaHaHa!! Engine Demo!!";
+label.text = FPS
 
 local function delayStopMoving()
 	print("delay func called.")
@@ -150,6 +153,18 @@ local function onTouch(x, y)
 		hero.ps.sx = -1
 		heroMoveSpeed = -math.abs(heroMoveSpeed)
 	end
+
+	--test flicker.
+	--[[if x <= 300 then
+		FPS = FPS + 1
+		ej.setFPS(FPS)
+		label.text = FPS
+	else
+		FPS = FPS - 1
+		if FPS <= 0 then FPS = 1 end
+		ej.setFPS(FPS)
+		label.text = FPS
+	end]]--
 end
 
 local game = {}
