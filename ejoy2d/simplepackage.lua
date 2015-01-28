@@ -5,7 +5,7 @@ local ppm = require "ejoy2d.ppm"
 local pack = require "ejoy2d.spritepack"
 local sprite = require "ejoy2d.sprite"
 
-local config = require "ejoy2d.quick_ejoy2d_config";
+local config = require "ejoy2d.quick.quick_ejoy2d_config";
 local png = require "ejoy2d.png"
 local jpg = require "ejoy2d.jpg"
 

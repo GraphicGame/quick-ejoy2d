@@ -17,6 +17,7 @@
 #include "label.h"
 #include "particle.h"
 #include "lrenderbuffer.h"
+#include "lutils.h"
 
 //#define LOGIC_FRAME 30
 
@@ -127,9 +128,10 @@ ejoy2d_game() {
 	luaL_requiref(L, "ejoy2d.matrix.c", ejoy2d_matrix, 0);
 	luaL_requiref(L, "ejoy2d.particle.c", ejoy2d_particle, 0);
 
-	/** added by quick-ejoy2d */
+	/** added by quick-ejoy2d--Graphics */
 	luaL_requiref(L, "ejoy2d.png", lua_png, 0);
 	luaL_requiref(L, "ejoy2d.jpg", lua_jpeg, 0);
+	luaL_requiref(L, "ejoy2d.utils", lua_utils, 0);
 
 	lua_settop(L,0);
 
@@ -176,8 +178,7 @@ traceback (lua_State *L) {
 }
 
 void
-ejoy2d_game_logicframe(int frame)
-{
+ejoy2d_game_logicframe(int frame) {
 	LOGIC_FRAME = frame;
 }
 
@@ -194,7 +195,6 @@ ejoy2d_game_start(struct game *G) {
   lua_getfield(L,LUA_REGISTRYINDEX, EJOY_RESUME);
 	lua_getfield(L, LUA_REGISTRYINDEX, EJOY_PAUSE);
 }
-
 
 void 
 ejoy2d_handle_error(lua_State *L, const char *err_type, const char *msg) {
