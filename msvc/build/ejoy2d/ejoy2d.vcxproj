@@ -40,6 +40,7 @@
     <ClCompile Include="..\..\..\quick\lpng.c" />
     <ClCompile Include="..\..\..\quick\lutils.c" />
     <ClCompile Include="..\..\src\ejoy2d\winmain.c" />
+    <ClCompile Include="UIDisplayObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\lib\array.h" />
@@ -97,6 +98,7 @@
     <ClInclude Include="..\..\include\lualib.h" />
     <ClInclude Include="..\..\include\lua_path.h" />
     <ClInclude Include="..\..\include\stdbool.h" />
+    <ClInclude Include="UIDisplayObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\glew\glew.vcxproj">

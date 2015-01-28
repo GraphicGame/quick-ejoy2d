@@ -36,6 +36,9 @@
     <Filter Include="quick\3rd\libjpeg">
       <UniqueIdentifier>{b5f1fe5e-5475-4253-82bd-c65fe7c863d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="quick\ui">
+      <UniqueIdentifier>{d0de09ab-7f41-49eb-af87-2ed7b54c2aaa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\mingw\window.c">
@@ -124,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\quick\lutils.c">
       <Filter>quick</Filter>
+    </ClCompile>
+    <ClCompile Include="UIDisplayObject.cpp">
+      <Filter>lib\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +297,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\quick\lutils.h">
       <Filter>quick</Filter>
+    </ClInclude>
+    <ClInclude Include="UIDisplayObject.h">
+      <Filter>lib\inc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
