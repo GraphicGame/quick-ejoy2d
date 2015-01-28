@@ -131,6 +131,9 @@
     <ClCompile Include="UIDisplayObject.cpp">
       <Filter>lib\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\quick\ui\UIDisplayObject.cpp">
+      <Filter>quick\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\stdbool.h">
@@ -300,6 +303,9 @@
     </ClInclude>
     <ClInclude Include="UIDisplayObject.h">
       <Filter>lib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\ui\UIDisplayObject.h">
+      <Filter>quick\ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
