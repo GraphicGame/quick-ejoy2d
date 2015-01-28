@@ -54,4 +54,8 @@ function ejoy2d.setFPS(fps)
 	return utils.setFPS(fps)
 end
 
+function ejoy2d.getFPS()
+	return utils.getFPS()
+end
+
 return ejoy2d

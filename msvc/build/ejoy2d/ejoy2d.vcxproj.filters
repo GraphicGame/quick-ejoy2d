@@ -122,6 +122,9 @@
     <ClCompile Include="..\..\..\quick\ljpeg.c">
       <Filter>quick</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\quick\lutils.c">
+      <Filter>quick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\stdbool.h">
@@ -284,6 +287,9 @@
       <Filter>quick\3rd\libjpeg</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\quick\ljpeg.h">
+      <Filter>quick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\lutils.h">
       <Filter>quick</Filter>
     </ClInclude>
   </ItemGroup>

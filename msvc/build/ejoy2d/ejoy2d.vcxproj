@@ -38,6 +38,7 @@
     <ClCompile Include="..\..\..\mingw\winfw.c" />
     <ClCompile Include="..\..\..\quick\ljpeg.c" />
     <ClCompile Include="..\..\..\quick\lpng.c" />
+    <ClCompile Include="..\..\..\quick\lutils.c" />
     <ClCompile Include="..\..\src\ejoy2d\winmain.c" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +91,7 @@
     <ClInclude Include="..\..\..\quick\3rd\zlib\zutil.h" />
     <ClInclude Include="..\..\..\quick\ljpeg.h" />
     <ClInclude Include="..\..\..\quick\lpng.h" />
+    <ClInclude Include="..\..\..\quick\lutils.h" />
     <ClInclude Include="..\..\include\lauxlib.h" />
     <ClInclude Include="..\..\include\lua.h" />
     <ClInclude Include="..\..\include\lualib.h" />

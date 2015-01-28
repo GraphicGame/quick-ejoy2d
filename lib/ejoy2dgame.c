@@ -178,8 +178,13 @@ traceback (lua_State *L) {
 }
 
 void
-ejoy2d_game_logicframe(int frame) {
+ejoy2d_game_set_logicframe(int frame) {
 	LOGIC_FRAME = frame;
+}
+
+int
+ejoy2d_game_get_logicframe() {
+	return LOGIC_FRAME;
 }
 
 void
