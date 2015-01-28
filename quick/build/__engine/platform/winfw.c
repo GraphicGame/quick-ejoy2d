@@ -19,8 +19,6 @@ struct WINDOWGAME {
 	int intouch;
 };
 
-float winfw_frametime = 0.0f;
-
 static struct WINDOWGAME *G = NULL;
 
 static const char * startscript =
@@ -59,14 +57,9 @@ traceback(lua_State *L) {
 
 void
 ejoy2d_win_init(int orix, int oriy, int width, int height, float scale, const char* folder) {
-	winfw_frametime = 1.0f / ejoy2d_game_get_logicframe();
-	LOGI("ejoy2d_win_init start...");
 	G = create_game();
-	LOGI("after create_game()...");
 	lua_State *L = ejoy2d_game_lua(G->game);
-	LOGI("debug:line 64");
 	lua_pushcfunction(L, traceback);
-	LOGI("debug:line 64");
 	int tb = lua_gettop(L);
 	int err = luaL_loadstring(L, startscript);
 	if (err) {
@@ -74,14 +67,12 @@ ejoy2d_win_init(int orix, int oriy, int width, int height, float scale, const ch
 		LOGE("startscript error=>%s", msg);
 		fault("%s", msg);
 	}
-	LOGI("debug:line 74");
 
 	lua_pushstring(L, folder);
 	lua_pushstring(L, "src/test_rain_blood.lua");
 	lua_pushnumber(L, width);
 	lua_pushnumber(L, height);
 	lua_pushnumber(L, scale);
-	LOGI("debug:line 81");
 
 	err = lua_pcall(L, 5, 0, tb);
 	if (err) {
@@ -91,13 +82,9 @@ ejoy2d_win_init(int orix, int oriy, int width, int height, float scale, const ch
 	}
 
 	lua_pop(L,1);
-	LOGI("debug:line 91");
 
 	screen_init(width,height,scale);
-	LOGI("debug:line 94");
-
 	ejoy2d_game_start(G->game);
-	LOGI("after ejoy2d_game_start...");
 }
 
 void
@@ -111,7 +98,7 @@ ejoy2d_win_update(float dt) {
 }
 
 void
-ejoy2d_win_frame() {
+ejoy2d_win_drawframe() {
 	ejoy2d_game_drawframe(G->game);
 }
 

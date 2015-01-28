@@ -15,7 +15,6 @@ import javax.microedition.khronos.opengles.GL10;
 
 class GL2JNIView extends GLSurfaceView {
 	private static String TAG = "EJOY2D";
-	private static int FPS = 30;
 
 	public GL2JNIView(Context context) {
 		super(context);
