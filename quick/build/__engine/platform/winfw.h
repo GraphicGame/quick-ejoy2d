@@ -13,6 +13,8 @@
 #define ORIENT_LEFT 2
 #define ORIENT_RIGHT 3
 
+extern float winfw_frametime;
+
 void ejoy2d_win_init(int orix, int oriy, int width, int height, float scale, const char* folder);
 void ejoy2d_win_release();
 void ejoy2d_win_frame();

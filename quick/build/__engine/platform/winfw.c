@@ -19,6 +19,8 @@ struct WINDOWGAME {
 	int intouch;
 };
 
+float winfw_frametime = 0.0f;
+
 static struct WINDOWGAME *G = NULL;
 
 static const char * startscript =
@@ -57,6 +59,7 @@ traceback(lua_State *L) {
 
 void
 ejoy2d_win_init(int orix, int oriy, int width, int height, float scale, const char* folder) {
+	winfw_frametime = 1.0f / ejoy2d_game_get_logicframe();
 	LOGI("ejoy2d_win_init start...");
 	G = create_game();
 	LOGI("after create_game()...");

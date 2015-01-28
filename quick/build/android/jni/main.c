@@ -12,7 +12,8 @@
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
-#define FRAME_TIME (1.0f/30)
+//#define FRAME_TIME (1.0f/30)
+extern float winfw_frametime;
 
 int font_module_init();
 void font_module_destroy();
@@ -61,9 +62,9 @@ Java_com_engine_gl2jni_GL2JNILib_onsurfacechanged(JNIEnv *env, jobject obj, jint
 JNIEXPORT void JNICALL
 Java_com_engine_gl2jni_GL2JNILib_ondrawframe(JNIEnv *env, jobject obj, jfloat dt) {
 	t += dt;
-	while (t > FRAME_TIME) {
-		t -= FRAME_TIME;
-		ejoy2d_win_update(FRAME_TIME);
+	while (t > winfw_frametime) {
+		t -= winfw_frametime;
+		ejoy2d_win_update(winfw_frametime);
 		ejoy2d_win_frame();
 	}
 }
