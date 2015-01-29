@@ -128,10 +128,13 @@
     <ClCompile Include="..\..\..\quick\lutils.c">
       <Filter>quick</Filter>
     </ClCompile>
-    <ClCompile Include="UIDisplayObject.cpp">
-      <Filter>lib\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\quick\ui\UIDisplayObject.cpp">
+      <Filter>quick\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\ui\UIInteractiveObject.cpp">
+      <Filter>quick\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\ui\UIEventDispatcher.cpp">
       <Filter>quick\ui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -305,6 +308,12 @@
       <Filter>lib\inc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\quick\ui\UIDisplayObject.h">
+      <Filter>quick\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\ui\UIInteractiveObject.h">
+      <Filter>quick\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\ui\UIEventDispatcher.h">
       <Filter>quick\ui</Filter>
     </ClInclude>
   </ItemGroup>

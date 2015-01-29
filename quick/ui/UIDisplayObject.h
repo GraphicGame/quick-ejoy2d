@@ -3,8 +3,10 @@
 
 #include <string>
 
+#include "UIEventDispatcher.h"
+
 namespace ui {
-	class UIDisplayObject {
+	class UIDisplayObject : public UIEventDispatcher {
 	public:
 		UIDisplayObject();
 		virtual ~UIDisplayObject();
@@ -19,23 +21,42 @@ namespace ui {
 		virtual void draw();
 
 		float getX() const;
-		void setX(float x);
-
 		float getY() const;
+		void setX(float x);
 		void setY(float y);
 
 		float getScale() const;
+		float getScaleX() const;
+		float getScaleY() const;
 		void setScale(float scale);
+		void setScale(float sx, float sy);
+		void setScaleX(float sx);
+		void setScaleY(float sy);
 
 		float getRotation() const;
+		float getRotationX() const;
+		float getRotationY() const;
 		void setRotation(float rotation);
+		void setRotation(float rx, float ry);
+		void setRotationX(float rx);
+		void setRotationY(float ry);
+
+		float getWidth() const;
+		void setWidth(float w);
+		float getHeight() const;
+		void setHeight(float h);
+
+		bool getVisible() const;
+		void setVisible(bool visible);
 	protected:
 		std::string _name;
 		UIDisplayObject *_parent;
 		float _x;
 		float _y;
-		float _scale;
-		float _rotation;
+		float _scale, _scaleX, _scaleY;
+		float _rotation, _rotationX, _rotationY;
+		float _width, _height;
+		bool _visible;
 	};
 }
 
