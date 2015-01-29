@@ -39,6 +39,9 @@
     <Filter Include="quick\ui">
       <UniqueIdentifier>{d0de09ab-7f41-49eb-af87-2ed7b54c2aaa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="quick\ui\event">
+      <UniqueIdentifier>{0688dfa4-5f6b-42a2-8ad6-1eeea4ceb679}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\mingw\window.c">
@@ -135,6 +138,12 @@
       <Filter>quick\ui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\quick\ui\UIEventDispatcher.cpp">
+      <Filter>quick\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\ui\event\UITouchEvent.cpp">
+      <Filter>quick\ui\event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\ui\UIDisplayObjectContainer.cpp">
       <Filter>quick\ui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -314,6 +323,15 @@
       <Filter>quick\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\quick\ui\UIEventDispatcher.h">
+      <Filter>quick\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\ui\event\UITouchEvent.h">
+      <Filter>quick\ui\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\ui\UIDisplayObjectContainer.h">
+      <Filter>quick\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\ui\UINameSpace.h">
       <Filter>quick\ui</Filter>
     </ClInclude>
   </ItemGroup>

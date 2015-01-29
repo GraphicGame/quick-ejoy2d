@@ -39,7 +39,9 @@
     <ClCompile Include="..\..\..\quick\ljpeg.c" />
     <ClCompile Include="..\..\..\quick\lpng.c" />
     <ClCompile Include="..\..\..\quick\lutils.c" />
+    <ClCompile Include="..\..\..\quick\ui\event\UITouchEvent.cpp" />
     <ClCompile Include="..\..\..\quick\ui\UIDisplayObject.cpp" />
+    <ClCompile Include="..\..\..\quick\ui\UIDisplayObjectContainer.cpp" />
     <ClCompile Include="..\..\..\quick\ui\UIEventDispatcher.cpp" />
     <ClCompile Include="..\..\..\quick\ui\UIInteractiveObject.cpp" />
     <ClCompile Include="..\..\src\ejoy2d\winmain.c" />
@@ -95,9 +97,12 @@
     <ClInclude Include="..\..\..\quick\ljpeg.h" />
     <ClInclude Include="..\..\..\quick\lpng.h" />
     <ClInclude Include="..\..\..\quick\lutils.h" />
+    <ClInclude Include="..\..\..\quick\ui\event\UITouchEvent.h" />
     <ClInclude Include="..\..\..\quick\ui\UIDisplayObject.h" />
+    <ClInclude Include="..\..\..\quick\ui\UIDisplayObjectContainer.h" />
     <ClInclude Include="..\..\..\quick\ui\UIEventDispatcher.h" />
     <ClInclude Include="..\..\..\quick\ui\UIInteractiveObject.h" />
+    <ClInclude Include="..\..\..\quick\ui\UINameSpace.h" />
     <ClInclude Include="..\..\include\lauxlib.h" />
     <ClInclude Include="..\..\include\lua.h" />
     <ClInclude Include="..\..\include\lualib.h" />

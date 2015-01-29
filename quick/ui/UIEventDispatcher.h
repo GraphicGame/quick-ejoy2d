@@ -5,55 +5,58 @@
 #include <vector>
 #include <map>
 
-namespace ui {
+#include "UINameSpace.h"
 
-	class UIEventDispatcher;
+NS_UI_BEGIN
 
-	class Event {
-	public:
-		Event(std::string type);
-		~Event();
-	public:
-		const std::string& getType() const;
-		const UIEventDispatcher * getTarget() const;
-		void setTarget(UIEventDispatcher *target);
-	private:
-		Event();
-	private:
-		std::string _type;
-		UIEventDispatcher *_target;
-	};
+class UIEventDispatcher;
 
-	class EventListenerCallback {
-	public:
-		EventListenerCallback();
-		~EventListenerCallback();
-	public:
-		void call();
-		bool hasCalled() const;
-	private:
-		bool _called;
-	};
+class Event {
+public:
+	Event(std::string type);
+	virtual ~Event();
+public:
+	const std::string& getType() const;
+	const UIEventDispatcher * getTarget() const;
+	void setTarget(UIEventDispatcher *target);
+protected:
+	Event();
+protected:
+	std::string _type;
+	UIEventDispatcher *_target;
+};
 
-	class UIEventDispatcher {
-	public:
-		UIEventDispatcher();
-		virtual ~UIEventDispatcher();
-	public:
-		void addEventListener(std::string type, EventListenerCallback *callback);
-		bool dispatchEvent(Event *evt);
-		bool hasEventListener(std::string type) const;
-		int  getEventListenerCount(std::string type);
-		void removeEventListener(std::string type, EventListenerCallback *callback);
-		void removeEventListener(std::string type);
-		void removeAllEventListener();
-	private:
-		std::map<std::string, std::vector<EventListenerCallback*>* > _event_listeners_map;
+class EventListenerCallback {
+public:
+	EventListenerCallback();
+	~EventListenerCallback();
+public:
+	void call();
+	bool hasCalled() const;
+private:
+	bool _called;
+};
 
-		typedef std::map<std::string, std::vector<EventListenerCallback*>* >::const_iterator _cit_map;
-		typedef std::vector<EventListenerCallback*>::iterator _it_vec;
-		typedef std::vector<EventListenerCallback*> _t_vec;
-	};
+class UIEventDispatcher {
+public:
+	UIEventDispatcher();
+	virtual ~UIEventDispatcher();
+public:
+	void addEventListener(std::string type, EventListenerCallback *callback);
+	bool dispatchEvent(Event *evt);
+	bool hasEventListener(std::string type) const;
+	int  getEventListenerCount(std::string type);
+	void removeEventListener(std::string type, EventListenerCallback *callback);
+	void removeEventListener(std::string type);
+	void removeAllEventListener();
+private:
+	std::map<std::string, std::vector<EventListenerCallback*>* > _eventListenersMap;
 
-}
+	typedef std::map<std::string, std::vector<EventListenerCallback*>* >::const_iterator _citMap;
+	typedef std::vector<EventListenerCallback*>::iterator _itVec;
+	typedef std::vector<EventListenerCallback*> _tVec;
+};
+
+NS_UI_END
+
 #endif

@@ -1,18 +1,23 @@
 #ifndef __UIINTERACTIVEOBJECT
 #define __UIINTERACTIVEOBJECT
 
+#include <string>
 #include "UIDisplayObject.h"
+#include "UINameSpace.h"
 
-namespace ui {
-	class UIInteractiveObject : public UIDisplayObject {
-	public:
-		UIInteractiveObject();
-		virtual ~UIInteractiveObject();
-	public:
+NS_UI_BEGIN
 
-	protected:
+class UIInteractiveObject : public UIDisplayObject {
+public:
+	UIInteractiveObject();
+	virtual ~UIInteractiveObject();
+public:
+	bool getTouchEnabled() const;
+	void setTouchEnabled(bool value);
+protected:
+	bool _touchEnabled;
+};
 
-	};
-}
+NS_UI_END
 
 #endif

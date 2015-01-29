@@ -3,136 +3,136 @@
 
 #include "UIEventDispatcher.h"
 
-namespace ui {
+NS_UI_BEGIN
 
-	///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
-	Event::Event() {
+Event::Event() {
 		
-	}
+}
 
-	Event::Event(std::string type)
-		: _type(type)
-	{
+Event::Event(std::string type)
+	: _type(type)
+{
 		
-	}
+}
 
-	Event::~Event() {
+Event::~Event() {
 		
-	}
+}
 
-	const std::string& Event::getType() const {
-		return _type;
-	}
+const std::string& Event::getType() const {
+	return _type;
+}
 
-	const UIEventDispatcher * Event::getTarget() const {
-		return _target;
-	}
+const UIEventDispatcher * Event::getTarget() const {
+	return _target;
+}
 
-	void Event::setTarget(UIEventDispatcher *target) {
-		_target = target;
-	}
+void Event::setTarget(UIEventDispatcher *target) {
+	_target = target;
+}
 
-	///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
-	EventListenerCallback::EventListenerCallback()
-		:_called(false)
-	{
+EventListenerCallback::EventListenerCallback()
+	:_called(false)
+{
 		
-	}
+}
 
-	EventListenerCallback::~EventListenerCallback() {
+EventListenerCallback::~EventListenerCallback() {
 		
-	}
+}
 
-	void EventListenerCallback::call() {
-		std::cout << "EventListenerCallback called...\n";
-		_called = true;
-	}
+void EventListenerCallback::call() {
+	std::cout << "EventListenerCallback called...\n";
+	_called = true;
+}
 
-	bool EventListenerCallback::hasCalled() const {
-		return _called;
-	}
+bool EventListenerCallback::hasCalled() const {
+	return _called;
+}
 
-	///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
-	UIEventDispatcher::UIEventDispatcher() {
+UIEventDispatcher::UIEventDispatcher() {
 		
-	}
+}
 
-	UIEventDispatcher::~UIEventDispatcher() {
-
-	}
-
-	void
-	UIEventDispatcher::addEventListener(std::string type, EventListenerCallback *callback) {
-		_cit_map it = _event_listeners_map.find(type);
-		if (it == _event_listeners_map.end()) {
-			_t_vec *temp = new std::vector<EventListenerCallback*>();
-			_event_listeners_map[type] = temp;
-		}
-		_t_vec *vec = _event_listeners_map[type];
-		_it_vec itv = std::find(vec->begin(), vec->end(), callback);
-		if (itv == vec->end()) {
-			vec->push_back(callback);
-		}
-	}
-
-	bool
-	UIEventDispatcher::dispatchEvent(Event *evt) {
-		evt->setTarget(this);
-		std::string type = evt->getType();
-		_cit_map it = _event_listeners_map.find(type);
-		if (it == _event_listeners_map.end()) {
-			return false;
-		}
-		_t_vec *listeners = _event_listeners_map[type];
-		for (_it_vec vit = listeners->begin(); vit != listeners->end(); ++vit) {
-			EventListenerCallback *cb = *vit;
-			cb->call();
-		}
-		return true;
-	}
-
-	bool UIEventDispatcher::hasEventListener(std::string type) const {
-		_cit_map it = _event_listeners_map.find(type);
-		return (it != _event_listeners_map.end());
-	}
-
-	int UIEventDispatcher::getEventListenerCount(std::string type) {
-		_cit_map it = _event_listeners_map.find(type);
-		if (it == _event_listeners_map.end()) {
-			return 0;
-		}
-		_t_vec *vec = _event_listeners_map[type];
-		return vec->size();
-	}
-
-	void
-	UIEventDispatcher::removeEventListener(std::string type, EventListenerCallback *callback) {
-		_cit_map it = _event_listeners_map.find(type);
-		if (it == _event_listeners_map.end()) {
-			return;
-		}
-		_t_vec *vec = _event_listeners_map[type];
-		_it_vec it_remove = std::remove(vec->begin(), vec->end(), callback);
-		vec->erase(it_remove);
-	}
-
-	void UIEventDispatcher::removeEventListener(std::string type) {
-		_cit_map it = _event_listeners_map.find(type);
-		if (it == _event_listeners_map.end()) {
-			return;
-		}
-		_t_vec *vec = _event_listeners_map[type];
-		vec->clear();
-		vec->erase(vec->begin(), vec->end());
-	}
-
-	void UIEventDispatcher::removeAllEventListener() {
-		_event_listeners_map.clear();
-	}
-
-	///////////////////////////////////////////////////////////////////////////////////
+UIEventDispatcher::~UIEventDispatcher() {
 
 }
+
+void
+UIEventDispatcher::addEventListener(std::string type, EventListenerCallback *callback) {
+	_citMap it = _eventListenersMap.find(type);
+	if (it == _eventListenersMap.end()) {
+		_tVec *temp = new std::vector<EventListenerCallback*>();
+		_eventListenersMap[type] = temp;
+	}
+	_tVec *vec = _eventListenersMap[type];
+	_itVec itv = std::find(vec->begin(), vec->end(), callback);
+	if (itv == vec->end()) {
+		vec->push_back(callback);
+	}
+}
+
+bool
+UIEventDispatcher::dispatchEvent(Event *evt) {
+	evt->setTarget(this);
+	std::string type = evt->getType();
+	_citMap it = _eventListenersMap.find(type);
+	if (it == _eventListenersMap.end()) {
+		return false;
+	}
+	_tVec *listeners = _eventListenersMap[type];
+	for (_itVec vit = listeners->begin(); vit != listeners->end(); ++vit) {
+		EventListenerCallback *cb = *vit;
+		cb->call();
+	}
+	return true;
+}
+
+bool UIEventDispatcher::hasEventListener(std::string type) const {
+	_citMap it = _eventListenersMap.find(type);
+	return (it != _eventListenersMap.end());
+}
+
+int UIEventDispatcher::getEventListenerCount(std::string type) {
+	_citMap it = _eventListenersMap.find(type);
+	if (it == _eventListenersMap.end()) {
+		return 0;
+	}
+	_tVec *vec = _eventListenersMap[type];
+	return vec->size();
+}
+
+void
+UIEventDispatcher::removeEventListener(std::string type, EventListenerCallback *callback) {
+	_citMap it = _eventListenersMap.find(type);
+	if (it == _eventListenersMap.end()) {
+		return;
+	}
+	_tVec *vec = _eventListenersMap[type];
+	_itVec it_remove = std::remove(vec->begin(), vec->end(), callback);
+	vec->erase(it_remove);
+}
+
+void UIEventDispatcher::removeEventListener(std::string type) {
+	_citMap it = _eventListenersMap.find(type);
+	if (it == _eventListenersMap.end()) {
+		return;
+	}
+	_tVec *vec = _eventListenersMap[type];
+	vec->clear();
+	vec->erase(vec->begin(), vec->end());
+}
+
+void UIEventDispatcher::removeAllEventListener() {
+	_eventListenersMap.clear();
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+NS_UI_END
