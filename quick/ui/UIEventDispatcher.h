@@ -30,6 +30,9 @@ namespace ui {
 		~EventListenerCallback();
 	public:
 		void call();
+		bool hasCalled() const;
+	private:
+		bool _called;
 	};
 
 	class UIEventDispatcher {
@@ -40,6 +43,7 @@ namespace ui {
 		void addEventListener(std::string type, EventListenerCallback *callback);
 		bool dispatchEvent(Event *evt);
 		bool hasEventListener(std::string type) const;
+		int  getEventListenerCount(std::string type);
 		void removeEventListener(std::string type, EventListenerCallback *callback);
 		void removeEventListener(std::string type);
 		void removeAllEventListener();

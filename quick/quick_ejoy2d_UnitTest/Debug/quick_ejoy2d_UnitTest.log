@@ -1,0 +1,14 @@
+﻿生成启动时间为 2015/1/29 16:49:00。
+     1>项目“D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\quick_ejoy2d_UnitTest\quick_ejoy2d_UnitTest.vcxproj”在节点 3 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\quick_ejoy2d_UnitTest.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt unittest1.cpp
+         unittest1.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\msvc\build\Debug\quick_ejoy2d_UnitTest.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" /LIBPATH:"D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\msvc\obj\Debug\ejoy2d" UIEventDispatcher.obj kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\msvc\build\Debug\quick_ejoy2d_UnitTest.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\msvc\build\Debug\quick_ejoy2d_UnitTest.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
+         Debug\unittest1.obj
+         quick_ejoy2d_UnitTest.vcxproj -> D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\msvc\build\Debug\quick_ejoy2d_UnitTest.dll
+     1>已完成生成项目“D:\Lab\engine_ejoy2d_labs\quick-ejoy2d.git\quick\quick_ejoy2d_UnitTest\quick_ejoy2d_UnitTest.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.59

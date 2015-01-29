@@ -35,7 +35,9 @@ namespace ui {
 
 	///////////////////////////////////////////////////////////////////////////////////
 
-	EventListenerCallback::EventListenerCallback() {
+	EventListenerCallback::EventListenerCallback()
+		:_called(false)
+	{
 		
 	}
 
@@ -45,6 +47,11 @@ namespace ui {
 
 	void EventListenerCallback::call() {
 		std::cout << "EventListenerCallback called...\n";
+		_called = true;
+	}
+
+	bool EventListenerCallback::hasCalled() const {
+		return _called;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////
@@ -66,7 +73,7 @@ namespace ui {
 		}
 		_t_vec *vec = _event_listeners_map[type];
 		_it_vec itv = std::find(vec->begin(), vec->end(), callback);
-		if (itv != vec->end()) {
+		if (itv == vec->end()) {
 			vec->push_back(callback);
 		}
 	}
@@ -87,10 +94,18 @@ namespace ui {
 		return true;
 	}
 
-	bool
-	UIEventDispatcher::hasEventListener(std::string type) const {
+	bool UIEventDispatcher::hasEventListener(std::string type) const {
 		_cit_map it = _event_listeners_map.find(type);
 		return (it != _event_listeners_map.end());
+	}
+
+	int UIEventDispatcher::getEventListenerCount(std::string type) {
+		_cit_map it = _event_listeners_map.find(type);
+		if (it == _event_listeners_map.end()) {
+			return 0;
+		}
+		_t_vec *vec = _event_listeners_map[type];
+		return vec->size();
 	}
 
 	void
