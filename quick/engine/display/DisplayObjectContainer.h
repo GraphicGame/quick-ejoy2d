@@ -3,9 +3,10 @@
 
 #include "InteractiveObject.h"
 #include "../NameSpace.h"
+#include "../geom/Point.h"
+
 #include <string>
-#include <vector>
-#include <map>
+#include <list>
 
 NS_QUICK_DISPLAY_BEGIN
 
@@ -25,14 +26,19 @@ public:
 	DisplayObject * getChildAt(int index);
 	DisplayObject * getChildByName(std::string name);
 	int getChildIndex(DisplayObject *child);
-	void getObjectsUnderPoint();
-protected:
-	void addNumChildren(int count);
-	void setNumChildren(int count);
+	void getObjectsUnderPoint(const quick::geom::Point &point, std::vector<DisplayObject*> &outVector);
+	DisplayObject * removeChild(DisplayObject *child);
+	DisplayObject * removeChildAt(int index);
+	void setChildIndex(DisplayObject *child, int index);
+	void swapChildren(DisplayObject *child1, DisplayObject *child2);
+	void swapChildrenAt(int index1, int index2);
+
 protected:
 	bool _touchChildren;
 	int _numChildren;
-	std::map<std::string, std::vector<DisplayObject*>* > _childrenMap;
+	std::list<DisplayObject*> _childrenList;
+
+	typedef std::list<DisplayObject*>::iterator _itChildrenList;
 };
 
 NS_QUICK_DISPLAY_END
