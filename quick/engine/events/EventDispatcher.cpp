@@ -35,22 +35,22 @@ void Event::setTarget(EventDispatcher *target) {
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-EventListenerCallback::EventListenerCallback()
+Function::Function()
 	:_called(false)
 {
 		
 }
 
-EventListenerCallback::~EventListenerCallback() {
+Function::~Function() {
 		
 }
 
-void EventListenerCallback::call() {
-	std::cout << "EventListenerCallback called...\n";
+void Function::call() {
+	std::cout << "Function called...\n";
 	_called = true;
 }
 
-bool EventListenerCallback::hasCalled() const {
+bool Function::hasCalled() const {
 	return _called;
 }
 
@@ -65,10 +65,10 @@ EventDispatcher::~EventDispatcher() {
 }
 
 void
-EventDispatcher::addEventListener(std::string type, EventListenerCallback *callback) {
+EventDispatcher::addEventListener(std::string type, Function *callback) {
 	_citMap it = _eventListenersMap.find(type);
 	if (it == _eventListenersMap.end()) {
-		_tVec *temp = new std::vector<EventListenerCallback*>();
+		_tVec *temp = new std::vector<Function*>();
 		_eventListenersMap[type] = temp;
 	}
 	_tVec *vec = _eventListenersMap[type];
@@ -88,7 +88,7 @@ EventDispatcher::dispatchEvent(Event *evt) {
 	}
 	_tVec *listeners = _eventListenersMap[type];
 	for (_itVec vit = listeners->begin(); vit != listeners->end(); ++vit) {
-		EventListenerCallback *cb = *vit;
+		Function *cb = *vit;
 		cb->call();
 	}
 	return true;
@@ -109,7 +109,7 @@ int EventDispatcher::getEventListenerCount(std::string type) {
 }
 
 void
-EventDispatcher::removeEventListener(std::string type, EventListenerCallback *callback) {
+EventDispatcher::removeEventListener(std::string type, Function *callback) {
 	_citMap it = _eventListenersMap.find(type);
 	if (it == _eventListenersMap.end()) {
 		return;

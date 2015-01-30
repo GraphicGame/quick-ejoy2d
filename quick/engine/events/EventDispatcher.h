@@ -26,10 +26,10 @@ protected:
 	EventDispatcher *_target;
 };
 
-class EventListenerCallback {
+class Function {
 public:
-	EventListenerCallback();
-	~EventListenerCallback();
+	Function();
+	~Function();
 public:
 	void call();
 	bool hasCalled() const;
@@ -42,19 +42,19 @@ public:
 	EventDispatcher();
 	virtual ~EventDispatcher();
 public:
-	void addEventListener(std::string type, EventListenerCallback *callback);
+	void addEventListener(std::string type, Function *callback);
 	bool dispatchEvent(Event *evt);
 	bool hasEventListener(std::string type) const;
 	int  getEventListenerCount(std::string type);
-	void removeEventListener(std::string type, EventListenerCallback *callback);
+	void removeEventListener(std::string type, Function *callback);
 	void removeEventListener(std::string type);
 	void removeAllEventListener();
 private:
-	std::map<std::string, std::vector<EventListenerCallback*>* > _eventListenersMap;
+	std::map<std::string, std::vector<Function*>* > _eventListenersMap;
 
-	typedef std::map<std::string, std::vector<EventListenerCallback*>* >::const_iterator _citMap;
-	typedef std::vector<EventListenerCallback*>::iterator _itVec;
-	typedef std::vector<EventListenerCallback*> _tVec;
+	typedef std::map<std::string, std::vector<Function*>* >::const_iterator _citMap;
+	typedef std::vector<Function*>::iterator _itVec;
+	typedef std::vector<Function*> _tVec;
 };
 
 NS_QUICK_EVENTS_END

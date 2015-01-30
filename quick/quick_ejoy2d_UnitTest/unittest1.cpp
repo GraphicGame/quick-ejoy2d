@@ -12,7 +12,7 @@ namespace quick_ejoy2d_UnitTest {
 			Logger::WriteMessage("test EventDispatcher...");
 			
 			EventDispatcher ed;
-			EventListenerCallback *callBack = new EventListenerCallback();
+			Function *callBack = new Function();
 			
 			ed.addEventListener("click", callBack);
 			
