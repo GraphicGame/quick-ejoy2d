@@ -1,9 +1,13 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../engine/events/EventDispatcher.h"
+#include "../engine/geom/Point.h"
+
+#include <math.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace quick::events;
+using namespace quick::geom;
 
 namespace quick_ejoy2d_UnitTest {		
 	TEST_CLASS(UnitTest1) {
@@ -34,6 +38,17 @@ namespace quick_ejoy2d_UnitTest {
 			Event *evt = new Event("click");
 			ed.dispatchEvent(evt);
 			Assert::AreEqual(callBack->hasCalled(), true);
+		}
+
+		TEST_METHOD(TestPoint) {
+			Point p;
+			p.setX(2.0f);
+			p.setY(3.0f);
+			Assert::AreEqual(p.getX(), 2.0f);
+			Assert::AreEqual(p.getY(), 3.0f);
+			float x = p.getX();
+			float y = p.getY();
+			Assert::AreEqual(p.getLength(), sqrtf(x * x + y * y));
 		}
 	};
 }

@@ -45,6 +45,9 @@
     <Filter Include="quick\engine\display">
       <UniqueIdentifier>{c8e23034-a39d-4ec6-b15c-ea075cfbf201}</UniqueIdentifier>
     </Filter>
+    <Filter Include="quick\engine\geom">
+      <UniqueIdentifier>{d74d2df4-2b60-410d-b3aa-12580dddbed1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\mingw\window.c">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\quick\engine\display\InteractiveObject.cpp">
       <Filter>quick\engine\display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine\geom\Point.cpp">
+      <Filter>quick\engine\geom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -336,6 +342,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\quick\engine\display\InteractiveObject.h">
       <Filter>quick\engine\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\geom\Point.h">
+      <Filter>quick\engine\geom</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

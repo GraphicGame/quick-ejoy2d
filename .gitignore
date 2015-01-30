@@ -6,6 +6,9 @@ ej2d.dSYM/*
 *.dll
 *.ilk
 
+mac/example/example.xcodeproj/xcuserdata
+mac/example/example.xcodeproj/project.xcworkspace/xcuserdata
+
 msvc/lib/Debug/ej2d.pdb
 msvc/lib/Debug/glew.exp
 msvc/lib/Debug/glew.lib
@@ -13,8 +16,6 @@ msvc/lib/Debug/glew.pdb
 msvc/lib/Debug/lua52.exp
 msvc/lib/Debug/lua52.lib
 msvc/lib/Debug/lua52.pdb
-
-mac/example/example.xcodeproj/xcuserdata
-mac/example/example.xcodeproj/project.xcworkspace/xcuserdata
+msvc/build/Debug/quick_ejoy2d_UnitTest.lib
 
 quick/quick_ejoy2d_UnitTest/Debug/

@@ -6,3 +6,6 @@
 
 #define NS_QUICK_DISPLAY_BEGIN namespace quick { namespace display {
 #define NS_QUICK_DISPLAY_END }}
+
+#define NS_QUICK_GEOM_BEGIN namespace quick { namespace geom {
+#define NS_QUICK_GEOM_END }}
