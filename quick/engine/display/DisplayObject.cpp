@@ -11,7 +11,7 @@ DisplayObject::~DisplayObject() {
 
 }
 
-const std::string&
+const std::string
 DisplayObject::getName() const {
 	return _name;
 }

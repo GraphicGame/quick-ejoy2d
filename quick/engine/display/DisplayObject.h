@@ -13,7 +13,7 @@ public:
 	DisplayObject();
 	virtual ~DisplayObject();
 public:
-	const std::string& getName() const;
+	const std::string getName() const;
 	void setName(std::string name);
 	void setName(const char *name);
 

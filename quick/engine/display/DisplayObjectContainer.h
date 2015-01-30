@@ -22,7 +22,7 @@ public:
 
 	const DisplayObject * addChild(DisplayObject *child);
 	const DisplayObject * addChildAt(DisplayObject *child, int index);
-	bool contains(DisplayObject *child) const;
+	bool contains(const DisplayObject *child) const;
 	DisplayObject * getChildAt(int index);
 	DisplayObject * getChildByName(std::string name);
 	int getChildIndex(DisplayObject *child);
@@ -39,6 +39,7 @@ protected:
 	std::list<DisplayObject*> _childrenList;
 
 	typedef std::list<DisplayObject*>::iterator _itChildrenList;
+	typedef std::list<DisplayObject*>::const_iterator _constItChildrenList;
 };
 
 NS_QUICK_DISPLAY_END
