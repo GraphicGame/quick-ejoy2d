@@ -41,11 +41,11 @@ DisplayObjectContainer::addChild(DisplayObject *child) {
 
 const DisplayObject *
 DisplayObjectContainer::addChildAt(DisplayObject *child, int index) {
-	_itChildrenList it = std::find(_childrenList.begin(), _childrenList.end(), child);
-	if (it != _childrenList.end()) {
+	if (index < 0) {
 		return child;
 	}
-	if (index < 0) {
+	_itChildrenList it = std::find(_childrenList.begin(), _childrenList.end(), child);
+	if (it != _childrenList.end()) {
 		return child;
 	}
 	int i = 0;
