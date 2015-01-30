@@ -42,6 +42,9 @@
     <Filter Include="quick\engine\events">
       <UniqueIdentifier>{0688dfa4-5f6b-42a2-8ad6-1eeea4ceb679}</UniqueIdentifier>
     </Filter>
+    <Filter Include="quick\engine\display">
+      <UniqueIdentifier>{c8e23034-a39d-4ec6-b15c-ea075cfbf201}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\mingw\window.c">
@@ -131,20 +134,20 @@
     <ClCompile Include="..\..\..\quick\lutils.c">
       <Filter>quick</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\quick\engine\DisplayObject.cpp">
-      <Filter>quick\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\quick\engine\DisplayObjectContainer.cpp">
-      <Filter>quick\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\quick\engine\InteractiveObject.cpp">
-      <Filter>quick\engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\quick\engine\events\TouchEvent.cpp">
       <Filter>quick\engine\events</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\quick\engine\events\EventDispatcher.cpp">
       <Filter>quick\engine\events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine\display\DisplayObject.cpp">
+      <Filter>quick\engine\display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine\display\DisplayObjectContainer.cpp">
+      <Filter>quick\engine\display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine\display\InteractiveObject.cpp">
+      <Filter>quick\engine\display</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,15 +319,6 @@
     <ClInclude Include="UIDisplayObject.h">
       <Filter>lib\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\quick\engine\DisplayObject.h">
-      <Filter>quick\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\quick\engine\DisplayObjectContainer.h">
-      <Filter>quick\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\quick\engine\InteractiveObject.h">
-      <Filter>quick\engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\quick\engine\NameSpace.h">
       <Filter>quick\engine</Filter>
     </ClInclude>
@@ -333,6 +327,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\quick\engine\events\EventDispatcher.h">
       <Filter>quick\engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\display\DisplayObject.h">
+      <Filter>quick\engine\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectContainer.h">
+      <Filter>quick\engine\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\display\InteractiveObject.h">
+      <Filter>quick\engine\display</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

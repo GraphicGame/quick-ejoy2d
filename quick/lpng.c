@@ -121,6 +121,7 @@ _get_png_texture_format(png_byte pixel_depth, png_byte chanels_count) {
 		else if (pixel_depth == 4)
 			return TEXTURE_RGBA4;
 	}
+	return TEXTURE_RGB;
 }
 
 static int

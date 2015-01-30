@@ -1,6 +1,5 @@
 
 #include "DisplayObjectContainer.h"
-#include "NameSpace.h"
 
 NS_QUICK_DISPLAY_BEGIN
 

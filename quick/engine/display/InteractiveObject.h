@@ -3,7 +3,7 @@
 
 #include <string>
 #include "DisplayObject.h"
-#include "NameSpace.h"
+#include "../NameSpace.h"
 
 NS_QUICK_DISPLAY_BEGIN
 

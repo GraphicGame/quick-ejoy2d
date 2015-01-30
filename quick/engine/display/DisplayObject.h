@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include "events/EventDispatcher.h"
-#include "NameSpace.h"
+#include "../events/EventDispatcher.h"
+#include "../NameSpace.h"
 using namespace quick::events;
 
 NS_QUICK_DISPLAY_BEGIN

@@ -2,7 +2,7 @@
 #define __DISPLAYOBJECTCONTAINER
 
 #include "InteractiveObject.h"
-#include "NameSpace.h"
+#include "../NameSpace.h"
 #include <string>
 
 NS_QUICK_DISPLAY_BEGIN
