@@ -48,6 +48,9 @@
     <Filter Include="quick\engine\geom">
       <UniqueIdentifier>{d74d2df4-2b60-410d-b3aa-12580dddbed1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="quick\engine_lua_interface">
+      <UniqueIdentifier>{3a466522-ce95-45d0-9547-d99c61f6efaf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\mingw\window.c">
@@ -153,6 +156,12 @@
       <Filter>quick\engine\display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\quick\engine\geom\Point.cpp">
+      <Filter>quick\engine\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine\display\QSprite.cpp">
+      <Filter>quick\engine\display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine\geom\Rectangle.cpp">
       <Filter>quick\engine\geom</Filter>
     </ClCompile>
   </ItemGroup>
@@ -344,6 +353,12 @@
       <Filter>quick\engine\display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\quick\engine\geom\Point.h">
+      <Filter>quick\engine\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\display\QSprite.h">
+      <Filter>quick\engine\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\geom\Rectangle.h">
       <Filter>quick\engine\geom</Filter>
     </ClInclude>
   </ItemGroup>

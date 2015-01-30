@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include "../engine/events/EventDispatcher.h"
 #include "../engine/geom/Point.h"
+#include "../engine/geom/Rectangle.h"
 #include "../engine/display/DisplayObjectContainer.h"
 
 #include <math.h>
@@ -58,8 +59,8 @@ namespace quick_ejoy2d_UnitTest {
 			DisplayObjectContainer doc;
 
 			//0. setTouchChildren.
-			doc.setTouchChildren(false);
-			Assert::AreEqual(doc.getTouchChildren(), false);
+			doc.setChildrenTouchEnabled(false);
+			Assert::AreEqual(doc.getChildrenTouchEnabled(), false);
 
 			//1. addChild getChildrenCount
 			int childCount = 10;
@@ -111,6 +112,30 @@ namespace quick_ejoy2d_UnitTest {
 				Assert::AreEqual(doc.getChildAt(8)->getName().c_str(), "2222");
 				Assert::AreEqual(doc.getChildAt(2)->getName().c_str(), "8888");
 			}
+		}
+
+		TEST_METHOD(T_Rectangle) {
+			Rectangle rect(0, 0, 100, 100);
+			Assert::AreEqual(rect.getX(), 0.0f);
+			Assert::AreEqual(rect.getY(), 0.0f);
+			Assert::AreEqual(rect.getWidth(), 100.0f);
+			Assert::AreEqual(rect.getHeight(), 100.0f);
+
+			Rectangle rectCopy(rect);
+			Assert::AreEqual(rectCopy == rect, true);
+			Rectangle rectClone = rect.clone();
+			Assert::AreEqual(rectClone == rect, true);
+			rectClone.setX(23);
+			Assert::AreEqual(rectClone == rect, false);
+
+			Assert::AreEqual(rect.contains(1, 1), true);
+			Assert::AreEqual(rect.contains(1, 101), false);
+
+			rect.setEmpty();
+			Assert::AreEqual(rect.getX(), 0.0f);
+			Assert::AreEqual(rect.getY(), 0.0f);
+			Assert::AreEqual(rect.getWidth(), 0.0f);
+			Assert::AreEqual(rect.getHeight(), 0.0f);
 		}
 	};
 }

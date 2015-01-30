@@ -39,9 +39,11 @@
     <ClCompile Include="..\..\..\quick\engine\display\DisplayObject.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\DisplayObjectContainer.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\InteractiveObject.cpp" />
+    <ClCompile Include="..\..\..\quick\engine\display\QSprite.cpp" />
     <ClCompile Include="..\..\..\quick\engine\events\EventDispatcher.cpp" />
     <ClCompile Include="..\..\..\quick\engine\events\TouchEvent.cpp" />
     <ClCompile Include="..\..\..\quick\engine\geom\Point.cpp" />
+    <ClCompile Include="..\..\..\quick\engine\geom\Rectangle.cpp" />
     <ClCompile Include="..\..\..\quick\ljpeg.c" />
     <ClCompile Include="..\..\..\quick\lpng.c" />
     <ClCompile Include="..\..\..\quick\lutils.c" />
@@ -98,9 +100,11 @@
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObject.h" />
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectContainer.h" />
     <ClInclude Include="..\..\..\quick\engine\display\InteractiveObject.h" />
+    <ClInclude Include="..\..\..\quick\engine\display\QSprite.h" />
     <ClInclude Include="..\..\..\quick\engine\events\EventDispatcher.h" />
     <ClInclude Include="..\..\..\quick\engine\events\TouchEvent.h" />
     <ClInclude Include="..\..\..\quick\engine\geom\Point.h" />
+    <ClInclude Include="..\..\..\quick\engine\geom\Rectangle.h" />
     <ClInclude Include="..\..\..\quick\engine\NameSpace.h" />
     <ClInclude Include="..\..\..\quick\ljpeg.h" />
     <ClInclude Include="..\..\..\quick\lpng.h" />

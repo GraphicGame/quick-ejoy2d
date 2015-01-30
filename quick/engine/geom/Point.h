@@ -8,6 +8,11 @@ class Point {
 public:
 	Point();
 	~Point();
+	Point(const Point &value);
+	Point(float x, float y);
+public:
+	Point & operator=(const Point &value);
+	bool operator==(const Point &value) const;
 public:
 	float getX() const;
 	float getY() const;

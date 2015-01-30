@@ -13,10 +13,10 @@ NS_QUICK_DISPLAY_BEGIN
 class DisplayObjectContainer : public InteractiveObject {
 public:
 	DisplayObjectContainer();
-	~DisplayObjectContainer();
+	virtual ~DisplayObjectContainer();
 public:
-	bool getTouchChildren() const;
-	void setTouchChildren(bool value);
+	bool getChildrenTouchEnabled() const;
+	void setChildrenTouchEnabled(bool value);
 
 	int getChildrenCount() const;
 
@@ -34,7 +34,7 @@ public:
 	void swapChildrenAt(int index1, int index2);
 
 protected:
-	bool _touchChildren;
+	bool _childrenTouchEnabled;
 	int _numChildren;
 	std::list<DisplayObject*> _childrenList;
 

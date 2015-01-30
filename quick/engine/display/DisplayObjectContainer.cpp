@@ -7,7 +7,7 @@ NS_QUICK_DISPLAY_BEGIN
 
 ///====public...
 DisplayObjectContainer::DisplayObjectContainer()
-:_touchChildren(false), _numChildren(0)
+:_childrenTouchEnabled(false), _numChildren(0)
 {
 	
 }
@@ -16,12 +16,12 @@ DisplayObjectContainer::~DisplayObjectContainer() {
 
 }
 
-bool DisplayObjectContainer::getTouchChildren() const {
-	return _touchChildren;
+bool DisplayObjectContainer::getChildrenTouchEnabled() const {
+	return _childrenTouchEnabled;
 }
 
-void DisplayObjectContainer::setTouchChildren(bool value) {
-	_touchChildren = value;
+void DisplayObjectContainer::setChildrenTouchEnabled(bool value) {
+	_childrenTouchEnabled = value;
 }
 
 int DisplayObjectContainer::getChildrenCount() const {
