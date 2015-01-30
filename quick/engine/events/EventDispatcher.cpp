@@ -1,9 +1,9 @@
 #include <iostream>
 #include <algorithm>
 
-#include "UIEventDispatcher.h"
+#include "EventDispatcher.h"
 
-NS_UI_BEGIN
+NS_QUICK_EVENTS_BEGIN
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -25,11 +25,11 @@ const std::string& Event::getType() const {
 	return _type;
 }
 
-const UIEventDispatcher * Event::getTarget() const {
+const EventDispatcher * Event::getTarget() const {
 	return _target;
 }
 
-void Event::setTarget(UIEventDispatcher *target) {
+void Event::setTarget(EventDispatcher *target) {
 	_target = target;
 }
 
@@ -56,16 +56,16 @@ bool EventListenerCallback::hasCalled() const {
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-UIEventDispatcher::UIEventDispatcher() {
+EventDispatcher::EventDispatcher() {
 		
 }
 
-UIEventDispatcher::~UIEventDispatcher() {
+EventDispatcher::~EventDispatcher() {
 
 }
 
 void
-UIEventDispatcher::addEventListener(std::string type, EventListenerCallback *callback) {
+EventDispatcher::addEventListener(std::string type, EventListenerCallback *callback) {
 	_citMap it = _eventListenersMap.find(type);
 	if (it == _eventListenersMap.end()) {
 		_tVec *temp = new std::vector<EventListenerCallback*>();
@@ -79,7 +79,7 @@ UIEventDispatcher::addEventListener(std::string type, EventListenerCallback *cal
 }
 
 bool
-UIEventDispatcher::dispatchEvent(Event *evt) {
+EventDispatcher::dispatchEvent(Event *evt) {
 	evt->setTarget(this);
 	std::string type = evt->getType();
 	_citMap it = _eventListenersMap.find(type);
@@ -94,12 +94,12 @@ UIEventDispatcher::dispatchEvent(Event *evt) {
 	return true;
 }
 
-bool UIEventDispatcher::hasEventListener(std::string type) const {
+bool EventDispatcher::hasEventListener(std::string type) const {
 	_citMap it = _eventListenersMap.find(type);
 	return (it != _eventListenersMap.end());
 }
 
-int UIEventDispatcher::getEventListenerCount(std::string type) {
+int EventDispatcher::getEventListenerCount(std::string type) {
 	_citMap it = _eventListenersMap.find(type);
 	if (it == _eventListenersMap.end()) {
 		return 0;
@@ -109,7 +109,7 @@ int UIEventDispatcher::getEventListenerCount(std::string type) {
 }
 
 void
-UIEventDispatcher::removeEventListener(std::string type, EventListenerCallback *callback) {
+EventDispatcher::removeEventListener(std::string type, EventListenerCallback *callback) {
 	_citMap it = _eventListenersMap.find(type);
 	if (it == _eventListenersMap.end()) {
 		return;
@@ -119,7 +119,7 @@ UIEventDispatcher::removeEventListener(std::string type, EventListenerCallback *
 	vec->erase(it_remove);
 }
 
-void UIEventDispatcher::removeEventListener(std::string type) {
+void EventDispatcher::removeEventListener(std::string type) {
 	_citMap it = _eventListenersMap.find(type);
 	if (it == _eventListenersMap.end()) {
 		return;
@@ -129,10 +129,10 @@ void UIEventDispatcher::removeEventListener(std::string type) {
 	vec->erase(vec->begin(), vec->end());
 }
 
-void UIEventDispatcher::removeAllEventListener() {
+void EventDispatcher::removeAllEventListener() {
 	_eventListenersMap.clear();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-NS_UI_END
+NS_QUICK_EVENTS_END

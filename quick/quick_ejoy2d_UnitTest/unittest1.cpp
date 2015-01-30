@@ -1,23 +1,24 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "../ui/UIEventDispatcher.h"
+#include "../engine/events/EventDispatcher.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace quick::events;
 
 namespace quick_ejoy2d_UnitTest {		
 	TEST_CLASS(UnitTest1) {
 	public:
-		TEST_METHOD(UIEventDispatcher) {
-			Logger::WriteMessage("test UIEventDispatcher...");
+		TEST_METHOD(TestEventDispatcher) {
+			Logger::WriteMessage("test EventDispatcher...");
 			
-			ui::UIEventDispatcher udp;
-			ui::EventListenerCallback *callBack = new ui::EventListenerCallback();
+			EventDispatcher ed;
+			EventListenerCallback *callBack = new EventListenerCallback();
 			
-			udp.addEventListener("click", callBack);
+			ed.addEventListener("click", callBack);
 			
-			Assert::AreEqual(udp.hasEventListener("click"), true);
+			Assert::AreEqual(ed.hasEventListener("click"), true);
 			
-			Assert::AreEqual(udp.getEventListenerCount("click"), 1);
+			Assert::AreEqual(ed.getEventListenerCount("click"), 1);
 
 			//udp.removeEventListener("click");
 			//Assert::AreEqual(udp.getEventListenerCount("click"), 0);
@@ -25,13 +26,13 @@ namespace quick_ejoy2d_UnitTest {
 			//udp.removeAllEventListener();
 			//Assert::AreEqual(udp.getEventListenerCount("click"), 0);
 
-			udp.removeEventListener("click", callBack);
-			Assert::AreEqual(udp.getEventListenerCount("click"), 0);
+			ed.removeEventListener("click", callBack);
+			Assert::AreEqual(ed.getEventListenerCount("click"), 0);
 		
-			udp.addEventListener("click", callBack);
+			ed.addEventListener("click", callBack);
 			
-			ui::Event *evt = new ui::Event("click");
-			udp.dispatchEvent(evt);
+			Event *evt = new Event("click");
+			ed.dispatchEvent(evt);
 			Assert::AreEqual(callBack->hasCalled(), true);
 		}
 	};

@@ -36,10 +36,10 @@
     <Filter Include="quick\3rd\libjpeg">
       <UniqueIdentifier>{b5f1fe5e-5475-4253-82bd-c65fe7c863d9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="quick\ui">
+    <Filter Include="quick\engine">
       <UniqueIdentifier>{d0de09ab-7f41-49eb-af87-2ed7b54c2aaa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="quick\ui\event">
+    <Filter Include="quick\engine\events">
       <UniqueIdentifier>{0688dfa4-5f6b-42a2-8ad6-1eeea4ceb679}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -131,20 +131,20 @@
     <ClCompile Include="..\..\..\quick\lutils.c">
       <Filter>quick</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\quick\ui\UIDisplayObject.cpp">
-      <Filter>quick\ui</Filter>
+    <ClCompile Include="..\..\..\quick\engine\DisplayObject.cpp">
+      <Filter>quick\engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\quick\ui\UIInteractiveObject.cpp">
-      <Filter>quick\ui</Filter>
+    <ClCompile Include="..\..\..\quick\engine\DisplayObjectContainer.cpp">
+      <Filter>quick\engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\quick\ui\UIEventDispatcher.cpp">
-      <Filter>quick\ui</Filter>
+    <ClCompile Include="..\..\..\quick\engine\InteractiveObject.cpp">
+      <Filter>quick\engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\quick\ui\event\UITouchEvent.cpp">
-      <Filter>quick\ui\event</Filter>
+    <ClCompile Include="..\..\..\quick\engine\events\TouchEvent.cpp">
+      <Filter>quick\engine\events</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\quick\ui\UIDisplayObjectContainer.cpp">
-      <Filter>quick\ui</Filter>
+    <ClCompile Include="..\..\..\quick\engine\events\EventDispatcher.cpp">
+      <Filter>quick\engine\events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,23 +316,23 @@
     <ClInclude Include="UIDisplayObject.h">
       <Filter>lib\inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\quick\ui\UIDisplayObject.h">
-      <Filter>quick\ui</Filter>
+    <ClInclude Include="..\..\..\quick\engine\DisplayObject.h">
+      <Filter>quick\engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\quick\ui\UIInteractiveObject.h">
-      <Filter>quick\ui</Filter>
+    <ClInclude Include="..\..\..\quick\engine\DisplayObjectContainer.h">
+      <Filter>quick\engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\quick\ui\UIEventDispatcher.h">
-      <Filter>quick\ui</Filter>
+    <ClInclude Include="..\..\..\quick\engine\InteractiveObject.h">
+      <Filter>quick\engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\quick\ui\event\UITouchEvent.h">
-      <Filter>quick\ui\event</Filter>
+    <ClInclude Include="..\..\..\quick\engine\NameSpace.h">
+      <Filter>quick\engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\quick\ui\UIDisplayObjectContainer.h">
-      <Filter>quick\ui</Filter>
+    <ClInclude Include="..\..\..\quick\engine\events\TouchEvent.h">
+      <Filter>quick\engine\events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\quick\ui\UINameSpace.h">
-      <Filter>quick\ui</Filter>
+    <ClInclude Include="..\..\..\quick\engine\events\EventDispatcher.h">
+      <Filter>quick\engine\events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

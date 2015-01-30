@@ -1,23 +1,24 @@
-#ifndef __UIDISPLAYOBJECT
-#define __UIDISPLAYOBJECT
+#ifndef __DISPLAYOBJECT
+#define __DISPLAYOBJECT
 
 #include <string>
 
-#include "UIEventDispatcher.h"
-#include "UINameSpace.h"
+#include "events/EventDispatcher.h"
+#include "NameSpace.h"
+using namespace quick::events;
 
-NS_UI_BEGIN
-class UIDisplayObject : public UIEventDispatcher {
+NS_QUICK_DISPLAY_BEGIN
+class DisplayObject : public EventDispatcher {
 public:
-	UIDisplayObject();
-	virtual ~UIDisplayObject();
+	DisplayObject();
+	virtual ~DisplayObject();
 public:
 	const std::string& getName() const;
 	void setName(std::string name);
 	void setName(const char *name);
 
-	const UIDisplayObject * getParent() const;
-	virtual void setParent(UIDisplayObject *parent);
+	const DisplayObject * getParent() const;
+	virtual void setParent(DisplayObject *parent);
 
 	virtual void draw();
 
@@ -51,7 +52,7 @@ public:
 	void setVisible(bool visible);
 protected:
 	std::string _name;
-	UIDisplayObject *_parent;
+	DisplayObject *_parent;
 	float _x;
 	float _y;
 	float _scale, _scaleX, _scaleY;
@@ -59,6 +60,6 @@ protected:
 	float _width, _height;
 	bool _visible;
 };
-NS_UI_END
+NS_QUICK_DISPLAY_END
 
 #endif

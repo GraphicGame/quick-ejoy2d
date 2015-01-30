@@ -1,15 +1,15 @@
-#ifndef __UIEVENTDISPATCHER
-#define __UIEVENTDISPATCHER
+#ifndef __EVENTDISPATCHER
+#define __EVENTDISPATCHER
 
 #include <string>
 #include <vector>
 #include <map>
 
-#include "UINameSpace.h"
+#include "../NameSpace.h"
 
-NS_UI_BEGIN
+NS_QUICK_EVENTS_BEGIN
 
-class UIEventDispatcher;
+class EventDispatcher;
 
 class Event {
 public:
@@ -17,13 +17,13 @@ public:
 	virtual ~Event();
 public:
 	const std::string& getType() const;
-	const UIEventDispatcher * getTarget() const;
-	void setTarget(UIEventDispatcher *target);
+	const EventDispatcher * getTarget() const;
+	void setTarget(EventDispatcher *target);
 protected:
 	Event();
 protected:
 	std::string _type;
-	UIEventDispatcher *_target;
+	EventDispatcher *_target;
 };
 
 class EventListenerCallback {
@@ -37,10 +37,10 @@ private:
 	bool _called;
 };
 
-class UIEventDispatcher {
+class EventDispatcher {
 public:
-	UIEventDispatcher();
-	virtual ~UIEventDispatcher();
+	EventDispatcher();
+	virtual ~EventDispatcher();
 public:
 	void addEventListener(std::string type, EventListenerCallback *callback);
 	bool dispatchEvent(Event *evt);
@@ -57,6 +57,6 @@ private:
 	typedef std::vector<EventListenerCallback*> _tVec;
 };
 
-NS_UI_END
+NS_QUICK_EVENTS_END
 
 #endif

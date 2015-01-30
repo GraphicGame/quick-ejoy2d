@@ -1,16 +1,16 @@
-#ifndef __UITOUCHEVENT
-#define __UITOUCHEVENT
+#ifndef __TOUCHEVENT
+#define __TOUCHEVENT
 
 #include <string>
-#include "UIEventDispatcher.h"
-#include "UINameSpace.h"
+#include "EventDispatcher.h"
+#include "../NameSpace.h"
 
-NS_UI_EVENT_BEGIN
+NS_QUICK_EVENTS_BEGIN
 
-class UITouchEvent : public Event {
+class TouchEvent : public Event {
 public:
-	explicit UITouchEvent(std::string type);
-	~UITouchEvent();
+	explicit TouchEvent(std::string type);
+	~TouchEvent();
 public:
 	float getWorldX() const;
 	float getWorldY() const;
@@ -20,13 +20,13 @@ public:
 
 	bool isPressed() const;
 protected:
-	UITouchEvent();
+	TouchEvent();
 private:
 	float _worldX, _worldY;
 	float _localX, _localY;
 	bool _isPressed;
 };		
 
-NS_UI_EVENT_END
+NS_QUICK_EVENTS_END
 
 #endif
