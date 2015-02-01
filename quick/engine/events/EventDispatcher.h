@@ -35,6 +35,7 @@ public:
 	bool hasCalled() const;
 private:
 	bool _called;
+	int _funcID;
 };
 
 class EventDispatcher {
