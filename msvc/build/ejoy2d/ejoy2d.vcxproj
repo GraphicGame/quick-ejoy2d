@@ -40,6 +40,7 @@
     <ClCompile Include="..\..\..\quick\engine\display\DisplayObjectContainer.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\InteractiveObject.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\QSprite.cpp" />
+    <ClCompile Include="..\..\..\quick\engine\display\Stage.cpp" />
     <ClCompile Include="..\..\..\quick\engine\events\EventDispatcher.cpp" />
     <ClCompile Include="..\..\..\quick\engine\events\TouchEvent.cpp" />
     <ClCompile Include="..\..\..\quick\engine\geom\Point.cpp" />
@@ -101,6 +102,7 @@
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectContainer.h" />
     <ClInclude Include="..\..\..\quick\engine\display\InteractiveObject.h" />
     <ClInclude Include="..\..\..\quick\engine\display\QSprite.h" />
+    <ClInclude Include="..\..\..\quick\engine\display\Stage.h" />
     <ClInclude Include="..\..\..\quick\engine\events\EventDispatcher.h" />
     <ClInclude Include="..\..\..\quick\engine\events\TouchEvent.h" />
     <ClInclude Include="..\..\..\quick\engine\geom\Point.h" />
