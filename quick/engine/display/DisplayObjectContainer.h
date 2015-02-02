@@ -22,16 +22,20 @@ public:
 
 	const DisplayObject * addChild(DisplayObject *child);
 	const DisplayObject * addChildAt(DisplayObject *child, int index);
-	bool contains(const DisplayObject *child) const;
+
+	DisplayObject * removeChild(DisplayObject *child);
+	DisplayObject * removeChildAt(int index);
+
 	DisplayObject * getChildAt(int index);
 	DisplayObject * getChildByName(std::string name);
 	int getChildIndex(DisplayObject *child);
-	void getObjectsUnderPoint(const quick::geom::Point &point, std::vector<DisplayObject*> &outVector);
-	DisplayObject * removeChild(DisplayObject *child);
-	DisplayObject * removeChildAt(int index);
+
 	void setChildIndex(DisplayObject *child, int index);
 	void swapChildren(DisplayObject *child1, DisplayObject *child2);
 	void swapChildrenAt(int index1, int index2);
+
+	bool contains(const DisplayObject *child) const;
+	void getObjectsUnderPoint(const quick::geom::Point &point, std::vector<DisplayObject*> &outVector);
 
 protected:
 	bool _childrenTouchEnabled;

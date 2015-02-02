@@ -167,6 +167,9 @@
     <ClCompile Include="..\..\..\quick\engine\display\Stage.cpp">
       <Filter>quick\engine\display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine\display\Layer.cpp">
+      <Filter>quick\engine\display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\stdbool.h">
@@ -365,6 +368,12 @@
       <Filter>quick\engine\geom</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\quick\engine\display\Stage.h">
+      <Filter>quick\engine\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\display\Layer.h">
+      <Filter>quick\engine\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectType.h">
       <Filter>quick\engine\display</Filter>
     </ClInclude>
   </ItemGroup>

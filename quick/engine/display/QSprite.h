@@ -11,7 +11,7 @@ public:
 	Sprite();
 	virtual ~Sprite();
 public:
-
+	void loadPackage(); //??
 protected:
 
 };

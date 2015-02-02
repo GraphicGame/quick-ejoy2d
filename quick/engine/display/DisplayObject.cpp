@@ -2,6 +2,7 @@
 
 NS_QUICK_DISPLAY_BEGIN
 
+///==== public...
 DisplayObject::DisplayObject() {
 	_name = "";
 	_parent = nullptr;
@@ -134,5 +135,7 @@ bool DisplayObject::getVisible() const {
 void DisplayObject::setVisible(bool visible) {
 	_visible = visible;
 }
+
+///==== protected...
 
 NS_QUICK_DISPLAY_END

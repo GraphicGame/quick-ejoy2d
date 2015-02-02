@@ -5,9 +5,11 @@
 
 #include "../events/EventDispatcher.h"
 #include "../NameSpace.h"
+#include "DisplayObjectType.h"
 using namespace quick::events;
 
 NS_QUICK_DISPLAY_BEGIN
+
 class DisplayObject : public EventDispatcher {
 public:
 	DisplayObject();
@@ -51,6 +53,13 @@ public:
 	bool getVisible() const;
 	void setVisible(bool visible);
 protected:
+	inline DisplayObjectType getType() const {
+		return _type;
+	}
+	inline void setType(DisplayObjectType type) {
+		_type = type;
+	}
+protected:
 	std::string _name;
 	DisplayObject *_parent;
 	float _x;
@@ -59,6 +68,7 @@ protected:
 	float _rotation, _rotationX, _rotationY;
 	float _width, _height;
 	bool _visible;
+	DisplayObjectType _type;
 };
 NS_QUICK_DISPLAY_END
 

@@ -39,6 +39,7 @@
     <ClCompile Include="..\..\..\quick\engine\display\DisplayObject.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\DisplayObjectContainer.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\InteractiveObject.cpp" />
+    <ClCompile Include="..\..\..\quick\engine\display\Layer.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\QSprite.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\Stage.cpp" />
     <ClCompile Include="..\..\..\quick\engine\events\EventDispatcher.cpp" />
@@ -100,7 +101,9 @@
     <ClInclude Include="..\..\..\quick\3rd\zlib\zutil.h" />
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObject.h" />
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectContainer.h" />
+    <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectType.h" />
     <ClInclude Include="..\..\..\quick\engine\display\InteractiveObject.h" />
+    <ClInclude Include="..\..\..\quick\engine\display\Layer.h" />
     <ClInclude Include="..\..\..\quick\engine\display\QSprite.h" />
     <ClInclude Include="..\..\..\quick\engine\display\Stage.h" />
     <ClInclude Include="..\..\..\quick\engine\events\EventDispatcher.h" />

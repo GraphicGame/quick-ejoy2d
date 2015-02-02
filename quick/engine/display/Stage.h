@@ -3,6 +3,9 @@
 
 #include "../NameSpace.h"
 #include "DisplayObjectContainer.h"
+#include "Layer.h"
+
+#include <vector>
 
 NS_QUICK_DISPLAY_BEGIN
 
@@ -17,6 +20,17 @@ public:
 	~Stage();
 public:
 	void draw() override;
+
+	void addLayer(Layer *layer);
+	void addLayerAt(Layer *layer, int index);
+	void removeLayer(Layer *layer);
+	void removeLayerAt(int index);
+	DisplayObject * getLayerAt(int index);
+	DisplayObject * getLayerByName(std::string name);
+	int getLayerIndex(Layer *layer);
+	void setLayerIndex(Layer *layer, int index);
+	void swapLayers(Layer *layer1, Layer *layer2);
+	void swapLayersAt(int index1, int index2);
 
 	int getFrameRate() const;
 	void setFrameRate(int frameRate);
