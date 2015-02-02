@@ -52,13 +52,20 @@ public:
 
 	bool getVisible() const;
 	void setVisible(bool visible);
-protected:
+
+	int DisplayObject::getUID() const {
+		return _uid;
+	}
+
 	inline DisplayObjectType getType() const {
 		return _type;
 	}
+
+protected:
 	inline void setType(DisplayObjectType type) {
 		_type = type;
 	}
+
 protected:
 	std::string _name;
 	DisplayObject *_parent;
@@ -69,6 +76,9 @@ protected:
 	float _width, _height;
 	bool _visible;
 	DisplayObjectType _type;
+
+private:
+	int _uid;
 };
 NS_QUICK_DISPLAY_END
 

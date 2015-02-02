@@ -1,4 +1,6 @@
 #include "DisplayObject.h"
+#include "../utils/GlobalUIDs.h"
+#include "GlobalDisplayObjects.h"
 
 NS_QUICK_DISPLAY_BEGIN
 
@@ -6,10 +8,13 @@ NS_QUICK_DISPLAY_BEGIN
 DisplayObject::DisplayObject() {
 	_name = "";
 	_parent = nullptr;
+
+	_uid = GlobalUIDs::getUID();
+	GlobalDisplayObjects::add(this);
 }
 
 DisplayObject::~DisplayObject() {
-
+	GlobalDisplayObjects::remove(this);
 }
 
 const std::string

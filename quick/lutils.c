@@ -12,6 +12,7 @@ lua_setfps(lua_State *L) {
 		return luaL_error(L, "you shouldn't set fps <= 0 !");
 	}
 	ejoy2d_game_set_logicframe(fps);
+	return 0;
 }
 
 static int

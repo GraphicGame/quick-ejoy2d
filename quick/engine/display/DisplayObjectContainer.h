@@ -7,6 +7,7 @@
 
 #include <string>
 #include <list>
+#include <unordered_map>
 
 NS_QUICK_DISPLAY_BEGIN
 
@@ -40,8 +41,8 @@ public:
 protected:
 	bool _childrenTouchEnabled;
 	int _numChildren;
-	std::list<DisplayObject*> _childrenList;
 
+	std::list<DisplayObject*> _childrenList;
 	typedef std::list<DisplayObject*>::iterator _itChildrenList;
 	typedef std::list<DisplayObject*>::const_iterator _constItChildrenList;
 };

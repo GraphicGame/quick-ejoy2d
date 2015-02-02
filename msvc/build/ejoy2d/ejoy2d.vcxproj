@@ -38,6 +38,7 @@
     <ClCompile Include="..\..\..\mingw\winfw.c" />
     <ClCompile Include="..\..\..\quick\engine\display\DisplayObject.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\DisplayObjectContainer.cpp" />
+    <ClCompile Include="..\..\..\quick\engine\display\GlobalDisplayObjects.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\InteractiveObject.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\Layer.cpp" />
     <ClCompile Include="..\..\..\quick\engine\display\QSprite.cpp" />
@@ -46,6 +47,7 @@
     <ClCompile Include="..\..\..\quick\engine\events\TouchEvent.cpp" />
     <ClCompile Include="..\..\..\quick\engine\geom\Point.cpp" />
     <ClCompile Include="..\..\..\quick\engine\geom\Rectangle.cpp" />
+    <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaStage.cpp" />
     <ClCompile Include="..\..\..\quick\ljpeg.c" />
     <ClCompile Include="..\..\..\quick\lpng.c" />
     <ClCompile Include="..\..\..\quick\lutils.c" />
@@ -102,6 +104,7 @@
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObject.h" />
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectContainer.h" />
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectType.h" />
+    <ClInclude Include="..\..\..\quick\engine\display\GlobalDisplayObjects.h" />
     <ClInclude Include="..\..\..\quick\engine\display\InteractiveObject.h" />
     <ClInclude Include="..\..\..\quick\engine\display\Layer.h" />
     <ClInclude Include="..\..\..\quick\engine\display\QSprite.h" />
@@ -111,6 +114,8 @@
     <ClInclude Include="..\..\..\quick\engine\geom\Point.h" />
     <ClInclude Include="..\..\..\quick\engine\geom\Rectangle.h" />
     <ClInclude Include="..\..\..\quick\engine\NameSpace.h" />
+    <ClInclude Include="..\..\..\quick\engine\utils\GlobalUIDs.h" />
+    <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaStage.h" />
     <ClInclude Include="..\..\..\quick\ljpeg.h" />
     <ClInclude Include="..\..\..\quick\lpng.h" />
     <ClInclude Include="..\..\..\quick\lutils.h" />

@@ -51,6 +51,9 @@
     <Filter Include="quick\engine_lua_interface">
       <UniqueIdentifier>{3a466522-ce95-45d0-9547-d99c61f6efaf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="quick\engine\utils">
+      <UniqueIdentifier>{11e8eca8-4dd6-4908-98f9-4ef236af68de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\mingw\window.c">
@@ -168,6 +171,12 @@
       <Filter>quick\engine\display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\quick\engine\display\Layer.cpp">
+      <Filter>quick\engine\display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaStage.cpp">
+      <Filter>quick\engine_lua_interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine\display\GlobalDisplayObjects.cpp">
       <Filter>quick\engine\display</Filter>
     </ClCompile>
   </ItemGroup>
@@ -374,6 +383,15 @@
       <Filter>quick\engine\display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\quick\engine\display\DisplayObjectType.h">
+      <Filter>quick\engine\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaStage.h">
+      <Filter>quick\engine_lua_interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\utils\GlobalUIDs.h">
+      <Filter>quick\engine\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine\display\GlobalDisplayObjects.h">
       <Filter>quick\engine\display</Filter>
     </ClInclude>
   </ItemGroup>
