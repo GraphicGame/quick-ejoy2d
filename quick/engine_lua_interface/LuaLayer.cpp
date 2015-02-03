@@ -177,6 +177,7 @@ int luaLayer(lua_State *L) {
 		{ "createLayer", lcreateLayer },
 		{ NULL, NULL }
 	};
+	luaL_newlib(L, l);
 
 	lmethod(L);
 	lua_setfield(L, -2, "method");

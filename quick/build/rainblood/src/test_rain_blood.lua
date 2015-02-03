@@ -1,9 +1,13 @@
 local ej = require "ejoy2d"
 local fw = require "ejoy2d.framework"
 local pack = require "ejoy2d.simplepackage"
+--local Stage = require "quick.lua.Stage"
 
 ej.setFPS(30)
 print("fps=>" .. ej.getFPS())
+
+--local stage = Stage.getStage()
+--print("stageID=>" .. stage.stageID)
 
 pack.load {
 	pattern = fw.WorkDir.."quick/build/rainblood/res/?",
@@ -155,9 +159,9 @@ end
 
 function game.drawframe()
 	ej.clear(0xff808080)	-- clear (0.5,0.5,0.5,1) gray
-	background:draw(backgroud_pos);
-	hero:draw()
-	label:draw(label_pos)
+	--background:draw(backgroud_pos);
+	--hero:draw()
+	--label:draw(label_pos)
 end
 
 function game.touch(what, x, y)

@@ -207,6 +207,7 @@ static void lsetter(lua_State *L) {
 		{ "stageHeight", lsetStageHeight },
 		{ NULL, NULL }
 	};
+	luaL_newlib(L, l);
 }
 
 int luaStage(lua_State *L) {
