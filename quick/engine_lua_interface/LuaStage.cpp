@@ -19,118 +19,119 @@ static int lgetStage(lua_State *L) {
 	if (!_Stage) {
 		_Stage = new Stage();
 	}
-	lua_pushinteger(L, _Stage->getUID());
+	lua_pushlightuserdata(L, _Stage);
 	return 1;
 }
 
 static int laddLayer(lua_State *L) {
-	int layerID = luaL_checkinteger(L, -1);
-	Layer *layer = _getLayer(layerID);
+	Stage *stage = getStage(L, 1);
+	Layer *layer = getLayer(L, 2);
 	if (!layer) {
-		return luaL_error(L, "[addLayer] layer == null or it's not a layer.");
+		return luaL_error(L, "[Stage::addLayer] layer == null or it's not a layer.");
 	}
-	_Stage->addLayer(layer);
+	stage->addLayer(layer);
 
 	return 0;
 }
 
 static int laddLayerAt(lua_State *L) {
-	int layerID = luaL_checkinteger(L, -1);
-	int index = luaL_checkinteger(L, -2);
-	Layer *layer = _getLayer(layerID);
+	Stage *stage = getStage(L, 1);
+	Layer *layer = getLayer(L, 2);
+	int index = luaL_checkinteger(L, 3);
 	if (!layer) {
-		return luaL_error(L, "[addLayerAt] layer == null or it's not a layer.");
+		return luaL_error(L, "[Stage::addLayerAt] layer == null or it's not a layer.");
 	}
-	_Stage->addLayerAt(layer, index);
+	stage->addLayerAt(layer, index);
 
 	return 0;
 }
 
 static int lremoveLayer(lua_State *L) {
-	int layerID = luaL_checkinteger(L, -1);
-	Layer *layer = _getLayer(layerID);
+	Stage *stage = getStage(L, 1);
+	Layer *layer = getLayer(L, 2);
 	if (!layer) {
-		return luaL_error(L, "[removeLayer] layer == null or it's not a layer.");
+		return luaL_error(L, "[Stage::removeLayer] layer == null or it's not a layer.");
 	}
-	_Stage->removeLayer(layer);
+	stage->removeLayer(layer);
 	
 	return 0;
 }
 
 static int lremoveLayerAt(lua_State *L) {
-	int index = luaL_checkinteger(L, -1);
-	_Stage->removeLayerAt(index);
+	Stage *stage = getStage(L, 1);
+	int index = luaL_checkinteger(L, 2);
+	stage->removeLayerAt(index);
 
 	return 0;
 }
 
 static int lgetLayerAt(lua_State *L) {
-	int index = luaL_checkinteger(L, -1);
-	lua_settop(L, 0);
-	Layer *layer = _Stage->getLayerAt(index);
+	Stage *stage = getStage(L, 1);
+	int index = luaL_checkinteger(L, 2);
+	Layer *layer = stage->getLayerAt(index);
 	if (!layer) {
 		lua_pushnil(L);
 		return 1;
 	}
-	lua_pushinteger(L, layer->getUID());
+	lua_pushlightuserdata(L, layer);
 	return 1;
 }
 
 static int lgetLayerByName(lua_State *L) {
-	const char *name = luaL_checkstring(L, -1);
+	Stage *stage = getStage(L, 1);
+	const char *name = luaL_checkstring(L, 2);
 	lua_settop(L, 0);
-	DisplayObject *obj = _Stage->getLayerByName(name);
-	if (!obj) {
+	Layer *layer = stage->getLayerByName(name);
+	if (!layer) {
 		lua_pushnil(L);
 		return 1;
 	}
-	assert(obj->getType() == LAYER);
-	lua_pushinteger(L, obj->getUID());
+	lua_pushlightuserdata(L, layer);
 	return 1;
 }
 
 static int lgetLayerIndex(lua_State *L) {
-	int layerID = luaL_checkinteger(L, -1);
+	Stage *stage = getStage(L, 1);
+	Layer *layer = getLayer(L, 2);
 	lua_settop(L, 0);
-	Layer *layer = _getLayer(layerID);
 	if (!layer) {
 		lua_pushnil(L);
 		return 1;
 	}
-	lua_pushinteger(L, _Stage->getLayerIndex(layer));
+	lua_pushinteger(L, stage->getLayerIndex(layer));
 	return 1;
 }
 
 static int lsetLayerIndex(lua_State *L) {
-	int layerID = luaL_checkinteger(L, -1);
-	int index = luaL_checkinteger(L, -2);
+	Stage *stage = getStage(L, 1);
+	Layer *layer = getLayer(L, 2);
+	int index = luaL_checkinteger(L, 3);
 	lua_settop(L, 0);
-	Layer *layer = _getLayer(layerID);
 	if (!layer) {
-		return luaL_error(L, "[setLayerIndex] layer == null or it's not a layer.");
+		return luaL_error(L, "[Stage::setLayerIndex] layer == null or it's not a layer.");
 	}
-	_Stage->setLayerIndex(layer, index);
+	stage->setLayerIndex(layer, index);
 
 	return 0;
 }
 
 static int lswapLayers(lua_State *L) {
-	int layerID1 = luaL_checkinteger(L, -1);
-	int layerID2 = luaL_checkinteger(L, -2);
-	Layer *layer1 = _getLayer(layerID1);
-	Layer *layer2 = _getLayer(layerID2);
+	Stage *stage = getStage(L, 1);
+	Layer *layer1 = getLayer(L, 2);
+	Layer *layer2 = getLayer(L, 3);
 	if (layer1 == NULL || layer2 == NULL) {
-		return luaL_error(L, "[swapLayers] layer == null or it's not a layer");
+		return luaL_error(L, "[Stage::swapLayers] layer == null or it's not a layer");
 	}
-	_Stage->swapLayers(layer1, layer2);
+	stage->swapLayers(layer1, layer2);
 	return 0;
 }
 
 static int lswapLayersAt(lua_State *L) {
-	int index1 = luaL_checkinteger(L, -1);
-	int index2 = luaL_checkinteger(L, -2);
+	Stage *stage = getStage(L, 1);
+	int index1 = luaL_checkinteger(L, 2);
+	int index2 = luaL_checkinteger(L, 3);
 	assert(index1 > 0 && index2 > 0);
-	_Stage->swapLayersAt(index1, index2);
+	stage->swapLayersAt(index1, index2);
 	return 0;
 }
 
@@ -152,41 +153,47 @@ static void lmethod(lua_State *L) {
 }
 
 static int lgetFrameRate(lua_State *L) {
-	lua_pushinteger(L, _Stage->getFrameRate());
+	Stage *stage = getStage(L, 1);
+	lua_pushinteger(L, stage->getFrameRate());
 	return 1;
 }
 
 static int lsetFrameRate(lua_State *L) {
-	int fps = luaL_checkinteger(L, -1);
-	_Stage->setFrameRate(fps);
+	Stage *stage = getStage(L, 1);
+	int fps = luaL_checkinteger(L, 2);
+	stage->setFrameRate(fps);
 	return 0;
 }
 
 static int lgetStageWidth(lua_State *L) {
-	lua_pushinteger(L, _Stage->getStageWidth());
+	Stage *stage = getStage(L, 1);
+	lua_pushinteger(L, stage->getStageWidth());
 	return 1;
 }
 
 static int lsetStageWidth(lua_State *L) {
-	int w = luaL_checkinteger(L, -1);
+	Stage *stage = getStage(L, 1);
+	int w = luaL_checkinteger(L, 2);
 	if (w <= 0) {
-		return luaL_error(L, "[stageWidth] must > 0");
+		return luaL_error(L, "[Stage::stageWidth] must > 0");
 	}
-	_Stage->setStageWidth(w);
+	stage->setStageWidth(w);
 	return 0;
 }
 
 static int lgetStageHeight(lua_State *L) {
-	lua_pushinteger(L, _Stage->getStageHeight());
+	Stage *stage = getStage(L, 1);
+	lua_pushinteger(L, stage->getStageHeight());
 	return 1;
 }
 
 static int lsetStageHeight(lua_State *L) {
-	int h = luaL_checkinteger(L, -1);
+	Stage *stage = getStage(L, 1);
+	int h = luaL_checkinteger(L, 2);
 	if (h <= 0) {
-		return luaL_error(L, "[stageHeight] must > 0");
+		return luaL_error(L, "[Stage::stageHeight] must > 0");
 	}
-	_Stage->setStageHeight(h);
+	stage->setStageHeight(h);
 	return 0;
 }
 

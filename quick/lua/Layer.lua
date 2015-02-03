@@ -1,22 +1,31 @@
 local cLayer = require "quick.Layer"
-local setmetatable = setmetatable
+local method = cLayer.method
 
-local Package = {}
-local layers = {}
+local setmetatable = setmetatable
+local debug = debug
+
+local Layer = {}
 local layer_meta = {}
 
-function Package.createLayer()
-	local layer = {}
-	table.insert(layers, layer)
-	
-	layer.layerID = cLayer.createLayer()
-	
+function layer_meta.__index(t, key)
+	if method[key] then
+		return method[key]
+	end
+	error("[Layer]Unsupport get method : " .. key)
+end
+
+function layer_meta.__newindex(t, key, v)
+	error("[Layer]Unsupport set method : " .. key)
+end
+
+function Layer.createLayer()
+	--[[local layer = { cobj = 0 }
+	local cobj = cLayer.createLayer()
+	layer.cobj = cobj
+	return setmetatable(layer, layer_meta)]]
+	local layer = cLayer.createLayer()
+	--return --[[debug.]]setmetatable(layer, layer_meta)
 	return layer
 end
 
-
-function layer_meta:addSprite(sprite)
-	
-end
-
-return Package
+return Layer
