@@ -25,8 +25,8 @@ public:
 	void addLayerAt(Layer *layer, int index);
 	void removeLayer(Layer *layer);
 	void removeLayerAt(int index);
-	DisplayObject * getLayerAt(int index);
-	DisplayObject * getLayerByName(std::string name);
+	Layer * getLayerAt(int index);
+	Layer * getLayerByName(std::string name);
 	int getLayerIndex(Layer *layer);
 	void setLayerIndex(Layer *layer, int index);
 	void swapLayers(Layer *layer1, Layer *layer2);

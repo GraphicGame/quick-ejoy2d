@@ -179,6 +179,9 @@
     <ClCompile Include="..\..\..\quick\engine\display\GlobalDisplayObjects.cpp">
       <Filter>quick\engine\display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaLayer.cpp">
+      <Filter>quick\engine_lua_interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\stdbool.h">
@@ -393,6 +396,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\quick\engine\display\GlobalDisplayObjects.h">
       <Filter>quick\engine\display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaLayer.h">
+      <Filter>quick\engine_lua_interface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

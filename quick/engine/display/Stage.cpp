@@ -1,6 +1,8 @@
 #include "Stage.h"
 #include "DisplayObjectType.h"
 
+#include <assert.h>
+
 NS_QUICK_DISPLAY_BEGIN
 
 Stage::Stage() 
@@ -33,12 +35,16 @@ void Stage::removeLayerAt(int index) {
 	removeChildAt(index);
 }
 
-DisplayObject * Stage::getLayerAt(int index) {
-	return getChildAt(index);
+Layer * Stage::getLayerAt(int index) {
+	DisplayObject *obj = getChildAt(index);
+	assert(obj->getType() == LAYER);
+	return static_cast<Layer*>(obj);
 }
 
-DisplayObject * Stage::getLayerByName(std::string name) {
-	return getChildByName(name);
+Layer * Stage::getLayerByName(std::string name) {
+	DisplayObject *obj = getChildByName(name);
+	assert(obj->getType() == LAYER);
+	return static_cast<Layer*>(obj);
 }
 
 int Stage::getLayerIndex(Layer *layer) {
