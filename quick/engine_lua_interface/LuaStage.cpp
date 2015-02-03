@@ -8,6 +8,9 @@
 #include "../engine/display/Stage.h"
 #include "../engine/display/Layer.h"
 #include "../engine/display/GlobalDisplayObjects.h"
+
+#include "LuaUtils.h"
+
 using namespace quick::display;
 
 Stage *_Stage = nullptr;
@@ -22,7 +25,7 @@ static int lgetStage(lua_State *L) {
 
 static int laddLayer(lua_State *L) {
 	int layerID = luaL_checkinteger(L, -1);
-	Layer *layer = GlobalDisplayObjects::TgetDisplayObjectByUID<Layer>(layerID);
+	Layer *layer = _getLayer(layerID);
 	if (!layer) {
 		return luaL_error(L, "[addLayer] layer == null or it's not a layer.");
 	}
@@ -34,7 +37,7 @@ static int laddLayer(lua_State *L) {
 static int laddLayerAt(lua_State *L) {
 	int layerID = luaL_checkinteger(L, -1);
 	int index = luaL_checkinteger(L, -2);
-	Layer *layer = GlobalDisplayObjects::TgetDisplayObjectByUID<Layer>(layerID);
+	Layer *layer = _getLayer(layerID);
 	if (!layer) {
 		return luaL_error(L, "[addLayerAt] layer == null or it's not a layer.");
 	}
@@ -45,7 +48,7 @@ static int laddLayerAt(lua_State *L) {
 
 static int lremoveLayer(lua_State *L) {
 	int layerID = luaL_checkinteger(L, -1);
-	Layer *layer = GlobalDisplayObjects::TgetDisplayObjectByUID<Layer>(layerID);
+	Layer *layer = _getLayer(layerID);
 	if (!layer) {
 		return luaL_error(L, "[removeLayer] layer == null or it's not a layer.");
 	}
@@ -89,7 +92,7 @@ static int lgetLayerByName(lua_State *L) {
 static int lgetLayerIndex(lua_State *L) {
 	int layerID = luaL_checkinteger(L, -1);
 	lua_settop(L, 0);
-	Layer *layer = GlobalDisplayObjects::TgetDisplayObjectByUID<Layer>(layerID);
+	Layer *layer = _getLayer(layerID);
 	if (!layer) {
 		lua_pushnil(L);
 		return 1;
@@ -102,7 +105,7 @@ static int lsetLayerIndex(lua_State *L) {
 	int layerID = luaL_checkinteger(L, -1);
 	int index = luaL_checkinteger(L, -2);
 	lua_settop(L, 0);
-	Layer *layer = GlobalDisplayObjects::TgetDisplayObjectByUID<Layer>(layerID);
+	Layer *layer = _getLayer(layerID);
 	if (!layer) {
 		return luaL_error(L, "[setLayerIndex] layer == null or it's not a layer.");
 	}
@@ -114,8 +117,8 @@ static int lsetLayerIndex(lua_State *L) {
 static int lswapLayers(lua_State *L) {
 	int layerID1 = luaL_checkinteger(L, -1);
 	int layerID2 = luaL_checkinteger(L, -2);
-	Layer *layer1 = GlobalDisplayObjects::TgetDisplayObjectByUID<Layer>(layerID1);
-	Layer *layer2 = GlobalDisplayObjects::TgetDisplayObjectByUID<Layer>(layerID2);
+	Layer *layer1 = _getLayer(layerID1);
+	Layer *layer2 = _getLayer(layerID2);
 	if (layer1 == NULL || layer2 == NULL) {
 		return luaL_error(L, "[swapLayers] layer == null or it's not a layer");
 	}

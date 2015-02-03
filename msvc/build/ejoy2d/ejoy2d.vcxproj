@@ -118,6 +118,7 @@
     <ClInclude Include="..\..\..\quick\engine\utils\GlobalUIDs.h" />
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaLayer.h" />
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaStage.h" />
+    <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaUtils.h" />
     <ClInclude Include="..\..\..\quick\ljpeg.h" />
     <ClInclude Include="..\..\..\quick\lpng.h" />
     <ClInclude Include="..\..\..\quick\lutils.h" />

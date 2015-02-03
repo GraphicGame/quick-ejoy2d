@@ -400,5 +400,8 @@
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaLayer.h">
       <Filter>quick\engine_lua_interface</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaUtils.h">
+      <Filter>quick\engine_lua_interface</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
