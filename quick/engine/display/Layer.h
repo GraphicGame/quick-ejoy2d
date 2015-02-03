@@ -18,8 +18,8 @@ public:
 	void addSpriteAt(Sprite *sprite, int index);
 	void removeSprite(Sprite *sprite);
 	void removeSpriteAt(int index);
-	DisplayObject * getSpriteAt(int index);
-	DisplayObject * getSpriteByName(std::string name);
+	Sprite * getSpriteAt(int index);
+	Sprite * getSpriteByName(std::string name);
 	int getSpriteIndex(Sprite *sprite);
 	void setSpriteIndex(Sprite *sprite, int index);
 	void swapSprites(Sprite *sprite1, Sprite *sprite2);

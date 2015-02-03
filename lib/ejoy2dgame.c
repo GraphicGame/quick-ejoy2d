@@ -9,15 +9,18 @@
 #include "shader.h"
 #include "texture.h"
 #include "ppm.h"
-#include "lpng.h"
-#include "ljpeg.h"
 #include "spritepack.h"
 #include "sprite.h"
 #include "lmatrix.h"
 #include "label.h"
 #include "particle.h"
 #include "lrenderbuffer.h"
+
+#include "lpng.h"
+#include "ljpeg.h"
 #include "lutils.h"
+#include "engine_lua_interface/LuaStage.h"
+#include "engine_lua_interface/LuaLayer.h"
 
 //#define LOGIC_FRAME 30
 
@@ -132,6 +135,8 @@ ejoy2d_game() {
 	luaL_requiref(L, "ejoy2d.png", lua_png, 0);
 	luaL_requiref(L, "ejoy2d.jpg", lua_jpeg, 0);
 	luaL_requiref(L, "ejoy2d.utils", lua_utils, 0);
+	luaL_requiref(L, "quick.Stage", luaStage, 0);
+	luaL_requiref(L, "quick.Layer", luaLayer, 0);
 
 	lua_settop(L,0);
 

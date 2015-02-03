@@ -1,6 +1,8 @@
 #include "Layer.h"
 #include "DisplayObjectType.h"
 
+#include <assert.h>
+
 NS_QUICK_DISPLAY_BEGIN
 
 Layer::Layer() {
@@ -31,14 +33,18 @@ void Layer::removeSpriteAt(int index) {
 	removeChildAt(index);
 }
 
-DisplayObject *
+Sprite *
 Layer::getSpriteAt(int index) {
-	return getChildAt(index);
+	DisplayObject *obj = getChildAt(index);
+	assert(obj->getType() == SPRITE);
+	return static_cast<Sprite*>(obj);
 }
 
-DisplayObject *
+Sprite *
 Layer::getSpriteByName(std::string name) {
-	return getSpriteByName(name);
+	DisplayObject *obj = getSpriteByName(name);
+	assert(obj->getType() == SPRITE);
+	return static_cast<Sprite*>(obj);
 }
 
 int Layer::getSpriteIndex(Sprite *sprite) {
