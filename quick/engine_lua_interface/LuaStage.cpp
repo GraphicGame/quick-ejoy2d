@@ -13,13 +13,8 @@
 
 using namespace quick::display;
 
-Stage *_Stage = nullptr;
-
 static int lgetStage(lua_State *L) {
-	if (!_Stage) {
-		_Stage = new Stage();
-	}
-	lua_pushlightuserdata(L, _Stage);
+	lua_pushlightuserdata(L, Stage::getInstance());
 	return 1;
 }
 

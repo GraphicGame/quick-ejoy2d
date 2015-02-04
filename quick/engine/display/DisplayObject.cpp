@@ -2,6 +2,8 @@
 #include "../utils/GlobalUIDs.h"
 #include "GlobalDisplayObjects.h"
 
+#include <assert.h>
+
 NS_QUICK_DISPLAY_BEGIN
 
 ///==== public...
@@ -15,6 +17,9 @@ DisplayObject::DisplayObject() {
 
 DisplayObject::~DisplayObject() {
 	GlobalDisplayObjects::remove(this);
+	delete _parent;
+	_name.clear();
+	_name.swap(std::string());
 }
 
 const std::string
@@ -40,7 +45,11 @@ void DisplayObject::setParent(DisplayObject *parent) {
 }
 
 void DisplayObject::draw() {
-		
+	assert(false && "should be override");
+}
+
+void DisplayObject::dispose() {
+	assert(false && "should be override");
 }
 
 float DisplayObject::getX() const {

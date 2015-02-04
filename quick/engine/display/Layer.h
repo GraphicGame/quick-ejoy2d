@@ -13,6 +13,7 @@ public:
 	~Layer();
 public:
 	void draw() override;
+	void dispose() override;
 
 	void addSprite(Sprite *sprite);
 	void addSpriteAt(Sprite *sprite, int index);

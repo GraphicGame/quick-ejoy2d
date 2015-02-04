@@ -11,8 +11,6 @@
 
 using namespace quick::display;
 
-
-
 static int lcreateLayer(lua_State *L) {
 	Layer *layer = new Layer();
 	lua_pushlightuserdata(L, layer);
@@ -137,6 +135,15 @@ static int lswapSpritesAt(lua_State *L) {
 	return 0;
 }
 
+static int ldispose(lua_State *L) {
+	Layer *layer = getLayer(L, 1);
+	if (layer == nullptr)
+		return 0;
+	layer->dispose();
+	delete layer;
+	return 0;
+}
+
 static void lmethod(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "addSprite", laddSprite },
@@ -149,6 +156,7 @@ static void lmethod(lua_State *L) {
 		{ "setSpriteIndex", lsetSpriteIndex },
 		{ "swapSprites", lswapSprites },
 		{ "swapSpritesAt", lswapSpritesAt },
+		{ "dispose", ldispose },
 		{ NULL, NULL }
 	};
 	luaL_newlib(L, l);

@@ -18,7 +18,9 @@ Event::Event(std::string type)
 }
 
 Event::~Event() {
-		
+	_type.clear();
+	_type.swap(std::string());
+	delete _target;
 }
 
 const std::string& Event::getType() const {
@@ -61,7 +63,7 @@ EventDispatcher::EventDispatcher() {
 }
 
 EventDispatcher::~EventDispatcher() {
-
+	_eventListenersMap.clear();
 }
 
 void

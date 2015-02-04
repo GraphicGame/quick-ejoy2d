@@ -1,31 +1,79 @@
-local cLayer = require "quick.Layer"
-local method = cLayer.method
+local cLayerPack = require "quick.Layer"
+local method = cLayerPack.method
 
 local setmetatable = setmetatable
-local debug = debug
+
+local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 
 local Layer = {}
-local layer_meta = {}
+local layerMeta = {}
 
-function layer_meta.__index(t, key)
-	if method[key] then
-		return method[key]
+function layerMeta.__index(tbl, key)
+	if layerMeta[key] then
+		return layerMeta[key]
 	end
-	error("[Layer]Unsupport get method : " .. key)
+	error("[Layer] Unsupport get method : " .. key)
 end
 
-function layer_meta.__newindex(t, key, v)
-	error("[Layer]Unsupport set method : " .. key)
+function layerMeta.__newindex(tbl, key, v)
+	error("[Layer] Unsupport set method : " .. key)
 end
 
 function Layer.createLayer()
-	--[[local layer = { cobj = 0 }
-	local cobj = cLayer.createLayer()
-	layer.cobj = cobj
-	return setmetatable(layer, layer_meta)]]
-	local layer = cLayer.createLayer()
-	--return --[[debug.]]setmetatable(layer, layer_meta)
-	return layer
+	local cLayer = cLayerPack.createLayer()
+	local layer = {cLayer = cLayer}
+	
+	ObjectsKeeper.keepLayer(cLayer, layer)
+
+	return setmetatable(layer, layerMeta)
+end
+
+function layerMeta:addSprite(sprite)
+	method["addSprite"](self.cLayer, sprite.cSprite)
+end
+
+function layerMeta:addSpriteAt(sprite, index)
+	method["addSpriteAt"](self.cLayer, sprite.cSprite, index)
+end
+
+function layerMeta:removeSprite(sprite)
+	method["removeSprite"](self.cLayer, sprite.cSprite)
+end
+
+function layerMeta:removeSpriteAt(index)
+	method["removeSpriteAt"](self.cLayer, index)
+end
+
+function layerMeta:getSpriteAt(index)
+	return method["getSpriteAt"](self.cLayer, index)
+end
+
+function layerMeta:getSpriteByName(spriteName)
+	return method["getSpriteByName"](self.cLayer, spriteName)
+end
+
+function layerMeta:getSpriteIndex(sprite)
+	return method["getSpriteIndex"](self.cLayer, sprite.cSprite)
+end
+
+function layerMeta:setSpriteIndex(sprite, index)
+	method["setSpriteIndex"](self.cLayer, sprite.cSprite, index)
+end
+
+function layerMeta:swapSprites(sprite1, sprite2)
+	method["swapSprites"](self.cLayer, sprite1.cSprite, sprite2.cSprite)
+end
+
+function layerMeta:swapSpritesAt(spriteIndex1, spriteIndex2)
+	method["swapSpritesAt"](self.cLayer, spriteIndex1, spriteIndex2)
+end
+
+---
+---dispose
+---
+function layerMeta:dispose()
+	ObjectsKeeper.disposeLayer(self.cLayer)
+	method["dispose"](self.cLayer)
 end
 
 return Layer

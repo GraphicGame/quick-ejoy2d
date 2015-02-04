@@ -182,6 +182,9 @@
     <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaLayer.cpp">
       <Filter>quick\engine_lua_interface</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaSprite.cpp">
+      <Filter>quick\engine_lua_interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\stdbool.h">
@@ -401,6 +404,9 @@
       <Filter>quick\engine_lua_interface</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaUtils.h">
+      <Filter>quick\engine_lua_interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaSprite.h">
       <Filter>quick\engine_lua_interface</Filter>
     </ClInclude>
   </ItemGroup>

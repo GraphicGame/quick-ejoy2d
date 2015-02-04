@@ -159,7 +159,7 @@ end
 
 function game.drawframe()
 	ej.clear(0xff808080)	-- clear (0.5,0.5,0.5,1) gray
-	--background:draw(backgroud_pos);
+	background:draw(backgroud_pos);
 	--hero:draw()
 	--label:draw(label_pos)
 end

@@ -1,5 +1,7 @@
 #include "Layer.h"
 #include "DisplayObjectType.h"
+#include "Stage.h"
+#include "QSprite.h"
 
 #include <assert.h>
 
@@ -15,6 +17,22 @@ Layer::~Layer() {
 
 void Layer::draw() {
 	
+}
+
+void Layer::dispose() {
+	//dispose all children.
+	for (_itChildrenList it = _childrenList.begin(); it != _childrenList.end(); ++it) {
+		DisplayObject *obj = *it;
+		assert(obj->getType() == SPRITE);
+		Sprite *sprite = static_cast<Sprite*>(obj);
+		sprite->dispose();
+
+		//@to do
+		//??---delete sprite ??
+	}
+
+	//remove myself from the stage.
+	Stage::getInstance()->removeLayer(this);
 }
 
 void Layer::addSprite(Sprite *sprite) {

@@ -19,6 +19,7 @@ public:
 	Stage();
 	~Stage();
 public:
+	static Stage * getInstance();
 	void draw() override;
 
 	void addLayer(Layer *layer);

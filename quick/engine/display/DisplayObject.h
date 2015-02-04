@@ -23,6 +23,7 @@ public:
 	virtual void setParent(DisplayObject *parent);
 
 	virtual void draw();
+	virtual void dispose();
 
 	float getX() const;
 	float getY() const;

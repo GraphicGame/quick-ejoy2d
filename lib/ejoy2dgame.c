@@ -21,6 +21,7 @@
 #include "lutils.h"
 #include "engine_lua_interface/LuaStage.h"
 #include "engine_lua_interface/LuaLayer.h"
+#include "engine_lua_interface/LuaSprite.h"
 
 //#define LOGIC_FRAME 30
 
@@ -137,6 +138,7 @@ ejoy2d_game() {
 	luaL_requiref(L, "ejoy2d.utils", lua_utils, 0);
 	luaL_requiref(L, "quick.Stage", luaStage, 0);
 	luaL_requiref(L, "quick.Layer", luaLayer, 0);
+	luaL_requiref(L, "quick.Sprite", luaSprite, 0);
 
 	lua_settop(L,0);
 

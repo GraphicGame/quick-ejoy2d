@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 #include "../NameSpace.h"
 
@@ -51,9 +51,9 @@ public:
 	void removeEventListener(std::string type);
 	void removeAllEventListener();
 private:
-	std::map<std::string, std::vector<Function*>* > _eventListenersMap;
+	std::unordered_map<std::string, std::vector<Function*>* > _eventListenersMap;
 
-	typedef std::map<std::string, std::vector<Function*>* >::const_iterator _citMap;
+	typedef std::unordered_map<std::string, std::vector<Function*>* >::const_iterator _citMap;
 	typedef std::vector<Function*>::iterator _itVec;
 	typedef std::vector<Function*> _tVec;
 };

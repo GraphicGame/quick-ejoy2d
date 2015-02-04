@@ -15,6 +15,14 @@ Stage::~Stage() {
 	
 }
 
+Stage * Stage::getInstance() {
+	static Stage *instance = nullptr;
+	if (instance == nullptr) {
+		instance = new Stage;
+	}
+	return instance;
+}
+
 void Stage::draw() {
 
 }

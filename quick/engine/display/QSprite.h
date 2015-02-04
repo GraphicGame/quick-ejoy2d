@@ -3,6 +3,7 @@
 
 #include "../NameSpace.h"
 #include "DisplayObjectContainer.h"
+#include "sprite.h"
 
 NS_QUICK_DISPLAY_BEGIN
 
@@ -11,9 +12,11 @@ public:
 	Sprite();
 	virtual ~Sprite();
 public:
-	void loadPackage(); //??
+	void dispose() override;
+	void setCSpritePointer(struct sprite *s);
+	struct sprite * getCSpritePointer() const;
 protected:
-
+	struct sprite *_cSpritePointer;
 };
 
 NS_QUICK_DISPLAY_END

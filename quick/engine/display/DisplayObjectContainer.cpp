@@ -13,7 +13,7 @@ DisplayObjectContainer::DisplayObjectContainer()
 }
 
 DisplayObjectContainer::~DisplayObjectContainer() {
-
+	_childrenList.clear();
 }
 
 bool DisplayObjectContainer::getChildrenTouchEnabled() const {
