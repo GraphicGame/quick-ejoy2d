@@ -130,6 +130,19 @@ static int lswapLayersAt(lua_State *L) {
 	return 0;
 }
 
+static int lclearCanvas(lua_State *L) {
+	Stage *stage = getStage(L, 1);
+	unsigned long c = luaL_optunsigned(L, 2, 0xff000000);
+	stage->clearCanvas(c);
+	return 0;
+}
+
+static int ldraw(lua_State *L) {
+	Stage *stage = getStage(L, 1);
+	stage->draw();
+	return 0;
+}
+
 static void lmethod(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "addLayer", laddLayer },
@@ -142,6 +155,8 @@ static void lmethod(lua_State *L) {
 		{ "setLayerIndex", lsetLayerIndex },
 		{ "swapLayers", lswapLayers },
 		{ "swapLayersAt", lswapLayersAt },
+		{ "clearCanvas", lclearCanvas },
+		{ "draw", ldraw },
 		{ NULL, NULL }
 	};
 	luaL_newlib(L, l);

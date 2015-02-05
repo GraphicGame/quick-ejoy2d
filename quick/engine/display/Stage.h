@@ -19,6 +19,7 @@ public:
 	Stage();
 	~Stage();
 public:
+	///====methods.
 	static Stage * getInstance();
 	void draw() override;
 
@@ -33,6 +34,10 @@ public:
 	void swapLayers(Layer *layer1, Layer *layer2);
 	void swapLayersAt(int index1, int index2);
 
+	//clear background.
+	void clearCanvas(unsigned long argb) const;
+
+	///=====getter setter
 	int getFrameRate() const;
 	void setFrameRate(int frameRate);
 

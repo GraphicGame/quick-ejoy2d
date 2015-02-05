@@ -27,18 +27,24 @@ public:
 
 	float getX() const;
 	float getY() const;
+	float getWorldX() const;
+	float getWorldY() const;
 	void setX(float x);
 	void setY(float y);
 
 	float getScale() const;
 	float getScaleX() const;
 	float getScaleY() const;
+	float getWorldScale() const;
+	float getWorldScaleX() const;
+	float getWorldScaleY() const;
 	void setScale(float scale);
 	void setScale(float sx, float sy);
 	void setScaleX(float sx);
 	void setScaleY(float sy);
 
 	float getRotation() const;
+	float getWorldRotation() const;
 	float getRotationX() const;
 	float getRotationY() const;
 	void setRotation(float rotation);

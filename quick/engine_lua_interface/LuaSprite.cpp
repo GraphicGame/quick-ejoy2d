@@ -8,6 +8,8 @@
 using namespace quick::display;
 
 #include "LuaUtils.h"
+#include "LuaCommon.h"
+
 #include "spritepack.h"
 #include "sprite.h"
 #include "matrix.h"
@@ -180,20 +182,18 @@ static int lcontains(lua_State *L) {
 	return 1;
 }
 
-static int ldraw(lua_State *L) {
-	Sprite *parent = getSprite(L, 1);
-	struct sprite *s = parent->getCSpritePointer();
-	struct srt srt;
-	//just test...
-	srt.offx = 1000;
-	srt.offy = 1000;
-	srt.scalex = 1024;
-	srt.scaley = 1024;
-	srt.rot = 0;
-
-	sprite_draw(s, &srt);
-	return 0;
-}
+//static int ldraw(lua_State *L) {
+//	Sprite *parent = getSprite(L, 1);
+//	struct sprite *s = parent->getCSpritePointer();
+//	struct srt srt {
+//		parent->getX() * 16, parent->getY() * 16, 
+//		parent->getScaleX() * 1024, parent->getScaleY() * 1024,
+//		parent->getRotation()
+//	};
+//
+//	sprite_draw(s, &srt);
+//	return 0;
+//}
 
 static void lmethod(lua_State *L) {
 	luaL_Reg l[] = {
@@ -207,7 +207,7 @@ static void lmethod(lua_State *L) {
 		{ "swapChildren", lswapChildren },
 		{ "swapChildrenAt", lswapChildrenAt },
 		{ "contains", lcontains },
-		{ "draw", ldraw },
+		//{ "draw", ldraw },
 		{ NULL, NULL }
 	};
 	luaL_newlib(L, l);
@@ -240,6 +240,12 @@ int luaSprite(lua_State *L) {
 
 	lgetter(L);
 	lua_setfield(L, -2, "get");
+
+	luaCommonGetter(L);
+	lua_setfield(L, -2, "getCommon");
+
+	luaCommonSetter(L);
+	lua_setfield(L, -2, "set");
 
 	return 1;
 }

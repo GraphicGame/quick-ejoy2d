@@ -19,14 +19,22 @@ stage:addLayer(spriteLayer)
 local sprite = Sprite.createSprite("rb_back", "background")
 spriteLayer:addSprite(sprite)
 
+sprite.x = 0
+sprite.y = 0
+sprite.scaleX = 1;
+sprite.scaleY = 1;
+sprite.rotation = 0;
+
 local game = {}
 
 function game.update()
-	
+	local rot = sprite.rotation
+	--sprite.rotation = rot + 1
 end
 
 function game.drawframe()
-	sprite:draw()
+	stage:clearCanvas()
+	stage:draw()
 end
 
 function game.touch(what, x, y)

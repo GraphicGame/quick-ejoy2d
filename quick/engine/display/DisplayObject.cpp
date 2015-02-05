@@ -7,7 +7,11 @@
 NS_QUICK_DISPLAY_BEGIN
 
 ///==== public...
-DisplayObject::DisplayObject() {
+DisplayObject::DisplayObject() 
+:_x(0), _y(0), _scale(1), _scaleX(1), _scaleY(1),
+_rotation(0), _rotationX(0), _rotationY(0), _width(0), _height(0),
+_visible(true)
+{
 	_name = "";
 	_parent = nullptr;
 
@@ -56,12 +60,26 @@ float DisplayObject::getX() const {
 	return _x;
 }
 
+float DisplayObject::getWorldX() const {
+	const DisplayObject *parent = getParent();
+	if (!parent)
+		return _x;
+	return _x + parent->getWorldX();
+}
+
 void DisplayObject::setX(float x) {
 	_x = x;
 }
 
 float DisplayObject::getY() const {
 	return _y;
+}
+
+float DisplayObject::getWorldY() const {
+	const DisplayObject *parent = getParent();
+	if (!parent)
+		return _y;
+	return _y + parent->getWorldY();
 }
 
 void DisplayObject::setY(float y) {
@@ -72,12 +90,33 @@ float DisplayObject::getScale() const {
 	return _scale;
 }
 
+float DisplayObject::getWorldScale() const {
+	const DisplayObject *parent = getParent();
+	if (!parent)
+		return  _scale;
+	return _scale * parent->getWorldScale();
+}
+
 float DisplayObject::getScaleX() const {
 	return _scaleX;
 }
 
+float DisplayObject::getWorldScaleX() const {
+	const DisplayObject *parent = getParent();
+	if (!parent)
+		return _scaleX;
+	return _scaleX * parent->getWorldScaleX();
+}
+
 float DisplayObject::getScaleY() const {
 	return _scaleY;
+}
+
+float DisplayObject::getWorldScaleY() const {
+	const DisplayObject *parent = getParent();
+	if (!parent)
+		return _scaleY;
+	return _scaleY * parent->getWorldScaleY();
 }
 
 void DisplayObject::setScale(float scale) {
@@ -99,6 +138,13 @@ void DisplayObject::setScaleY(float sy) {
 
 float DisplayObject::getRotation() const {
 	return _rotation;
+}
+
+float DisplayObject::getWorldRotation() const {
+	const DisplayObject *parent = getParent();
+	if (!parent)
+		return _rotation;
+	return _rotation + parent->getWorldRotation();
 }
 
 float DisplayObject::getRotationX() const {

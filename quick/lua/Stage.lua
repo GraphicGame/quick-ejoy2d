@@ -85,4 +85,12 @@ function stage:swapLayersAt(layerIndex1, layerIndex2)
 	method["swapLayersAt"](self.cStage, layerIndex1, layerIndex2)
 end
 
+function stage:clearCanvas(color)
+	method["clearCanvas"](self.cStage, color)
+end
+
+function stage:draw()
+	method["draw"](self.cStage)
+end
+
 return Stage

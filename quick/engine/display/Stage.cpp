@@ -3,6 +3,9 @@
 
 #include <assert.h>
 
+#include "shader.h"
+#include "Layer.h"
+
 NS_QUICK_DISPLAY_BEGIN
 
 Stage::Stage() 
@@ -24,7 +27,14 @@ Stage * Stage::getInstance() {
 }
 
 void Stage::draw() {
-
+	for (_itChildrenList it = _childrenList.begin(); it != _childrenList.end(); ++it) {
+		DisplayObject *obj = *it;
+		assert(obj->getType() == LAYER);
+		if (!obj->getVisible())
+			continue;
+		Layer *layer = static_cast<Layer*>(obj);
+		layer->draw();
+	}
 }
 
 void Stage::addLayer(Layer *layer) {
@@ -69,6 +79,10 @@ void Stage::swapLayers(Layer *layer1, Layer *layer2) {
 
 void Stage::swapLayersAt(int index1, int index2) {
 	swapChildrenAt(index1, index2);
+}
+
+void Stage::clearCanvas(unsigned long argb) const {
+	shader_clear(argb);
 }
 
 int Stage::getFrameRate() const {

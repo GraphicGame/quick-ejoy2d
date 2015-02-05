@@ -12,6 +12,7 @@ public:
 	Sprite();
 	virtual ~Sprite();
 public:
+	void draw() override;
 	void dispose() override;
 	void setCSpritePointer(struct sprite *s);
 	struct sprite * getCSpritePointer() const;

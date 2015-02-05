@@ -1,6 +1,8 @@
 local cSpritePack = require "quick.Sprite"
 local method = cSpritePack.method 
 local get = cSpritePack.get
+local getCommon = cSpritePack.getCommon
+local set = cSpritePack.set
 
 local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 local SpritePack = require "quick.lua.SpritePack"
@@ -15,10 +17,23 @@ function spriteMeta.__index(tbl, key)
 	if spriteMeta[key] then
 		return spriteMeta[key]
 	end
+	local getter = get[key]
+	if getter then
+		return getter(tbl.cSprite)
+	end
+	local getterCommon = getCommon[key]
+	if getterCommon then
+		return getterCommon(tbl.cSprite)
+	end
 	error("[Sprite] Unsupport get method : " .. key)
 end
 
 function spriteMeta.__newindex(tbl, key, v)
+	local setter = set[key]
+	if setter then
+		setter(tbl.cSprite, v)
+		return
+	end
 	error("[Sprite] Unsupport set method : " .. key)
 end
 

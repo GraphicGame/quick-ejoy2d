@@ -16,7 +16,14 @@ Layer::~Layer() {
 }
 
 void Layer::draw() {
-	
+	for (_itChildrenList it = _childrenList.begin(); it != _childrenList.end(); ++it) {
+		DisplayObject *obj = *it;
+		assert(obj->getType() == SPRITE);
+		if (!obj->getVisible())
+			continue;
+		Sprite *sprite = static_cast<Sprite*>(obj);
+		sprite->draw();
+	}
 }
 
 void Layer::dispose() {

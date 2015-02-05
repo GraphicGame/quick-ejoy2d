@@ -35,6 +35,7 @@ DisplayObjectContainer::addChild(DisplayObject *child) {
 		return child;
 	}
 	_childrenList.push_back(child);
+	child->setParent(this);
 	++_numChildren;
 	return child;
 }
@@ -54,12 +55,14 @@ DisplayObjectContainer::addChildAt(DisplayObject *child, int index) {
 		if (i++ == index) {
 			inserted = true;
 			_childrenList.insert(it, child);
+			child->setParent(this);
 			++_numChildren;
 			break;
 		}
 	}
 	if (!inserted) {
 		_childrenList.push_back(child);
+		child->setParent(this);
 		++_numChildren;
 	}
 	return child;
@@ -110,6 +113,7 @@ DisplayObjectContainer::getObjectsUnderPoint(const quick::geom::Point &point, st
 DisplayObject *
 DisplayObjectContainer::removeChild(DisplayObject *child) {
 	_childrenList.remove(child);
+	child->setParent(nullptr);
 	if (--_numChildren < 0)
 		_numChildren = 0;
 	return child;
