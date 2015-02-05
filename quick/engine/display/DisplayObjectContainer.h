@@ -1,7 +1,7 @@
 #ifndef __DISPLAYOBJECTCONTAINER
 #define __DISPLAYOBJECTCONTAINER
 
-#include "InteractiveObject.h"
+#include "DisplayObject.h"
 #include "../NameSpace.h"
 #include "../geom/Point.h"
 
@@ -11,7 +11,7 @@
 
 NS_QUICK_DISPLAY_BEGIN
 
-class DisplayObjectContainer : public InteractiveObject {
+class DisplayObjectContainer : public DisplayObject {
 public:
 	DisplayObjectContainer();
 	virtual ~DisplayObjectContainer();
