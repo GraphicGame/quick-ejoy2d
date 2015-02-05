@@ -11,31 +11,31 @@ using namespace quick::display;
 
 static int lgetX(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
-	lua_pushinteger(L, obj->getX());
+	lua_pushnumber(L, obj->getX());
 	return 1;
 }
 
 static int lgetY(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
-	lua_pushinteger(L, obj->getY());
+	lua_pushnumber(L, obj->getY());
 	return 1;
 }
 
 static int lgetScaleX(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
-	lua_pushinteger(L, obj->getScaleX());
+	lua_pushnumber(L, obj->getScaleX());
 	return 1;
 }
 
 static int lgetScaleY(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
-	lua_pushinteger(L, obj->getScaleY());
+	lua_pushnumber(L, obj->getScaleY());
 	return 1;
 }
 
 static int lgetScale(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
-	lua_pushinteger(L, obj->getScale());
+	lua_pushnumber(L, obj->getScale());
 	return 1;
 }
 

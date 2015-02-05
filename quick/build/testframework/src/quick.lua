@@ -42,11 +42,29 @@ sprite.visible = true
 
 sprite:setPivot(sw / 2, sh / 2)
 
+local scaleState = 0
+
 local game = {}
 
 function game.update()
-	local rot = sprite.rotation
-	sprite.rotation = rot + 1
+	--local rot = sprite.rotation
+	--sprite.rotation = rot + 2
+	
+	local s = sprite.scale
+	local sFactor = 0.06
+	if scaleState == 0 then
+		s = s - sFactor
+		if s <= 0.4 then
+			scaleState = 1
+		end
+	elseif scaleState == 1 then
+		s = s + sFactor
+		if s >= 1 then
+			scaleState = 0
+		end
+	end
+	
+	sprite.scale = s
 end
 
 function game.drawframe()
