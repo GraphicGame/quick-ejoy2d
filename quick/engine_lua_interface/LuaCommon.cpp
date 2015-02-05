@@ -33,6 +33,12 @@ static int lgetScaleY(lua_State *L) {
 	return 1;
 }
 
+static int lgetScale(lua_State *L) {
+	DisplayObject *obj = getDisplayObject(L, 1);
+	lua_pushinteger(L, obj->getScale());
+	return 1;
+}
+
 static int lgetRotation(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
 	lua_pushinteger(L, obj->getRotation());
@@ -73,6 +79,13 @@ static int lsetScaleY(lua_State *L) {
 	return 0;
 }
 
+static int lsetScale(lua_State *L) {
+	DisplayObject *obj = getDisplayObject(L, 1);
+	float scale = luaL_checknumber(L, 2);
+	obj->setScale(scale);
+	return 0;
+}
+
 static int lsetRotation(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
 	float rotation = luaL_checknumber(L, 2);
@@ -93,6 +106,7 @@ void luaCommonGetter(lua_State *L) {
 		{ "y", lgetY },
 		{ "scaleX", lgetScaleX },
 		{ "scaleY", lgetScaleY },
+		{ "scale", lgetScale },
 		{ "rotation", lgetRotation },
 		{ "visible", lgetVisible },
 		{ NULL, NULL },
@@ -107,6 +121,7 @@ void luaCommonSetter(lua_State *L) {
 		{ "y", lsetY },
 		{ "scaleX", lsetScaleX },
 		{ "scaleY", lsetScaleY },
+		{ "scale", lsetScale },
 		{ "rotation", lsetRotation },
 		{ "visible", lsetVisible },
 		{ NULL, NULL },

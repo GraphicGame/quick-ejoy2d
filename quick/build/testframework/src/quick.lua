@@ -21,12 +21,14 @@ spriteLayer:addSprite(sprite)
 
 spriteLayer.x = 0;
 spriteLayer.scaleX = 1
+spriteLayer.scale = 10
 spriteLayer.visible = true
 
 sprite.x = 100
 sprite.y = 100
 sprite.scaleX = 1
 sprite.scaleY = 1
+sprite.scale = 1
 sprite.rotation = 0
 sprite.visible = true
 

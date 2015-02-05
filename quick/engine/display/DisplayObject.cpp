@@ -121,6 +121,8 @@ float DisplayObject::getWorldScaleY() const {
 
 void DisplayObject::setScale(float scale) {
 	_scale = scale;
+	_scaleX = scale;
+	_scaleY = scale;
 }
 
 void DisplayObject::setScale(float sx, float sy) {

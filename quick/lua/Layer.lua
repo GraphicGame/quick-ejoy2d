@@ -41,11 +41,11 @@ end
 
 ---
 ---getter
---- .x .y .scaleX .scaleY .rotation .visible
+--- .x .y .scaleX .scaleY .scale .rotation .visible
 
 ---
 ---setter
---- .x .y .scaleX .scaleY .rotation .visible
+--- .x .y .scaleX .scaleY .scale .rotation .visible
 
 ---
 ---methods
