@@ -1,5 +1,7 @@
 local cLayerPack = require "quick.Layer"
 local method = cLayerPack.method
+local getCommon = cLayerPack.getCommon
+local setCommon = cLayerPack.setCommon
 
 local setmetatable = setmetatable
 
@@ -12,10 +14,19 @@ function layerMeta.__index(tbl, key)
 	if layerMeta[key] then
 		return layerMeta[key]
 	end
+	local getterCommon = getCommon[key]
+	if getterCommon then
+		return getterCommon(tbl.cLayer)
+	end
 	error("[Layer] Unsupport get method : " .. key)
 end
 
 function layerMeta.__newindex(tbl, key, v)
+	local setterCommon = setCommon[key]
+	if setterCommon then
+		setterCommon(tbl.cLayer, v)
+		return
+	end
 	error("[Layer] Unsupport set method : " .. key)
 end
 

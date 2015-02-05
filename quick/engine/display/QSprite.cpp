@@ -41,7 +41,9 @@ void Sprite::draw() {
 }
 
 void Sprite::dispose() {
-	//@to do
+	if (_cSpritePointer != NULL) {
+		free(_cSpritePointer);
+	}
 }
 
 void Sprite::setCSpritePointer(struct sprite *s) {

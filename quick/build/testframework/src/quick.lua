@@ -19,11 +19,16 @@ stage:addLayer(spriteLayer)
 local sprite = Sprite.createSprite("rb_back", "background")
 spriteLayer:addSprite(sprite)
 
-sprite.x = 0
-sprite.y = 0
-sprite.scaleX = 1;
-sprite.scaleY = 1;
-sprite.rotation = 0;
+spriteLayer.x = 300;
+spriteLayer.scaleX = 2
+spriteLayer.visible = true
+
+sprite.x = 100
+sprite.y = 100
+sprite.scaleX = 1
+sprite.scaleY = 1
+sprite.rotation = 0
+sprite.visible = true
 
 local game = {}
 

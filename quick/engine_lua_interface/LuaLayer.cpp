@@ -8,6 +8,7 @@
 #include "../engine/display/GlobalDisplayObjects.h"
 
 #include "LuaUtils.h"
+#include "LuaCommon.h"
 
 using namespace quick::display;
 
@@ -171,6 +172,12 @@ int luaLayer(lua_State *L) {
 
 	lmethod(L);
 	lua_setfield(L, -2, "method");
+
+	luaCommonGetter(L);
+	lua_setfield(L, -2, "getCommon");
+
+	luaCommonSetter(L);
+	lua_setfield(L, -2, "setCommon");
 
 	return 1;
 }

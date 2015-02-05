@@ -39,6 +39,12 @@ static int lgetRotation(lua_State *L) {
 	return 1;
 }
 
+static int lgetVisible(lua_State *L) {
+	DisplayObject *obj = getDisplayObject(L, 1);
+	lua_pushboolean(L, obj->getVisible());
+	return 1;
+}
+
 static int lsetX(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
 	float x = luaL_checknumber(L, 2);
@@ -74,6 +80,13 @@ static int lsetRotation(lua_State *L) {
 	return 0;
 }
 
+static int lsetVisible(lua_State *L) {
+	DisplayObject *obj = getDisplayObject(L, 1);
+	bool v = lua_toboolean(L, 2);
+	obj->setVisible(v);
+	return 0;
+}
+
 void luaCommonGetter(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "x", lgetX },
@@ -81,6 +94,7 @@ void luaCommonGetter(lua_State *L) {
 		{ "scaleX", lgetScaleX },
 		{ "scaleY", lgetScaleY },
 		{ "rotation", lgetRotation },
+		{ "visible", lgetVisible },
 		{ NULL, NULL },
 	};
 
@@ -94,6 +108,7 @@ void luaCommonSetter(lua_State *L) {
 		{ "scaleX", lsetScaleX },
 		{ "scaleY", lsetScaleY },
 		{ "rotation", lsetRotation },
+		{ "visible", lsetVisible },
 		{ NULL, NULL },
 	};
 
