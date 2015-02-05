@@ -19,27 +19,34 @@ stage:addLayer(spriteLayer)
 local sprite = Sprite.createSprite("rb_back", "background")
 spriteLayer:addSprite(sprite)
 
+--local sprite = Sprite.createSprite("rb_back", "label")
+--spriteLayer:addSprite(sprite)
+
 spriteLayer.x = 0;
 spriteLayer.scaleX = 1
-spriteLayer.scale = 10
+spriteLayer.scale = 1
 spriteLayer.visible = true
 
-sprite.x = 100
-sprite.y = 100
+local sw = sprite.width
+local sh = sprite.height
+print("sprite.width=>" .. sw)
+print("sprite.height=>" .. sh)
+
+sprite.x = sw / 2
+sprite.y = sh / 2
 sprite.scaleX = 1
 sprite.scaleY = 1
 sprite.scale = 1
 sprite.rotation = 0
 sprite.visible = true
 
-print("sprite.width=>" .. sprite.width)
-print("sprite.height=>" .. sprite.height)
+sprite:setPivot(sw / 2, sh / 2)
 
 local game = {}
 
 function game.update()
 	local rot = sprite.rotation
-	--sprite.rotation = rot + 1
+	sprite.rotation = rot + 1
 end
 
 function game.drawframe()

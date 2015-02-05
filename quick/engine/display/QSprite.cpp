@@ -15,7 +15,7 @@ NS_QUICK_DISPLAY_BEGIN
 			getWorldRotation()
 
 Sprite::Sprite() 
-	:_cSpritePointer(NULL)
+:_cSpritePointer(NULL), _pivotX(0), _pivotY(0)
 {
 	setType(SPRITE);
 }
@@ -75,7 +75,7 @@ float Sprite::getWidth() const {
 	case TYPE_LABEL:
 	case TYPE_PANNEL:
 		sprite_aabb(_cSpritePointer, &srt, true, aabb);
-		break;
+		return (float)(aabb[2] - aabb[0]);
 	default:
 		break;
 	}
@@ -100,7 +100,7 @@ float Sprite::getHeight() const {
 	case TYPE_LABEL:
 	case TYPE_PANNEL:
 		sprite_aabb(_cSpritePointer, &srt, true, aabb);
-		break;
+		return (float)(aabb[3] - aabb[1]);
 	default:
 		break;
 	}
@@ -114,6 +114,49 @@ void Sprite::setWidth(float w) {
 
 void Sprite::setHeight(float h) {
 	assert(false);
+}
+
+void Sprite::setPivotPoint(float px, float py) {
+	int32_t *screenCoord;
+	int cSpriteType = _cSpritePointer->type;
+	float picW, picH;
+	switch (cSpriteType) {
+	case TYPE_PICTURE:
+		picW = getWidth();
+		picH = getHeight();
+		screenCoord = _cSpritePointer->s.pic->rect[0].screen_coord;
+		screenCoord[0] = -px;
+		screenCoord[1] = -py;
+		screenCoord[2] = screenCoord[0];
+		screenCoord[3] = picH + screenCoord[1];
+		screenCoord[4] = picW + screenCoord[0];
+		screenCoord[5] = screenCoord[3];
+		screenCoord[6] = screenCoord[4];
+		screenCoord[7] = screenCoord[1];
+
+		for (int i = 0; i < 8; i++) {
+			screenCoord[i] *= SCREEN_SCALE;
+		}
+		_pivotX = px;
+		_pivotY = py;
+		break;
+	case TYPE_ANIMATION:
+	case TYPE_POLYGON:
+	case TYPE_LABEL:
+	case TYPE_PANNEL:
+		assert(false); //@to do...
+		break;
+	default:
+		break;
+	}
+}
+
+float Sprite::getPivotPointX() const {
+	return _pivotX;
+}
+
+float Sprite::getPivotPointY() const {
+	return _pivotY;
 }
 
 NS_QUICK_DISPLAY_END

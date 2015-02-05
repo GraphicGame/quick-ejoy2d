@@ -23,9 +23,11 @@ public:
 	void setHeight(float h) override;
 
 	void setPivotPoint(float px, float py);
-
+	float getPivotPointX() const;
+	float getPivotPointY() const;
 protected:
 	struct sprite *_cSpritePointer;
+	float _pivotX, _pivotY;
 };
 
 NS_QUICK_DISPLAY_END

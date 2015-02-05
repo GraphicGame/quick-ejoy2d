@@ -195,6 +195,14 @@ static int lcontains(lua_State *L) {
 //	return 0;
 //}
 
+static int lsetPivot(lua_State *L) {
+	Sprite *sprite = getSprite(L, 1);
+	float px = luaL_checknumber(L, 2);
+	float py = luaL_checknumber(L, 3);
+	sprite->setPivotPoint(px, py);
+	return 0;
+}
+
 static void lmethod(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "addChild", laddChild },
@@ -208,6 +216,7 @@ static void lmethod(lua_State *L) {
 		{ "swapChildrenAt", lswapChildrenAt },
 		{ "contains", lcontains },
 		//{ "draw", ldraw },
+		{ "setPivot", lsetPivot },
 		{ NULL, NULL }
 	};
 	luaL_newlib(L, l);
@@ -234,11 +243,27 @@ static int lgetHeight(lua_State *L) {
 	return 1;
 }
 
+static int lgetPivotX(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	float px = sp->getPivotPointX();
+	lua_pushnumber(L, px);
+	return 1;
+}
+
+static int lgetPivotY(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	float py = sp->getPivotPointY();
+	lua_pushnumber(L, py);
+	return 1;
+}
+
 static void lgetter(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "numChildren", lnumChildren },
 		{ "width", lgetWidth },
 		{ "height", lgetHeight },
+		{ "pivotX", lgetPivotX },
+		{ "pivotY", lgetPivotY },
 		{ NULL, NULL },
 	};
 	luaL_newlib(L, l);

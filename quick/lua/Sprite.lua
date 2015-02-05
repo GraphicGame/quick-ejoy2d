@@ -49,7 +49,7 @@ end
 
 ---
 ---getter
---- .x .y .scaleX .scaleY .scale .rotation .visible .width .height
+--- .x .y .scaleX .scaleY .scale .rotation .visible .width .height .pivotX .pivotY
 
 ---
 ---setter
@@ -104,6 +104,10 @@ end
 
 function spriteMeta:draw()
 	method["draw"](self.cSprite)
+end
+
+function spriteMeta:setPivot(px, py)
+	method["setPivot"](self.cSprite, px, py)
 end
 
 ---
