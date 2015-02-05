@@ -39,6 +39,21 @@ function Layer.createLayer()
 	return setmetatable(layer, layerMeta)
 end
 
+---
+---getter
+--- .x .y .scaleX .scaleY .rotation .visible
+
+---
+---setter
+--- .x .y .scaleX .scaleY .rotation .visible
+
+---
+---methods
+--- nothing
+
+---
+---下面是显式定义的方法
+---
 function layerMeta:addSprite(sprite)
 	method["addSprite"](self.cLayer, sprite.cSprite)
 end

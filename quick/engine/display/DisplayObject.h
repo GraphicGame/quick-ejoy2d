@@ -52,10 +52,10 @@ public:
 	void setRotationX(float rx);
 	void setRotationY(float ry);
 
-	float getWidth() const;
-	void setWidth(float w);
-	float getHeight() const;
-	void setHeight(float h);
+	virtual float getWidth() const;
+	virtual void setWidth(float w);
+	virtual float getHeight() const;
+	virtual void setHeight(float h);
 
 	bool getVisible() const;
 	void setVisible(bool visible);

@@ -39,6 +39,21 @@ function Stage.getStage()
 	return setmetatable(stage, stageMeta)
 end
 
+---
+---getter
+--- .frameRate
+
+---
+---setter
+--- .frameRate
+
+---
+---methods
+--- nothing
+
+---
+---下面是显式定义的方法
+---
 function stage:addLayer(layer)
 	method["addLayer"](self.cStage, layer.cLayer)
 end

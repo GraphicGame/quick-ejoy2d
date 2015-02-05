@@ -2,7 +2,7 @@ local cSpritePack = require "quick.Sprite"
 local method = cSpritePack.method 
 local get = cSpritePack.get
 local getCommon = cSpritePack.getCommon
-local set = cSpritePack.set
+local setCommon = cSpritePack.setCommon
 
 local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 local SpritePack = require "quick.lua.SpritePack"
@@ -29,7 +29,7 @@ function spriteMeta.__index(tbl, key)
 end
 
 function spriteMeta.__newindex(tbl, key, v)
-	local setter = set[key]
+	local setter = setCommon[key]
 	if setter then
 		setter(tbl.cSprite, v)
 		return
@@ -47,6 +47,21 @@ function Sprite.createSprite(packageName, spriteName)
 	return setmetatable(sprite, spriteMeta)
 end
 
+---
+---getter
+--- .x .y .scaleX .scaleY .rotation .visible .width .height
+
+---
+---setter
+--- .x .y .scaleX .scaleY .rotation .visible
+
+---
+---methods
+--- nothing
+
+---
+---下面是显式定义的方法
+---
 function spriteMeta:addChild(sprite)
 	method["addChild"](self.cSprite, sprite.cSprite)
 end

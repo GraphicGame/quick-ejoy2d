@@ -220,9 +220,25 @@ static int lnumChildren(lua_State *L) {
 	return 1;
 }
 
+static int lgetWidth(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	float spWidth = sp->getWidth();
+	lua_pushnumber(L, spWidth);
+	return 1;
+}
+
+static int lgetHeight(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	float spHeight = sp->getHeight();
+	lua_pushnumber(L, spHeight);
+	return 1;
+}
+
 static void lgetter(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "numChildren", lnumChildren },
+		{ "width", lgetWidth },
+		{ "height", lgetHeight },
 		{ NULL, NULL },
 	};
 	luaL_newlib(L, l);
@@ -245,7 +261,7 @@ int luaSprite(lua_State *L) {
 	lua_setfield(L, -2, "getCommon");
 
 	luaCommonSetter(L);
-	lua_setfield(L, -2, "set");
+	lua_setfield(L, -2, "setCommon");
 
 	return 1;
 }

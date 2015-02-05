@@ -16,6 +16,14 @@ public:
 	void dispose() override;
 	void setCSpritePointer(struct sprite *s);
 	struct sprite * getCSpritePointer() const;
+
+	float getWidth() const override;
+	float getHeight() const override;
+	void setWidth(float w) override;
+	void setHeight(float h) override;
+
+	void setPivotPoint(float px, float py);
+
 protected:
 	struct sprite *_cSpritePointer;
 };

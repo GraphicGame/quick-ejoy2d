@@ -2,11 +2,17 @@
 #include "DisplayObjectType.h"
 #include <stdlib.h>
 #include <assert.h>
+#include <stdint.h>
 
 #include "matrix.h"
+#include "spritepack.h"
 #include "sprite.h"
 
 NS_QUICK_DISPLAY_BEGIN
+
+#define SRT getWorldX() * 16, getWorldY() * 16,	 \
+			getWorldScaleX() * 1024, getWorldScaleY() * 1024, \
+			getWorldRotation()
 
 Sprite::Sprite() 
 	:_cSpritePointer(NULL)
@@ -22,9 +28,7 @@ Sprite::~Sprite() {
 
 void Sprite::draw() {
 	struct srt srt = {
-		getWorldX() * 16, getWorldY() * 16,
-		getWorldScaleX() * 1024, getWorldScaleY() * 1024,
-		getWorldRotation()
+		SRT
 	};
 
 	sprite_draw(_cSpritePointer, &srt);
@@ -52,6 +56,64 @@ void Sprite::setCSpritePointer(struct sprite *s) {
 
 struct sprite * Sprite::getCSpritePointer() const {
 	return _cSpritePointer;
+}
+
+float Sprite::getWidth() const {
+	int32_t *screenCoord;
+	struct srt srt {
+		SRT
+	};
+	int aabb[4];
+	int cSpriteType = _cSpritePointer->type;
+
+	switch (cSpriteType) {
+	case TYPE_PICTURE:
+		screenCoord = _cSpritePointer->s.pic->rect[0].screen_coord;
+		return (float)((screenCoord[4] / 16 - screenCoord[0] / 16));
+	case TYPE_ANIMATION:
+	case TYPE_POLYGON:
+	case TYPE_LABEL:
+	case TYPE_PANNEL:
+		sprite_aabb(_cSpritePointer, &srt, true, aabb);
+		break;
+	default:
+		break;
+	}
+	assert(false);
+	return 0;
+}
+
+float Sprite::getHeight() const {
+	int32_t *screenCoord;
+	struct srt srt {
+		SRT
+	};
+	int aabb[4];
+	int cSpriteType = _cSpritePointer->type;
+
+	switch (cSpriteType) {
+	case TYPE_PICTURE:
+		screenCoord = _cSpritePointer->s.pic->rect[0].screen_coord;
+		return (float)((screenCoord[5] - screenCoord[1]) / SCREEN_SCALE);
+	case TYPE_ANIMATION:
+	case TYPE_POLYGON:
+	case TYPE_LABEL:
+	case TYPE_PANNEL:
+		sprite_aabb(_cSpritePointer, &srt, true, aabb);
+		break;
+	default:
+		break;
+	}
+	assert(false);
+	return 0;
+}
+
+void Sprite::setWidth(float w) {
+	assert(false);
+}
+
+void Sprite::setHeight(float h) {
+	assert(false);
 }
 
 NS_QUICK_DISPLAY_END

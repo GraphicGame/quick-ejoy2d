@@ -19,8 +19,8 @@ stage:addLayer(spriteLayer)
 local sprite = Sprite.createSprite("rb_back", "background")
 spriteLayer:addSprite(sprite)
 
-spriteLayer.x = 300;
-spriteLayer.scaleX = 2
+spriteLayer.x = 0;
+spriteLayer.scaleX = 1
 spriteLayer.visible = true
 
 sprite.x = 100
@@ -30,6 +30,9 @@ sprite.scaleY = 1
 sprite.rotation = 0
 sprite.visible = true
 
+print("sprite.width=>" .. sprite.width)
+print("sprite.height=>" .. sprite.height)
+
 local game = {}
 
 function game.update()
@@ -38,7 +41,7 @@ function game.update()
 end
 
 function game.drawframe()
-	stage:clearCanvas()
+	stage:clearCanvas(0)
 	stage:draw()
 end
 
