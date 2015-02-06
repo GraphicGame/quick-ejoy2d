@@ -47,6 +47,7 @@
     <ClCompile Include="..\..\..\quick\engine\geom\Point.cpp" />
     <ClCompile Include="..\..\..\quick\engine\geom\Rectangle.cpp" />
     <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaCommon.cpp" />
+    <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaEvent.cpp" />
     <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaLayer.cpp" />
     <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaSprite.cpp" />
     <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaStage.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="..\..\..\quick\engine\NameSpace.h" />
     <ClInclude Include="..\..\..\quick\engine\utils\GlobalUIDs.h" />
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaCommon.h" />
+    <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaEvent.h" />
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaLayer.h" />
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaSprite.h" />
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaStage.h" />
