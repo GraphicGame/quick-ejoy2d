@@ -15,6 +15,33 @@ SimplePackage.load {
 	"rb_back", "stand"
 }
 
+---
+---test memory release.
+---
+local function pause(msg)
+	print(msg)
+	io.read("*number")
+end
+
+local function testMemory()
+	pause("press key to start test...")
+	local layers = {}
+	local layerCount = 10000
+	for i = 1, layerCount do
+		local layer = Layer.createLayer()
+		table.insert(layers, layer)
+	end
+	pause(#layers .. " layers had created...please see memory...press key to release memory")
+	for i = 1, #layers do
+		local layer = layers[i]
+		layer:dispose()
+	end
+	pause("released...please make sure of this...")
+end
+
+testMemory()
+
+
 local stage = Stage.getStage()
 local layerBackground = Layer.createLayer()
 local layerSprites = Layer.createLayer()

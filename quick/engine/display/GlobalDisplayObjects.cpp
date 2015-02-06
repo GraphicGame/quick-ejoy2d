@@ -5,17 +5,17 @@ NS_QUICK_DISPLAY_BEGIN
 std::unordered_map<int, DisplayObject*> GlobalDisplayObjects::_allDisplayObjects;
 
 void GlobalDisplayObjects::add(DisplayObject *object) {
-	int uid = object->getUID();
+	/*int uid = object->getUID();
 	std::unordered_map<int, DisplayObject*>::iterator it = _allDisplayObjects.find(uid);
 	if (it != _allDisplayObjects.end()) {
-		return;
+	return;
 	}
-	_allDisplayObjects.insert(std::make_pair(uid, object));
+	_allDisplayObjects.insert(std::make_pair(uid, object));*/
 }
 
 void GlobalDisplayObjects::remove(DisplayObject *object) {
-	int uid = object->getUID();
-	_allDisplayObjects.erase(uid);
+	/*int uid = object->getUID();
+	_allDisplayObjects.erase(uid);*/
 }
 
 DisplayObject *
