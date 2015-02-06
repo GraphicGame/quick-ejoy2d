@@ -3,7 +3,8 @@
 
 #include "../NameSpace.h"
 #include "DisplayObjectContainer.h"
-#include "sprite.h"
+#include "sprite.h" 
+#include <stdint.h>
 
 NS_QUICK_DISPLAY_BEGIN
 
@@ -30,6 +31,17 @@ public:
 	int getTotalFrames() const;
 
 	void setFrame(int frame);
+
+	int getCSpriteType() const;
+
+	uint32_t getColor() const;
+	void setColor(uint32_t color);
+
+	uint8_t getAlpha() const;
+	void setAlpha(uint8_t alpha);
+
+	uint32_t getAdditive() const;
+	void setAdditive(uint32_t additive);
 
 protected:
 	struct sprite *_cSpritePointer;

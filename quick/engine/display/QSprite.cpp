@@ -7,6 +7,7 @@
 #include "matrix.h"
 #include "spritepack.h"
 #include "sprite.h"
+#include "label.h"
 
 NS_QUICK_DISPLAY_BEGIN
 
@@ -181,6 +182,38 @@ void Sprite::setFrame(int frame) {
 		return;
 	}
 	_cSpritePointer->frame = frame;
+}
+
+int Sprite::getCSpriteType() const {
+	return _cSpritePointer->type;
+}
+
+uint32_t Sprite::getColor() const {
+	int type = _cSpritePointer->type;
+	if (type != TYPE_LABEL)
+		return _cSpritePointer->t.color;
+	else
+		return label_get_color(_cSpritePointer->s.label, &_cSpritePointer->t);
+}
+
+void Sprite::setColor(uint32_t color) {
+	_cSpritePointer->t.color = color;
+}
+
+uint8_t Sprite::getAlpha() const {
+	return _cSpritePointer->t.color >> 24;
+}
+
+void Sprite::setAlpha(uint8_t alpha) {
+	_cSpritePointer->t.color = (_cSpritePointer->t.color >> 8) | (alpha << 24);
+}
+
+uint32_t Sprite::getAdditive() const {
+	return _cSpritePointer->t.additive;
+}
+
+void Sprite::setAdditive(uint32_t additive) {
+	_cSpritePointer->t.additive = additive;
 }
 
 NS_QUICK_DISPLAY_END

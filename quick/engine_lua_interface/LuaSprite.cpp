@@ -281,6 +281,34 @@ static int lgetTotalFrames(lua_State *L) {
 	return 1;
 }
 
+static int lgetType(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	int type = sp->getCSpriteType();
+	lua_pushinteger(L, type);
+	return 1;
+}
+
+static int lgetColor(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	uint32_t color = sp->getColor();
+	lua_pushunsigned(L, color);
+	return 1;
+}
+
+static int lgetAlpha(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	uint8_t alpha = sp->getAlpha();
+	lua_pushunsigned(L, alpha);
+	return 1;
+}
+
+static int lgetAdditive(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	uint32_t additive = sp->getAdditive();
+	lua_pushunsigned(L, additive);
+	return 1;
+}
+
 static void lgetter(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "numChildren", lnumChildren },
@@ -290,6 +318,10 @@ static void lgetter(lua_State *L) {
 		{ "pivotY", lgetPivotY },
 		{ "frame", lgetFrame },
 		{ "totalFrames", lgetTotalFrames },
+		{ "type", lgetType },
+		{ "color", lgetColor },
+		{ "alpha", lgetAlpha },
+		{ "additive", lgetAdditive },
 		{ NULL, NULL },
 	};
 	luaL_newlib(L, l);
@@ -302,9 +334,33 @@ static int lsetFrame(lua_State *L) {
 	return 0;
 }
 
+static int lsetColor(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	uint32_t color = luaL_checkunsigned(L, 2);
+	sp->setColor(color);
+	return 0;
+}
+
+static int lsetAlpha(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	uint8_t alpha = luaL_checkunsigned(L, 2);
+	sp->setAlpha(alpha);
+	return 0;
+}
+
+static int lsetAdditive(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	uint32_t additive = luaL_checkunsigned(L, 2);
+	sp->setAdditive(additive);
+	return 0;
+}
+
 static void lsetter(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "frame", lsetFrame },
+		{ "color", lsetColor },
+		{ "alpha", lsetAlpha },
+		{ "additive", lsetAdditive },
 		{ NULL, NULL },
 	};
 	luaL_newlib(L, l);

@@ -25,22 +25,34 @@ local back = Sprite.createSprite("rb_back", "background")
 layerBackground:addSprite(back)
 
 local sprite = Sprite.createSprite("stand", "stand")
-layerSprites:addSprite(sprite)
+--layerSprites:addSprite(sprite)
+back:addChild(sprite)
 
 local sw = sprite.width
 local sh = sprite.height
 print("sprite.width=>" .. sw)
 print("sprite.height=>" .. sh)
 
---sprite:setPivot(sw / 2, sh / 2)
+back:setPivot(back.width / 2, back.height / 2)
+back.x = back.width / 2
+back.y = back.height / 2
+
+print("back.type=>" .. back.type)
+print("back.type=>" .. back.color)
+print("back.type=>" .. back.alpha)
+print("back.type=>" .. back.additive)
+
+--sprite.alpha = 120
+--sprite.color = 0xff0000ff
+--sprite.additive = 60
 
 local scaleState = 0
 
 local game = {}
 
 function game.update()
-	--local rot = sprite.rotation
-	--sprite.rotation = rot + 2
+	local rot = back.rotation
+	back.rotation = rot + 8
 	
 	--[[local s = sprite.scale
 	local sFactor = 0.06
