@@ -203,6 +203,15 @@ static int lsetPivot(lua_State *L) {
 	return 0;
 }
 
+static int lnextFrame(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	int frame = sp->getFrame();
+	sp->setFrame(frame + 1);
+	int totalFrames = sp->getTotalFrames();
+	lua_pushinteger(L, (frame + 1) % totalFrames);
+	return 1;
+}
+
 static void lmethod(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "addChild", laddChild },
@@ -217,6 +226,7 @@ static void lmethod(lua_State *L) {
 		{ "contains", lcontains },
 		//{ "draw", ldraw },
 		{ "setPivot", lsetPivot },
+		{ "nextFrame", lnextFrame },
 		{ NULL, NULL }
 	};
 	luaL_newlib(L, l);
@@ -257,6 +267,20 @@ static int lgetPivotY(lua_State *L) {
 	return 1;
 }
 
+static int lgetFrame(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	int frame = sp->getFrame();
+	lua_pushinteger(L, frame);
+	return 1;
+}
+
+static int lgetTotalFrames(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	int totalFrames = sp->getTotalFrames();
+	lua_pushinteger(L, totalFrames);
+	return 1;
+}
+
 static void lgetter(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "numChildren", lnumChildren },
@@ -264,6 +288,23 @@ static void lgetter(lua_State *L) {
 		{ "height", lgetHeight },
 		{ "pivotX", lgetPivotX },
 		{ "pivotY", lgetPivotY },
+		{ "frame", lgetFrame },
+		{ "totalFrames", lgetTotalFrames },
+		{ NULL, NULL },
+	};
+	luaL_newlib(L, l);
+}
+
+static int lsetFrame(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	int frame = luaL_checkinteger(L, 2);
+	sp->setFrame(frame);
+	return 0;
+}
+
+static void lsetter(lua_State *L) {
+	luaL_Reg l[] = {
+		{ "frame", lsetFrame },
 		{ NULL, NULL },
 	};
 	luaL_newlib(L, l);
@@ -281,6 +322,9 @@ int luaSprite(lua_State *L) {
 
 	lgetter(L);
 	lua_setfield(L, -2, "get");
+
+	lsetter(L);
+	lua_setfield(L, -2, "set");
 
 	luaCommonGetter(L);
 	lua_setfield(L, -2, "getCommon");

@@ -1,6 +1,7 @@
 local cSpritePack = require "quick.Sprite"
 local method = cSpritePack.method 
 local get = cSpritePack.get
+local set = cSpritePack.set
 local getCommon = cSpritePack.getCommon
 local setCommon = cSpritePack.setCommon
 
@@ -29,9 +30,14 @@ function spriteMeta.__index(tbl, key)
 end
 
 function spriteMeta.__newindex(tbl, key, v)
-	local setter = setCommon[key]
+	local setter = set[key]
 	if setter then
 		setter(tbl.cSprite, v)
+		return
+	end
+	local setterCommon = setCommon[key]
+	if setterCommon then
+		setterCommon(tbl.cSprite, v)
 		return
 	end
 	error("[Sprite] Unsupport set method : " .. key)
@@ -50,10 +56,12 @@ end
 ---
 ---getter
 --- .x .y .scaleX .scaleY .scale .rotation .visible .width .height .pivotX .pivotY
+--- .frame .totalFrames
 
 ---
 ---setter
 --- .x .y .scaleX .scaleY .scale .rotation .visible
+--- .frame
 
 ---
 ---methods
@@ -108,6 +116,10 @@ end
 
 function spriteMeta:setPivot(px, py)
 	method["setPivot"](self.cSprite, px, py)
+end
+
+function spriteMeta:nextFrame()
+	return method["nextFrame"](self.cSprite)
 end
 
 ---

@@ -25,6 +25,12 @@ public:
 	void setPivotPoint(float px, float py);
 	float getPivotPointX() const;
 	float getPivotPointY() const;
+
+	int getFrame() const;
+	int getTotalFrames() const;
+
+	void setFrame(int frame);
+
 protected:
 	struct sprite *_cSpritePointer;
 	float _pivotX, _pivotY;

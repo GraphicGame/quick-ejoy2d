@@ -159,4 +159,28 @@ float Sprite::getPivotPointY() const {
 	return _pivotY;
 }
 
+int Sprite::getFrame() const {
+	int type = _cSpritePointer->type;
+	if (type != TYPE_ANIMATION) {
+		return -1;
+	}
+	return _cSpritePointer->frame;
+}
+
+int Sprite::getTotalFrames() const {
+	int type = _cSpritePointer->type;
+	if (type != TYPE_ANIMATION) {
+		return -1;
+	}
+	return _cSpritePointer->total_frame;
+}
+
+void Sprite::setFrame(int frame) {
+	int type = _cSpritePointer->type;
+	if (type != TYPE_ANIMATION) {
+		return;
+	}
+	_cSpritePointer->frame = frame;
+}
+
 NS_QUICK_DISPLAY_END

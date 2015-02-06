@@ -5,42 +5,34 @@ local SimplePackage = require "quick.lua.SimplePackage"
 local ej = require "ejoy2d"
 local fw = require "ejoy2d.framework"
 
+---
+---注意：这个文件只是在测试引擎的功能，因此代码看起来有点乱糟糟的，会经常的改来改去。
+---
+
 SimplePackage.load {
 	pattern = fw.WorkDir.."quick/build/rainblood/res/?",
 	--pattern = fw.WorkDir.."res/?",
-	"rb_back"
+	"rb_back", "stand"
 }
 
 local stage = Stage.getStage()
-local backgroundLayer = Layer.createLayer()
-local spriteLayer = Layer.createLayer()
-stage:addLayer(backgroundLayer)
-stage:addLayer(spriteLayer)
-local sprite = Sprite.createSprite("rb_back", "background")
-spriteLayer:addSprite(sprite)
+local layerBackground = Layer.createLayer()
+local layerSprites = Layer.createLayer()
+stage:addLayer(layerBackground)
+stage:addLayer(layerSprites)
 
---local sprite = Sprite.createSprite("rb_back", "label")
---spriteLayer:addSprite(sprite)
+local back = Sprite.createSprite("rb_back", "background")
+layerBackground:addSprite(back)
 
-spriteLayer.x = 0;
-spriteLayer.scaleX = 1
-spriteLayer.scale = 1
-spriteLayer.visible = true
+local sprite = Sprite.createSprite("stand", "stand")
+layerSprites:addSprite(sprite)
 
 local sw = sprite.width
 local sh = sprite.height
 print("sprite.width=>" .. sw)
 print("sprite.height=>" .. sh)
 
-sprite.x = sw / 2
-sprite.y = sh / 2
-sprite.scaleX = 1
-sprite.scaleY = 1
-sprite.scale = 1
-sprite.rotation = 0
-sprite.visible = true
-
-sprite:setPivot(sw / 2, sh / 2)
+--sprite:setPivot(sw / 2, sh / 2)
 
 local scaleState = 0
 
@@ -50,7 +42,7 @@ function game.update()
 	--local rot = sprite.rotation
 	--sprite.rotation = rot + 2
 	
-	local s = sprite.scale
+	--[[local s = sprite.scale
 	local sFactor = 0.06
 	if scaleState == 0 then
 		s = s - sFactor
@@ -64,7 +56,11 @@ function game.update()
 		end
 	end
 	
-	sprite.scale = s
+	sprite.scale = s]]
+	--sprite.frame = sprite.frame + 1
+	
+	local f = sprite:nextFrame()
+	--print(f)
 end
 
 function game.drawframe()
