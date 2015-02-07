@@ -45,7 +45,20 @@ static int lremoveEventListener(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
 	const char *eventType = luaL_checkstring(L, 2);
 	const char *funcKey = luaL_checkstring(L, 3);
+	obj->removeEventListener(eventType, funcKey);
+	return 0;
+}
 
+static int lremoveEventListeners(lua_State *L) {
+	DisplayObject *obj = getDisplayObject(L, 1);
+	const char *eventType = luaL_checkstring(L, 2);
+	obj->removeEventListener(eventType);
+	return 0;
+}
+
+static int lremoveAllEventListener(lua_State *L) {
+	DisplayObject *obj = getDisplayObject(L, 1);
+	obj->removeAllEventListener();
 	return 0;
 }
 
@@ -56,6 +69,8 @@ void luaEventMethod(lua_State *L) {
 		{ "hasEventListener", lhasEventListener },
 		{ "getEventListenerCount", lgetEventListenerCount },
 		{ "removeEventListener", lremoveEventListener },
+		{ "removeEventListeners", lremoveEventListeners },
+		{ "removeAllEventListener", lremoveAllEventListener },
 		{ NULL, NULL },
 	};
 
