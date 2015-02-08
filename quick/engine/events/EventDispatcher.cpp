@@ -40,33 +40,6 @@ void Event::setTarget(EventDispatcher *target) {
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-//Function::Function()
-//	:_called(false)
-//{
-//		
-//}
-//
-//Function::Function(const char *funcKey) 
-//: _funcKey(funcKey)
-//{
-//	
-//}
-//
-//Function::~Function() {
-//		
-//}
-//
-//void Function::call() {
-//	std::cout << "Function called...\n";
-//	_called = true;
-//}
-//
-//bool Function::hasCalled() const {
-//	return _called;
-//}
-
-///////////////////////////////////////////////////////////////////////////////////
-
 EventDispatcher::EventDispatcher() {
 		
 }

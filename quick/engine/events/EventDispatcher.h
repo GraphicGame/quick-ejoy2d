@@ -27,46 +27,22 @@ protected:
 	EventDispatcher *_target;
 };
 
-//--Obsolete.
-//class Function {
-//public:
-//	Function();
-//	Function(const char *funcKey);
-//	~Function();
-//public:
-//	void call();
-//	bool hasCalled() const;
-//private:
-//	bool _called;
-//	std::string _funcKey;
-//};
-
 class EventDispatcher {
 public:
 	EventDispatcher();
 	virtual ~EventDispatcher();
 public:
-	//void addEventListener(std::string type, Function *callback);
 	void addEventListener(const char *type, const char *funcKey);
-	//bool dispatchEvent(Event *evt);	//Obsolete...
 	bool dispatchEvent(lua_State *L, const char *type);
-	//bool hasEventListener(std::string type) const;
 	bool hasEventListener(const char *type) const;
 	int  getEventListenerCount(const char *type);
-	//void removeEventListener(std::string type, Function *callback);
 	void removeEventListener(const char *type, const char *funcKey);
-	//void removeEventListener(std::string type);
 	void removeEventListener(const char *type);
 	void removeAllEventListener();
 private:
 	void call(lua_State *L, std::string funcKey, EventDispatcher *sender);
 private:
-	//std::unordered_map<std::string, std::vector<Function*>* > _eventListenersMap;
 	std::unordered_map<std::string, std::vector<std::string>* > _eventListenersMap;
-
-	//typedef std::unordered_map<std::string, std::vector<Function*>* >::const_iterator _citMap;
-	//typedef std::vector<Function*>::iterator _itVec;
-	//typedef std::vector<Function*> _tVec;
 
 	typedef std::unordered_map<std::string, std::vector<std::string>* >::const_iterator _citMap;
 	typedef std::vector<std::string>::iterator _itVec;
