@@ -15,6 +15,7 @@ SimplePackage.load {
 	"rb_back", "stand"
 }
 
+--[[
 ---
 ---test memory release.
 ---
@@ -40,7 +41,7 @@ local function testMemory()
 end
 
 testMemory()
-
+]]
 
 local stage = Stage.getStage()
 local layerBackground = Layer.createLayer()
@@ -74,6 +75,32 @@ print("back.type=>" .. back.additive)
 --sprite.additive = 60
 
 local scaleState = 0
+
+--[[
+---test events.
+local function onClicked1(sender)
+	print("onClicked1...")
+end
+
+local function onClicked2(sender)
+	print("onClicked2...")
+end
+
+sprite:addEventListener("click", onClicked1)
+sprite:addEventListener("click", onClicked2)
+print(sprite:hasEventListener("click"))
+print(sprite:getEventListenerCount("click"))
+sprite:removeAllEventListener()
+sprite:dispatchEvent("click")
+
+local function onStageClicked(sender)
+	print("frameRate=>" .. sender.frameRate)
+end
+stage:addEventListener("click", onStageClicked)
+stage:dispatchEvent("click")
+
+---end test events.
+--]]
 
 local game = {}
 

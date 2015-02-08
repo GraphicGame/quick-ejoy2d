@@ -3,6 +3,9 @@
 
 #include "EventDispatcher.h"
 
+#include <lua.h>
+#include <lauxlib.h>
+
 NS_QUICK_EVENTS_BEGIN
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +93,7 @@ EventDispatcher::addEventListener(const char *type, const char *callback) {
 }
 
 bool
-EventDispatcher::dispatchEvent(const char *t) {
+EventDispatcher::dispatchEvent(lua_State *L, const char *t) {
 	std::string type(t);
 	_citMap it = _eventListenersMap.find(type);
 	if (it == _eventListenersMap.end()) {
@@ -98,7 +101,7 @@ EventDispatcher::dispatchEvent(const char *t) {
 	}
 	_tVec *listeners = _eventListenersMap[type];
 	for (_itVec vit = listeners->begin(); vit != listeners->end(); ++vit) {
-		call(*vit);
+		call(L, *vit, this);
 	}
 	return true;
 }
@@ -149,8 +152,12 @@ void EventDispatcher::removeAllEventListener() {
 	_eventListenersMap.clear();
 }
 
-void EventDispatcher::call(std::string funcKey) {
-	
+void EventDispatcher::call(lua_State *L, std::string funcKey, EventDispatcher *sender) {
+	lua_getglobal(L, "__event_callback_entry_func__");
+	const char *cFuncKey = funcKey.c_str();
+	lua_pushstring(L, cFuncKey);
+	lua_pushlightuserdata(L, sender);
+	lua_pcall(L, 2, 0, 0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

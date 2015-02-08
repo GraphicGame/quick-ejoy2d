@@ -2,9 +2,11 @@ local cLayerPack = require "quick.Layer"
 local method = cLayerPack.method
 local getCommon = cLayerPack.getCommon
 local setCommon = cLayerPack.setCommon
+local eventMethod = cLayerPack.eventMethod
 
 local setmetatable = setmetatable
 
+local Events = require "quick.lua.Events"
 local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 
 local Layer = {}
@@ -34,7 +36,7 @@ function Layer.createLayer()
 	local cLayer = cLayerPack.createLayer()
 	local layer = {cLayer = cLayer}
 	
-	ObjectsKeeper.keepLayer(cLayer, layer)
+	ObjectsKeeper.keep(cLayer, layer)
 
 	return setmetatable(layer, layerMeta)
 end
@@ -71,11 +73,17 @@ function layerMeta:removeSpriteAt(index)
 end
 
 function layerMeta:getSpriteAt(index)
-	return method["getSpriteAt"](self.cLayer, index)
+	local lud = method["getSpriteAt"](self.cLayer, index)
+	if not lud then
+		return nil
+	end
+	return ObjectsKeeper.fetch(lud)
 end
 
 function layerMeta:getSpriteByName(spriteName)
-	return method["getSpriteByName"](self.cLayer, spriteName)
+	local lud = method["getSpriteByName"](self.cLayer, spriteName)
+	if not lud then return nil end
+	return ObjectsKeeper.fetch(lud)
 end
 
 function layerMeta:getSpriteIndex(sprite)
@@ -95,10 +103,47 @@ function layerMeta:swapSpritesAt(spriteIndex1, spriteIndex2)
 end
 
 ---
+---events
+---
+function layerMeta:addEventListener(strType, func)
+	if not func then
+		error("[error]addEventListener func == nil...")
+		return
+	end
+	local funcKey = Events.wrapFunc(func)
+	eventMethod["addEventListener"](self.cLayer, strType, funcKey)
+end
+
+function layerMeta:dispatchEvent(strType)
+	eventMethod["dispatchEvent"](self.cLayer, strType)
+end
+
+function layerMeta:hasEventListener(strType)
+	return eventMethod["hasEventListener"](self.cLayer, strType)
+end
+
+function layerMeta:getEventListenerCount(strType)
+	return eventMethod["getEventListenerCount"](self.cLayer, strType)
+end
+
+function layerMeta:removeEventListener(strType, func)
+	local funcKey = Events.wrapFunc(func)
+	eventMethod["removeEventListener"](self.cLayer, strType, funcKey)
+end
+
+function layerMeta:removeEventListeners(strType)
+	eventMethod["removeEventListeners"](self.cLayer, strType)
+end
+
+function layerMeta:removeAllEventListener()
+	eventMethod["removeAllEventListener"](self.cLayer)
+end
+
+---
 ---dispose
 ---
 function layerMeta:dispose()
-	ObjectsKeeper.disposeLayer(self.cLayer)
+	ObjectsKeeper.dispose(self.cLayer)
 	method["dispose"](self.cLayer)
 end
 

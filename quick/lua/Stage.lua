@@ -2,7 +2,8 @@ local cStagePack = require "quick.Stage"
 local method = cStagePack.method
 local get = cStagePack.get
 local set = cStagePack.set
-
+local eventMethod = cStagePack.eventMethod
+local Events = require "quick.lua.Events"
 local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 
 local setmetatable = setmetatable
@@ -36,6 +37,9 @@ function Stage.getStage()
 	
 	stage.init = true
 	stage.cStage = cStagePack.getStage()
+	
+	ObjectsKeeper.keep(stage.cStage, stage)
+	
 	return setmetatable(stage, stageMeta)
 end
 
@@ -75,13 +79,13 @@ function stage:getLayerAt(layerIndex)
 	if lud == nil then
 		return nil
 	end
-	return ObjectsKeeper.fetchLayer(lud)
+	return ObjectsKeeper.fetch(lud)
 end
 
 function stage:getLayerByName(layerName)
 	local lud = method["getLayerByName"](self.cStage, layerName)
 	if lud == nil then return nil end
-	return ObjectsKeeper.fetchLayer(lud)
+	return ObjectsKeeper.fetch(lud)
 end
 
 function stage:getLayerIndex(layer)
@@ -106,6 +110,43 @@ end
 
 function stage:draw()
 	method["draw"](self.cStage)
+end
+
+---
+---events
+---
+function stage:addEventListener(strType, func)
+	if not func then
+		error("[error]addEventListener func == nil...")
+		return
+	end
+	local funcKey = Events.wrapFunc(func)
+	eventMethod["addEventListener"](self.cStage, strType, funcKey)
+end
+
+function stage:dispatchEvent(strType)
+	eventMethod["dispatchEvent"](self.cStage, strType)
+end
+
+function stage:hasEventListener(strType)
+	return eventMethod["hasEventListener"](self.cStage, strType)
+end
+
+function stage:getEventListenerCount(strType)
+	return eventMethod["getEventListenerCount"](self.cStage, strType)
+end
+
+function stage:removeEventListener(strType, func)
+	local funcKey = Events.wrapFunc(func)
+	eventMethod["removeEventListener"](self.cStage, strType, funcKey)
+end
+
+function stage:removeEventListeners(strType)
+	eventMethod["removeEventListeners"](self.cStage, strType)
+end
+
+function stage:removeAllEventListener()
+	eventMethod["removeAllEventListener"](self.cStage)
 end
 
 return Stage

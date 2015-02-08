@@ -1,33 +1,18 @@
 
 local ObjectsKeeper = {}
 
-local layers = {}
-local sprites = {}
+local objs = {}
 
-function ObjectsKeeper.keepLayer(lud, layer)
-	layers[lud] = layer
+function ObjectsKeeper.keep(lud, obj)
+	objs[lud] = obj
 end
 
-function ObjectsKeeper.fetchLayer(lud)
-	return layers[lud]
+function ObjectsKeeper.fetch(lud)
+	return objs[lud]
 end
 
-function ObjectsKeeper.disposeLayer(lud)
-	--print("layers[lud]=>" .. type(layers[lud]))
-	layers[lud] = nil
-	--print("layers[lud]=>" .. type(layers[lud]))
-end
-
-function ObjectsKeeper.keepSprite(lud, sprite)
-	sprites[lud] = sprite
-end
-
-function ObjectsKeeper.fetchSprite(lud)
-	return sprites[lud]
-end
-
-function ObjectsKeeper.disposeSprite(lud)
-	sprites[lud] = nil
+function ObjectsKeeper.dispose(lud)
+	objs[lud] = nil
 end
 
 return ObjectsKeeper

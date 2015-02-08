@@ -9,6 +9,7 @@
 
 #include "LuaUtils.h"
 #include "LuaCommon.h"
+#include "LuaEvent.h"
 
 using namespace quick::display;
 
@@ -178,6 +179,9 @@ int luaLayer(lua_State *L) {
 
 	luaCommonSetter(L);
 	lua_setfield(L, -2, "setCommon");
+
+	luaEventMethod(L);
+	lua_setfield(L, -2, "eventMethod");
 
 	return 1;
 }

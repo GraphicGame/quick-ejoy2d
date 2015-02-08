@@ -10,6 +10,7 @@
 #include "../engine/display/GlobalDisplayObjects.h"
 
 #include "LuaUtils.h"
+#include "LuaEvent.h"
 
 using namespace quick::display;
 
@@ -240,6 +241,9 @@ int luaStage(lua_State *L) {
 	lua_setfield(L, -2, "get");
 	lsetter(L);
 	lua_setfield(L, -2, "set");
+
+	luaEventMethod(L);
+	lua_setfield(L, -2, "eventMethod");
 
 	return 1;
 }

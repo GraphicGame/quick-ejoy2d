@@ -9,6 +9,7 @@ using namespace quick::display;
 
 #include "LuaUtils.h"
 #include "LuaCommon.h"
+#include "LuaEvent.h"
 
 #include "spritepack.h"
 #include "sprite.h"
@@ -387,6 +388,9 @@ int luaSprite(lua_State *L) {
 
 	luaCommonSetter(L);
 	lua_setfield(L, -2, "setCommon");
+
+	luaEventMethod(L);
+	lua_setfield(L, -2, "eventMethod");
 
 	return 1;
 }

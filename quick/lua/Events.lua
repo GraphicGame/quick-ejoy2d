@@ -1,22 +1,31 @@
 local UIDGenerator = require "quick.lua.UIDGenerator"
+local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 
 local Events = {}
 local funcs = {}
-local funcsMeta = {}
+local funcsInverse = {}
 
 function _G.__event_callback_entry_func__(funcKey, sender)
+	print("func:" .. funcKey .. " called...")
 	local func = funcs[funcKey]
 	if not func then
-		error("Couldn't find this funcKey=>" .. funcKey)
+		print("Couldn't find this funcKey=>" .. funcKey)
 		return
 	end
-	func(sender)
+	
+	local senderObj = ObjectsKeeper.fetch(sender)
+	func(senderObj)
 end
 
 function Events.wrapFunc(func)
+	if funcsInverse[func] then
+		return funcsInverse[func]
+	end
+	
 	local uid = UIDGenerator.generateUID()
 	local funcKey = "func_" .. uid
 	funcs[funcKey] = func
+	funcsInverse[func] = funcKey
 	return funcKey
 end
 

@@ -4,10 +4,12 @@ local get = cSpritePack.get
 local set = cSpritePack.set
 local getCommon = cSpritePack.getCommon
 local setCommon = cSpritePack.setCommon
+local eventMethod = cSpritePack.eventMethod
 
 local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 local SpritePack = require "quick.lua.SpritePack"
 local SimplePackage = require "quick.lua.SimplePackage"
+local Events = require "quick.lua.Events"
 
 local setmetatable = setmetatable
 
@@ -17,6 +19,9 @@ local spriteMeta = {}
 function spriteMeta.__index(tbl, key)
 	if spriteMeta[key] then
 		return spriteMeta[key]
+	end
+	if eventMethod[key] then
+		return eventMethod[key]
 	end
 	local getter = get[key]
 	if getter then
@@ -48,7 +53,7 @@ function Sprite.createSprite(packageName, spriteName)
 	local cSprite = cSpritePack.createSprite(pack, id)
 	local sprite = { cSprite = cSprite }
 	
-	ObjectsKeeper.keepSprite(cSprite, sprite)
+	ObjectsKeeper.keep(cSprite, sprite)
 	
 	return setmetatable(sprite, spriteMeta)
 end
@@ -87,11 +92,15 @@ function spriteMeta:removeChildAt(index)
 end
 
 function spriteMeta:getChildAt(index)
-	return method["getChildAt"](self.cSprite, index)
+	local lud = method["getChildAt"](self.cSprite, index)
+	if not lud then return nil end
+	return ObjectsKeeper.fetch(lud)
 end
 
 function spriteMeta:getChildByName(spriteName)
-	return method["getChildByName"](self.cSprite, spriteName)
+	local lud = method["getChildByName"](self.cSprite, spriteName)
+	if not lud then return nil end
+	return ObjectsKeeper.fetch(lud)
 end
 
 function spriteMeta:getChildIndex(sprite)
@@ -123,10 +132,47 @@ function spriteMeta:nextFrame()
 end
 
 ---
+---events
+---
+function spriteMeta:addEventListener(strType, func)
+	if not func then
+		error("[error]addEventListener func == nil...")
+		return
+	end
+	local funcKey = Events.wrapFunc(func)
+	eventMethod["addEventListener"](self.cSprite, strType, funcKey)
+end
+
+function spriteMeta:dispatchEvent(strType)
+	eventMethod["dispatchEvent"](self.cSprite, strType)
+end
+
+function spriteMeta:hasEventListener(strType)
+	return eventMethod["hasEventListener"](self.cSprite, strType)
+end
+
+function spriteMeta:getEventListenerCount(strType)
+	return eventMethod["getEventListenerCount"](self.cSprite, strType)
+end
+
+function spriteMeta:removeEventListener(strType, func)
+	local funcKey = Events.wrapFunc(func)
+	eventMethod["removeEventListener"](self.cSprite, strType, funcKey)
+end
+
+function spriteMeta:removeEventListeners(strType)
+	eventMethod["removeEventListeners"](self.cSprite, strType)
+end
+
+function spriteMeta:removeAllEventListener()
+	eventMethod["removeAllEventListener"](self.cSprite)
+end
+
+---
 ---dispose
 ---
 function spriteMeta:dispose()
-	ObjectsKeeper.disposeLayer(self.cSprite)
+	ObjectsKeeper.dispose(self.cSprite)
 	method["dispose"](self.cSprite)
 end
 

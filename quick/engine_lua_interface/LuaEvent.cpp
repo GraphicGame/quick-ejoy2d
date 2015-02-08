@@ -21,7 +21,7 @@ static int laddEventListener(lua_State *L) {
 static int ldispatchEvent(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);
 	const char *eventType = luaL_checkstring(L, 2);
-	obj->dispatchEvent(eventType);
+	obj->dispatchEvent(L, eventType);
 	return 0;
 }
 

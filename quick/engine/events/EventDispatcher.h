@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <lua.h>
 
 #include "../NameSpace.h"
 
@@ -48,7 +49,7 @@ public:
 	//void addEventListener(std::string type, Function *callback);
 	void addEventListener(const char *type, const char *funcKey);
 	//bool dispatchEvent(Event *evt);	//Obsolete...
-	bool dispatchEvent(const char *type);
+	bool dispatchEvent(lua_State *L, const char *type);
 	//bool hasEventListener(std::string type) const;
 	bool hasEventListener(const char *type) const;
 	int  getEventListenerCount(const char *type);
@@ -58,7 +59,7 @@ public:
 	void removeEventListener(const char *type);
 	void removeAllEventListener();
 private:
-	void call(std::string funcKey);
+	void call(lua_State *L, std::string funcKey, EventDispatcher *sender);
 private:
 	//std::unordered_map<std::string, std::vector<Function*>* > _eventListenersMap;
 	std::unordered_map<std::string, std::vector<std::string>* > _eventListenersMap;
