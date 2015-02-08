@@ -3,8 +3,7 @@
 
 #include "EventDispatcher.h"
 
-#include <lua.h>
-#include <lauxlib.h>
+#include "LuaCpp.h"
 
 NS_QUICK_EVENTS_BEGIN
 
@@ -22,7 +21,7 @@ Event::Event(std::string type)
 
 Event::~Event() {
 	_type.clear();
-	_type.swap(std::string());
+	//_type.swap(std::string());
 	delete _target;
 }
 

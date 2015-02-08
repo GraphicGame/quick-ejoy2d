@@ -11,8 +11,8 @@
 
 NS_QUICK_DISPLAY_BEGIN
 
-#define SRT getWorldX() * 16, getWorldY() * 16,	 \
-			getWorldScaleX() * 1024, getWorldScaleY() * 1024, \
+#define SRT getWorldX() * 16.0f, getWorldY() * 16.0f,	 \
+			getWorldScaleX() * 1024.0f, getWorldScaleY() * 1024.0f, \
 			getWorldRotation()
 
 Sprite::Sprite() 

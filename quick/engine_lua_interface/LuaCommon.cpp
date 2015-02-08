@@ -1,13 +1,12 @@
 #include "LuaCommon.h"
 
 #include <stdlib.h>
-#include <lua.h>
-#include <lauxlib.h>
 
 #include "../engine/display/DisplayObject.h"
 using namespace quick::display;
 
 #include "LuaUtils.h"
+#include "LuaCpp.h"
 
 static int lgetX(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);

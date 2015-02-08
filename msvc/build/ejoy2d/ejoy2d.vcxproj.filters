@@ -54,6 +54,9 @@
     <Filter Include="quick\engine\utils">
       <UniqueIdentifier>{11e8eca8-4dd6-4908-98f9-4ef236af68de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="quick\incs">
+      <UniqueIdentifier>{3956c495-4211-46c7-ab2f-a3f81084bd2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\mingw\window.c">
@@ -66,9 +69,6 @@
       <Filter>mingw</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\dfont.c">
-      <Filter>lib\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib\ejoy2dgame.c">
       <Filter>lib\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\fault.c">
@@ -187,6 +187,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\quick\engine_lua_interface\LuaEvent.cpp">
       <Filter>quick\engine_lua_interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\ejoy2dgame.c">
+      <Filter>lib\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -414,6 +417,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaEvent.h">
       <Filter>quick\engine_lua_interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\quick\incs\LuaCpp.h">
+      <Filter>quick\incs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

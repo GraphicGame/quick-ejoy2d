@@ -1,15 +1,13 @@
 
 #include "LuaLayer.h"
 
-#include <lua.h>
-#include <lauxlib.h>
-
 #include "../engine/display/Layer.h"
 #include "../engine/display/GlobalDisplayObjects.h"
 
 #include "LuaUtils.h"
 #include "LuaCommon.h"
 #include "LuaEvent.h"
+#include "LuaCpp.h"
 
 using namespace quick::display;
 

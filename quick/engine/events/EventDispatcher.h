@@ -4,7 +4,8 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include <lua.h>
+
+#include "LuaCpp.h"
 
 #include "../NameSpace.h"
 

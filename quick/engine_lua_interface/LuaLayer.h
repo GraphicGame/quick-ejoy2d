@@ -1,8 +1,14 @@
 #ifndef __LUALAYER
 #define __LUALAYER
 
-#include <lua.h>
+#include "LuaCpp.h"
 
-int luaLayer(lua_State *L);
+#ifdef __cplusplus
+extern "C" {
+#endif
+	int luaLayer(lua_State *L);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

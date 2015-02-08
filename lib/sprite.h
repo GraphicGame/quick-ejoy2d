@@ -8,6 +8,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct material;
 
 struct anchor_data {
@@ -79,5 +83,9 @@ bool sprite_child_visible(struct sprite *s, const char * childname);
 int sprite_material_size(struct sprite *s);
 
 int ejoy2d_sprite(lua_State *L);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

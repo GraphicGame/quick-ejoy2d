@@ -13,15 +13,19 @@
 #define PROGRAM_TEXT 2
 #define PROGRAM_TEXT_EDGE 3
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct material;
 
 void shader_init();
 void shader_load(int prog, const char *fs, const char *vs, int texture, const char ** texture_uniform_name);
 void shader_unload();
-void shader_blend(int m1,int m2);
+void shader_blend(int m1, int m2);
 void shader_defaultblend();
 void shader_texture(int id, int channel);
-void shader_draw(const struct vertex_pack vb[4],uint32_t color,uint32_t additive);
+void shader_draw(const struct vertex_pack vb[4], uint32_t color, uint32_t additive);
 void shader_drawpolygon(int n, const struct vertex_pack *vb, uint32_t color, uint32_t additive);
 void shader_program(int n, struct material *);
 void shader_flush();
@@ -42,5 +46,9 @@ void shader_reset();
 void shader_mask(float x, float y);
 void reset_drawcall_count();
 int drawcall_count();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

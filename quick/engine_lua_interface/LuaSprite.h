@@ -1,8 +1,13 @@
 #ifndef __LUASPRITE
 #define __LUASPRITE
 
-#include <lua.h>
+#include "LuaCpp.h"
 
-int luaSprite(lua_State *L);
-
+#ifdef __cplusplus
+extern "C" {
+#endif
+	int luaSprite(lua_State *L);
+#ifdef __cplusplus
+}
+#endif
 #endif

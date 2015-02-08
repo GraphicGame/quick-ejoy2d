@@ -1,8 +1,6 @@
 #include "LuaSprite.h"
 
 #include <stdlib.h>
-#include <lua.h>
-#include <lauxlib.h>
 
 #include "../engine/display/QSprite.h"
 using namespace quick::display;
@@ -10,6 +8,7 @@ using namespace quick::display;
 #include "LuaUtils.h"
 #include "LuaCommon.h"
 #include "LuaEvent.h"
+#include "LuaCpp.h"
 
 #include "spritepack.h"
 #include "sprite.h"

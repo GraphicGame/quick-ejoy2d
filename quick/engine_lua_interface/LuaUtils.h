@@ -6,7 +6,7 @@
 
 using namespace quick::display;
 
-#include <lua.h>
+#include "LuaCpp.h"
 
 #define getDisplayObject(L, index) (DisplayObject*)lua_touserdata(L, index)
 

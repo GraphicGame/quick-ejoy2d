@@ -11,6 +11,10 @@
 #define RL_COLOR 1
 #define RL_LINEFEED 2
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct label_field {
 	struct {
 		uint32_t type:8;
@@ -56,5 +60,8 @@ void font_glyph(const char * str, int unicode, void * buffer, struct font_contex
 void font_create(int font_size, struct font_context *ctx);
 void font_release(struct font_context *ctx);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -123,6 +123,7 @@
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaSprite.h" />
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaStage.h" />
     <ClInclude Include="..\..\..\quick\engine_lua_interface\LuaUtils.h" />
+    <ClInclude Include="..\..\..\quick\incs\LuaCpp.h" />
     <ClInclude Include="..\..\..\quick\ljpeg.h" />
     <ClInclude Include="..\..\..\quick\lpng.h" />
     <ClInclude Include="..\..\..\quick\lutils.h" />
@@ -188,7 +189,7 @@
       <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;EJOY2D_LUA=$(EJOY2D_LUA);EJOY2D_OS=WINDOWS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4996;4244;4018</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(EJOY2D_GLEW);$(EJOY2D)\include\;$(EJOY2D_ROOT)\lib\;$(EJOY2D_ROOT)\lib\render;$(EJOY2D_ROOT)\quick\3rd\libpng;$(EJOY2D_ROOT)\quick\3rd\zlib;$(EJOY2D_ROOT)\quick\3rd\libjpeg;$(EJOY2D_ROOT)\quick;$(EJOY2D_ROOT)\quick\ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EJOY2D_GLEW);$(EJOY2D)\include\;$(EJOY2D_ROOT)\lib\;$(EJOY2D_ROOT)\lib\render;$(EJOY2D_ROOT)\quick\3rd\libpng;$(EJOY2D_ROOT)\quick\3rd\zlib;$(EJOY2D_ROOT)\quick\3rd\libjpeg;$(EJOY2D_ROOT)\quick;$(EJOY2D_ROOT)\quick\ui;$(EJOY2D_ROOT)\quick\incs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

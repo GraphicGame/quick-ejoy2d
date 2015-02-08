@@ -1,14 +1,13 @@
 #include "LuaEvent.h"
 
 #include <stdlib.h>
-#include <lua.h>
-#include <lauxlib.h>
 
 #include "../engine/display/DisplayObject.h"
 using namespace quick::display;
 using namespace quick::events;
 
 #include "LuaUtils.h"
+#include "LuaCpp.h"
 
 static int laddEventListener(lua_State *L) {
 	DisplayObject *obj = getDisplayObject(L, 1);

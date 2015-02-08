@@ -1,8 +1,14 @@
 #ifndef __LUASTAGE
 #define __LUASTAGE
 
-#include <lua.h>
+#include "LuaCpp.h"
 
-int luaStage(lua_State *L);
+#ifdef __cplusplus
+extern "C" {
+#endif
+	int luaStage(lua_State *L);
+#ifdef __cplusplus
+}
+#endif
 
 #endif

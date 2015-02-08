@@ -1,7 +1,6 @@
 #include "LuaStage.h"
 
-#include <lua.h>
-#include <lauxlib.h>
+#include "LuaCpp.h"
 
 #include <assert.h>
 

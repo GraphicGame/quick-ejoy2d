@@ -1,7 +1,7 @@
 #ifndef __LUAEVENT
 #define __LUAEVENT
 
-#include <lua.h>
+#include "LuaCpp.h"
 
 void luaEventMethod(lua_State *L);
 
