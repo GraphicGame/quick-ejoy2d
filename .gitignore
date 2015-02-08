@@ -19,3 +19,6 @@ msvc/lib/Debug/lua52.pdb
 msvc/build/Debug/quick_ejoy2d_UnitTest.lib
 
 quick/quick_ejoy2d_UnitTest/Debug/
+
+quick/build/android/obj/
+quick/build/android/bin/

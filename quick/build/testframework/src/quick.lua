@@ -10,8 +10,8 @@ local fw = require "ejoy2d.framework"
 ---
 
 SimplePackage.load {
-	pattern = fw.WorkDir.."quick/build/rainblood/res/?",
-	--pattern = fw.WorkDir.."res/?",
+	--pattern = fw.WorkDir.."quick/build/rainblood/res/?",
+	pattern = fw.WorkDir.."res/?",
 	"rb_back", "stand"
 }
 

@@ -23,7 +23,7 @@ DisplayObject::~DisplayObject() {
 	GlobalDisplayObjects::remove(this);
 	delete _parent;
 	_name.clear();
-	_name.swap(std::string());
+	//_name.swap(std::string());
 }
 
 const std::string

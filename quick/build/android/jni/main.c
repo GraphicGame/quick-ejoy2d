@@ -24,9 +24,11 @@ static int inited;
 JNIEXPORT void JNICALL
 Java_com_engine_gl2jni_GL2JNILib_oncreate(JNIEnv *env, jobject obj, jstring path) {
 	const char *p = (*env)->GetStringUTFChars(env, path, 0);
+	//const char *p = env->GetStringUTFChars(path, 0);
 	memset(data_path, 0, sizeof(data_path));
 	strcpy(data_path, p);
 	(*env)->ReleaseStringUTFChars(env, path, p);
+	//env->ReleaseStringUTFChars(path, p);
 	LOGI("APP_DATA_PATH %s", data_path);
 
 	font_module_init();

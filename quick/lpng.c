@@ -67,13 +67,14 @@ _loadpng(const char* filename, struct png *png, png_byte *out_pixel_depth, png_b
 
 	png_bytep* row_pointers = png_get_rows(png_ptr, info_ptr);
 
+	int i, j;
 	switch (color_type) {
 	case PNG_COLOR_TYPE_RGB_ALPHA:
 		png->type = PNG_RGBA;
 		png->channel = 4;
 		png->buffer = (uint8_t*)malloc(w*h * 4);
-		for (int i = 0; i < h; ++i) {
-			for (int j = 0; j < w; ++j) {
+		for (i = 0; i < h; ++i) {
+			for (j = 0; j < w; ++j) {
 				int k = (i*w + j) * 4;
 				uint8_t alpha = row_pointers[i][j * 4 + 3];
 				png->buffer[k + 0] = row_pointers[i][j * 4 + 0] * alpha / 255; // red
@@ -88,8 +89,8 @@ _loadpng(const char* filename, struct png *png, png_byte *out_pixel_depth, png_b
 		png->type = PNG_RGB;
 		png->channel = 3;
 		png->buffer = (uint8_t*)malloc(w*h * 3);
-		for (int i = 0; i < h; ++i) {
-			for (int j = 0; j < w; ++j) {
+		for (i = 0; i < h; ++i) {
+			for (j = 0; j < w; ++j) {
 				int k = (i*w + j) * 3;
 				png->buffer[k + 0] = row_pointers[i][j * 3 + 0]; // red
 				png->buffer[k + 1] = row_pointers[i][j * 3 + 1]; // green

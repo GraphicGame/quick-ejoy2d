@@ -60,7 +60,7 @@ public:
 	bool getVisible() const;
 	void setVisible(bool visible);
 
-	int DisplayObject::getUID() const {
+	inline int getUID() const {
 		return _uid;
 	}
 

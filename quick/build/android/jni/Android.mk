@@ -43,7 +43,22 @@ LOCAL_SRC_FILES += \
                   ../../../../quick/3rd/zlib/inftrees.c \
                   ../../../../quick/3rd/zlib/trees.c \
                   ../../../../quick/3rd/zlib/uncompr.c \
-                  ../../../../quick/3rd/zlib/zutil.c
+                  ../../../../quick/3rd/zlib/zutil.c \
+                  ../../../../quick/engine/display/DisplayObject.cpp \
+                  ../../../../quick/engine/display/DisplayObjectContainer.cpp \
+                  ../../../../quick/engine/display/GlobalDisplayObjects.cpp \
+                  ../../../../quick/engine/display/Layer.cpp \
+                  ../../../../quick/engine/display/QSprite.cpp \
+                  ../../../../quick/engine/display/Stage.cpp \
+                  ../../../../quick/engine/events/EventDispatcher.cpp \
+                  ../../../../quick/engine/events/TouchEvent.cpp \
+                  ../../../../quick/engine/geom/Point.cpp \
+                  ../../../../quick/engine/geom/Rectangle.cpp \
+                  ../../../../quick/engine_lua_interface/LuaCommon.cpp \
+                  ../../../../quick/engine_lua_interface/LuaEvent.cpp \
+                  ../../../../quick/engine_lua_interface/LuaLayer.cpp \
+                  ../../../../quick/engine_lua_interface/LuaSprite.cpp \
+                  ../../../../quick/engine_lua_interface/LuaStage.cpp
 
 
 LOCAL_SRC_FILES += \
@@ -89,9 +104,19 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH) \
                     $(LOCAL_PATH)/../../../../quick/3rd/libpng \
                     $(LOCAL_PATH)/../../../../quick/3rd/libjpeg \
                     $(LOCAL_PATH)/../../../../quick/3rd/zlib \
-                    $(LOCAL_PATH)/../../../../quick
+                    $(LOCAL_PATH)/../../../../quick \
+                    $(LOCAL_PATH)/../../../../quick/engine \
+                    $(LOCAL_PATH)/../../../../quick/engine/display \
+                    $(LOCAL_PATH)/../../../../quick/engine/events \
+                    $(LOCAL_PATH)/../../../../quick/engine/geom \
+                    $(LOCAL_PATH)/../../../../quick/engine/utils \
+                    $(LOCAL_PATH)/../../../../quick/engine_lua_interface \
+                    $(LOCAL_PATH)/../../../../quick/incs
 
-LOCAL_CFLAGS += -std=c99
+LOCAL_CFLAGS += -lstdc++
+LOCAL_CONLYFLAGS := -std=c99 -lstdc++
+LOCAL_CPPFLAGS += -std=c++11 -lstdc++ -frtti
+#LOCAL_CFLAGS += -x c++
 LOCAL_LDLIBS := -llog -lGLESv2
 LOCAL_LDFLAGS := $(LOCAL_PATH)/libpng.a $(LOCAL_PATH)/libjpeg.a
 

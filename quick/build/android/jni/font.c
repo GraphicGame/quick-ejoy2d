@@ -32,7 +32,7 @@ font_module_init() {
 	size = ftell(f);
 	fseek(f, 0, SEEK_SET);
 
-	buffer = malloc(size);
+	buffer = (uint8_t*)malloc(size);
 	fread(buffer, size, 1, f);
 	fclose(f);
 
@@ -74,13 +74,13 @@ font_glyph(const char *str, int unicode, void *buffer, struct font_context *ctx)
 	int x0, y0, x1, y1;
 	stbtt_GetCodepointBitmapBox(&info, unicode, s, s, &x0, &y0, &x1, &y1);
 
-	uint8_t *p = buffer + (font->ascent + y0) * ctx->w + x0;
+	uint8_t *p = (uint8_t*)buffer + (font->ascent + y0) * ctx->w + x0;
 	stbtt_MakeCodepointBitmap(&info, p, x1 - x0, y1 - y0, ctx->w, s, s, unicode);
 }
 
 void
 font_create(int font_size, struct font_context *ctx) {
-	struct font *font = malloc(sizeof(struct font));
+	struct font *font = (struct font*)malloc(sizeof(struct font));
 	font->scale = stbtt_ScaleForPixelHeight(&info, font_size * 2);
 	stbtt_GetFontVMetrics(&info, &(font->ascent), &(font->descent), NULL);
 	font->ascent *= font->scale;
