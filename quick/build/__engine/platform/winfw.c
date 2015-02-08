@@ -69,7 +69,8 @@ ejoy2d_win_init(int orix, int oriy, int width, int height, float scale, const ch
 	}
 
 	lua_pushstring(L, folder);
-	lua_pushstring(L, "src/test_rain_blood.lua");
+	//lua_pushstring(L, "src/test_rain_blood.lua");
+	lua_pushstring(L, "src/quick.lua");
 	lua_pushnumber(L, width);
 	lua_pushnumber(L, height);
 	lua_pushnumber(L, scale);
