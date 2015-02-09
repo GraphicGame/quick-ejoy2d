@@ -5,7 +5,7 @@ local ppm = require "ejoy2d.ppm"
 local pack = require "ejoy2d.spritepack"
 local sprite = require "ejoy2d.sprite"
 
-local config = require "ejoy2d.quick.quick_ejoy2d_config";
+--local config = require "ejoy2d.quick.quick_ejoy2d_config";
 local png = require "ejoy2d.png"
 local jpg = require "ejoy2d.jpg"
 
@@ -23,7 +23,7 @@ local function require_tex(filename)
 	assert(tex < MAX_TEXTURE)
 	table.insert(textures, filename)
 
-	if config.use_ppm then
+	--[[if config.use_ppm then
 		ppm.texture(tex, filename)
 	elseif config.use_png then
 		png.texture(tex, filename)
@@ -31,8 +31,10 @@ local function require_tex(filename)
 		jpg.texture(tex, filename)
 	else
 		print('fuck off...')		
-	end
+	end]]
 
+	ppm.texture(tex, filename)
+	
 	return tex
 end
 
