@@ -43,6 +43,9 @@ public:
 	uint32_t getAdditive() const;
 	void setAdditive(uint32_t additive);
 
+	const char *getActionName() const;
+	int setActionName(const char *name);
+
 protected:
 	struct sprite *_cSpritePointer;
 	float _pivotX, _pivotY;

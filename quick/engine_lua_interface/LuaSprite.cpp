@@ -309,6 +309,13 @@ static int lgetAdditive(lua_State *L) {
 	return 1;
 }
 
+static int lgetActionName(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	const char *name = sp->getActionName();
+	lua_pushstring(L, name);
+	return 1;
+}
+
 static void lgetter(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "numChildren", lnumChildren },
@@ -322,6 +329,7 @@ static void lgetter(lua_State *L) {
 		{ "color", lgetColor },
 		{ "alpha", lgetAlpha },
 		{ "additive", lgetAdditive },
+		{ "actionName", lgetActionName },
 		{ NULL, NULL },
 	};
 	luaL_newlib(L, l);
@@ -355,12 +363,21 @@ static int lsetAdditive(lua_State *L) {
 	return 0;
 }
 
+static int lsetActionName(lua_State *L) {
+	Sprite *sp = getSprite(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	int totalFrames = sp->setActionName(name);
+	lua_pushboolean(L, totalFrames != 0);
+	return 1;
+}
+
 static void lsetter(lua_State *L) {
 	luaL_Reg l[] = {
 		{ "frame", lsetFrame },
 		{ "color", lsetColor },
 		{ "alpha", lsetAlpha },
 		{ "additive", lsetAdditive },
+		{ "actionName", lsetActionName },
 		{ NULL, NULL },
 	};
 	luaL_newlib(L, l);

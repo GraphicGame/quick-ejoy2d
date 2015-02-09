@@ -216,4 +216,37 @@ void Sprite::setAdditive(uint32_t additive) {
 	_cSpritePointer->t.additive = additive;
 }
 
+const char * Sprite::getActionName() const {
+	if (_cSpritePointer->type != TYPE_ANIMATION) {
+		return nullptr;
+	}
+	int currStartFrame = 0;
+	int currFrameCount = 0;
+	struct pack_animation *anim = _cSpritePointer->s.ani;
+	for (int i = 0; i < anim->action_number; i++) {
+		int startFrame = anim->action[i].start_frame;
+		int frameCount = anim->action[i].number;
+		if (startFrame == currStartFrame && frameCount == currFrameCount) {
+			return anim->action[i].name;
+		}
+	}
+	return nullptr;
+}
+
+int Sprite::setActionName(const char *name) {
+	if (_cSpritePointer->type != TYPE_ANIMATION) {
+		return 0;
+	}
+	struct pack_animation *anim = _cSpritePointer->s.ani;
+	for (int i = 0; i < anim->action_number; i++) {
+		const char *n = anim->action[i].name;
+		if (strcmp(n, name) == 0) {
+			_cSpritePointer->start_frame = anim->action[i].start_frame;
+			_cSpritePointer->total_frame = anim->action[i].number;
+			_cSpritePointer->frame = 0;
+			return _cSpritePointer->total_frame;
+		}
+	}
+}
+
 NS_QUICK_DISPLAY_END
