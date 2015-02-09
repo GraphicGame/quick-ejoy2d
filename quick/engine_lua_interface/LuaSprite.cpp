@@ -367,8 +367,8 @@ static int lsetActionName(lua_State *L) {
 	Sprite *sp = getSprite(L, 1);
 	const char *name = luaL_checkstring(L, 2);
 	int totalFrames = sp->setActionName(name);
-	lua_pushboolean(L, totalFrames != 0);
-	return 1;
+	//lua_pushboolean(L, totalFrames != 0);
+	return 0;
 }
 
 static void lsetter(lua_State *L) {

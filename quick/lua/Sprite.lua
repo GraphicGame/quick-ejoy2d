@@ -65,11 +65,13 @@ end
 ---getter
 --- .x .y .scaleX .scaleY .scale .rotation .visible .width .height .pivotX .pivotY
 --- .frame .totalFrames .type .color .alpha .additive
+--- .actionName
 
 ---
 ---setter
 --- .x .y .scaleX .scaleY .scale .rotation .visible
 --- .frame .color .alpha .additive
+--- .actionName
 
 ---
 ---methods

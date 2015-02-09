@@ -247,6 +247,7 @@ int Sprite::setActionName(const char *name) {
 			return _cSpritePointer->total_frame;
 		}
 	}
+	return 0;
 }
 
 NS_QUICK_DISPLAY_END
