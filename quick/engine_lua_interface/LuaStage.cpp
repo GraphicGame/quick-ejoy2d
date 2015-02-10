@@ -10,6 +10,7 @@
 
 #include "LuaUtils.h"
 #include "LuaEvent.h"
+#include "LuaCommon.h"
 
 using namespace quick::display;
 
@@ -243,6 +244,12 @@ int luaStage(lua_State *L) {
 
 	luaEventMethod(L);
 	lua_setfield(L, -2, "eventMethod");
+
+	luaCommonGetter(L);
+	lua_setfield(L, -2, "getCommon");
+
+	luaCommonSetter(L);
+	lua_setfield(L, -2, "setCommon");
 
 	return 1;
 }

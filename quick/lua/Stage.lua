@@ -3,6 +3,8 @@ local method = cStagePack.method
 local get = cStagePack.get
 local set = cStagePack.set
 local eventMethod = cStagePack.eventMethod
+local getCommon = cStagePack.getCommon
+local setCommon = cStagePack.setCommon
 local Events = require "quick.lua.Events"
 local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 
@@ -18,6 +20,10 @@ function stageMeta.__index(tbl, key)
 	if getter then
 		return getter(tbl.cStage)
 	end
+	local commonGetter = getCommon[key]
+	if commonGetter then
+		return commonGetter(tbl.cStage)
+	end
 	error("[Stage] Unsupport get method : " .. key)
 end
 
@@ -25,6 +31,11 @@ function stageMeta.__newindex(tbl, key, v)
 	local setter = set[key]
 	if setter then
 		setter(tbl.cStage, v)
+		return
+	end
+	local commonSetter = setCommon[key]
+	if commonSetter then
+		commonSetter(tbl.cStage, v)
 		return
 	end
 	error("[Stage] Unsupport set method : " .. key)
