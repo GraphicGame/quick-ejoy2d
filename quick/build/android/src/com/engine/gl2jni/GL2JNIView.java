@@ -160,6 +160,10 @@ class GL2JNIView extends GLSurfaceView {
 		}
 
 		public void onSurfaceChanged(GL10 gl, int width, int height) {
+			//--test.
+			//width = 960;
+			//height = 640;
+			//--end test.
 			GL2JNILib.onsurfacechanged(width, height);
 		}
 

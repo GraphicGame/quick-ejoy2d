@@ -7,6 +7,10 @@ import android.content.res.AssetManager;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import android.util.DisplayMetrics;
+import android.view.Window;
+import android.view.WindowManager;
+
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,6 +24,13 @@ public class GL2JNIActivity extends Activity {
 	@Override protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Log.e(TAG, "rainblood onCreate()::");
+		
+		//test.
+		//DisplayMetrics metrics = new DisplayMetrics();
+		//getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		//metrics.widthPixels = 960;
+		//metrics.heightPixels = 640;
+		//end test.
 
 		String path = getFilesDir().getAbsolutePath();
 		GL2JNILib.oncreate(path);

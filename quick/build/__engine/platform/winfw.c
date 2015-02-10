@@ -25,7 +25,7 @@ static const char * startscript =
 "local path, script, sw, sh, ss = ...\n"
 "local fw = require('ejoy2d.framework')\n"
 "fw.WorkDir = path..'/'\n"
-"fw.ScreenWidth, fw.ScreenHeight, fw.ScreenScale = sw, sh, ss\n"
+"fw.width, fw.height, fw.scale = sw, sh, ss\n"
 "assert(script, 'I need a script name')\n"
 "script = path..'/'..script\n"
 "package.path = './?.lua;./?/init.lua;'\n"
