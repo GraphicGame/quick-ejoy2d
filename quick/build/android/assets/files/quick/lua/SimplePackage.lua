@@ -6,9 +6,9 @@ local ppm = require "ejoy2d.ppm"
 local pack = require "quick.lua.SpritePack"
 local sprite = require "ejoy2d.sprite"
 
-local config = require "ejoy2d.quick.quick_ejoy2d_config";
 local png = require "ejoy2d.png"
 local jpg = require "ejoy2d.jpg"
+local fw = require "ejoy2d.framework"
 
 -- This limit defined in texture.c
 local MAX_TEXTURE = 128
@@ -19,19 +19,20 @@ local packages = {}
 local spack = {}
 local package_pattern
 
-local function require_tex(filename)
+local function require_tex(fileName, texType)
 	local tex = #textures
 	assert(tex < MAX_TEXTURE)
-	table.insert(textures, filename)
+	table.insert(textures, fileName)
 
-	if config.use_ppm then
-		ppm.texture(tex, filename)
-	elseif config.use_png then
-		png.texture(tex, filename)
-	elseif config.use_jpg then
-		jpg.texture(tex, filename)
+	if texType == "ppm" then
+		ppm.texture(tex, fileName)
+	elseif texType == "png" then
+		png.texture(tex, fileName)
+	elseif texType == "jpg" then
+		jpg.texture(tex, fileName)
 	else
-		print('fuck off...')		
+		--error('unknown texture type...')
+		print("fileName=>" .. fileName)
 	end
 
 	return tex
@@ -42,7 +43,11 @@ function spack.path(pattern)
 end
 
 local function realname(filename)
-	assert(package_pattern, "Need a pattern")
+	--assert(package_pattern, "Need a pattern")
+	if package_pattern == nil then
+		package_pattern = fw.WorkDir .. "res/?"
+		--package_pattern = fw.WorkDir .. "quick/demos/kofanim/res/?"
+	end
 	return string.gsub(package_pattern,"([^?]*)?([^?]*)","%1"..filename.."%2")
 end
 
@@ -56,7 +61,8 @@ function spack.preload(packname)
 
 	p.tex = {}
 	for i=1,p.meta.texture do
-		p.tex[i] = require_tex(filename .. "." .. i)
+		local texType = p.meta.textureType[i]
+		p.tex[i] = require_tex(filename .. "." .. i, texType)
 	end
 	pack.init(packname, p.tex, p.meta)
 	packages[packname] = p
@@ -73,7 +79,8 @@ function spack.preload_raw(packname)
 
 	p.tex = {}
 	for i=1,p.meta.texture do
-		p.tex[i] = require_tex(filename .. "." .. i)
+		--local texType = p.meta.textureType[i]
+		p.tex[i] = require_tex(filename .. "." .. i, nil) --@to do...
 	end
 	pack.init(packname, p.tex, p.meta)
 	packages[packname] = p
@@ -128,6 +135,10 @@ function spack.export(outdir, tbl)
 		file:write(output)
 		file:close()
 	end
+end
+
+function spack.isPackageLoaded(packPath)
+	return (packages[packPath] ~= nil)
 end
 
 return spack

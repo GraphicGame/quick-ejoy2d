@@ -3,72 +3,73 @@ local Stage = require "quick.lua.Stage"
 local Layer = require "quick.lua.Layer"
 local Sprite = require "quick.lua.Sprite"
 local Resources = require "quick.lua.Resources"
+local Screen = require "quick.lua.Screen"
 
---ÎèÌ¨
+--èˆå°
 local _stage
---±³¾°²ã
+--èƒŒæ™¯å±‚
 local _layerBackground
---¾«Áé²ã
+--ç²¾çµå±‚
 local _layerSprites
 
 ---
----³õÊ¼»¯ÎèÌ¨
+---åˆå§‹åŒ–èˆå°
 ---
 local function initStage()
-	--´´½¨ÎèÌ¨£¬ÎèÌ¨ÊÇÈ«¾ÖÎ¨Ò»µÄ.
+	--åˆ›å»ºèˆå°ï¼Œèˆå°æ˜¯å…¨å±€å”¯ä¸€çš„.
 	_stage = Stage.getStage()
+	--å±å¹•é€‚é…ï¼Œé€šè¿‡ç¼©æ”¾èˆå°æ¥è¾¾åˆ°å±å¹•é€‚é…çš„ç›®çš„ã€‚
+	_stage.scale = Screen.width / 960
 
-	--´´½¨Á½¸ö²ã´Î£¬Ò»¸öÊÇ±³¾°²ã£¬Ò»¸öÊÇ¾«Áé²ã.
+	--åˆ›å»ºä¸¤ä¸ªå±‚æ¬¡ï¼Œä¸€ä¸ªæ˜¯èƒŒæ™¯å±‚ï¼Œä¸€ä¸ªæ˜¯ç²¾çµå±‚.
 	_layerBackground = Layer.createLayer()
 	_layerSprites = Layer.createLayer()
 
-	--½«Á½¸ö²ã´Î°´ÕÕË³Ğò·Åµ½ÎèÌ¨ÉÏ
+	--å°†ä¸¤ä¸ªå±‚æ¬¡æŒ‰ç…§é¡ºåºæ”¾åˆ°èˆå°ä¸Š
 	_stage:addLayer(_layerBackground)
 	_stage:addLayer(_layerSprites)
 end
 
-local _spriteList = {} --¾«ÁéÁĞ±í
-
+local _spriteList = {} --ç²¾çµåˆ—è¡¨
+local _soulHero --ä¸»è§’ï¼šé­‚ï¼
 ---
----³õÊ¼»¯¾«Áé
+---åˆå§‹åŒ–ç²¾çµ
 ---
 local function initSprites()
-	--³õÊ¼»¯±³¾°
+	--åˆå§‹åŒ–èƒŒæ™¯
 	local background = Sprite.createSprite("background", "background")
 	_layerBackground:addSprite(background)
-	--³õÊ¼»¯¾«Áé
-	local mary = Sprite.createSprite("mary", "mary")
-	_layerSprites:addSprite(mary)
-	table.insert(_spriteList, mary)
-	
-	mary.scale = 1.6
-	mary.x = 100
-	mary.y = 460
-	mary.actionName = "stand"
+	--åˆå§‹åŒ–ç²¾çµ
+	local robert = Sprite.createSprite("robert", "robert")
+	_layerSprites:addSprite(robert)
+	table.insert(_spriteList, robert)
+	robert.x = 100
+	robert.y = 460
+	robert.actionName = "stand"
 end
 
 ---
----³õÊ¼»¯ÓÎÏ·
+---åˆå§‹åŒ–æ¸¸æˆ
 ---
 local function initGame()
-	initStage()   --³õÊ¼»¯ÎèÌ¨
-	initSprites() --³õÊ¼»¯¾«Áé
+	initStage()   --åˆå§‹åŒ–èˆå°
+	initSprites() --åˆå§‹åŒ–ç²¾çµ
 end
 
 --
---ÓÎÏ·µÄ¿ò¼Ü£¨ÓÃµÄÊÇejoy2dµÄÔ­ÉúÉè¼Æ£©
+--æ¸¸æˆçš„æ¡†æ¶ï¼ˆç”¨çš„æ˜¯ejoy2dçš„åŸç”Ÿè®¾è®¡ï¼‰
 --
 local game = {}
 
 function game.update()
-	--¾«Áé¶¯»­
+	--ç²¾çµåŠ¨ç”»
 	for i = 1, #_spriteList do
 		(_spriteList[i]):nextFrame()
 	end
 end
 
 function game.drawframe()
-	--»æÖÆÎèÌ¨£¨º¬ÎèÌ¨ÖĞµÄËùÓĞ¶ÔÏó£©
+	--ç»˜åˆ¶èˆå°ï¼ˆå«èˆå°ä¸­çš„æ‰€æœ‰å¯¹è±¡ï¼‰
 	_stage:clearCanvas(0)
 	_stage:draw()
 end

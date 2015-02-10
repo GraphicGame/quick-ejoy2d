@@ -201,7 +201,7 @@ local function pack_animation(data, ret)
 end
 
 function spritepack.pack( data )
-	local ret = { texture = 0, maxid = 0, size = 0 , data = {}, export = {} }
+	local ret = { texture = 0, textureType = {}, maxid = 0, size = 0 , data = {}, export = {} }
 	local ani_maxid = 0
 
 	for _,v in ipairs(data) do
@@ -233,6 +233,17 @@ function spritepack.pack( data )
 				if texid > ret.texture then
 					ret.texture = texid
 				end
+				local name = string.lower(v.name)
+				local texType = ""
+				if string.find(name, ".png") then
+					texType = "png"
+				elseif string.find(name, ".jpg") or string.find(name, ".jpeg") then
+					texType = "jpg"
+				else
+					texType = "ppm"
+				end
+				ret.textureType[texid + 1] = texType
+				--print(string.format("texid=%s,texType=%s", texid, texType))
 			elseif v.type == "animation" then
 				local sz , maxid = pack_animation(v, ret.data)
 				ret.size = ret.size + sz

@@ -1,9 +1,9 @@
 return{
 {
     id = 0,
-    name = "stand9.png",
+    name = "background.jpg",
     export = "background",
-    { tex = 1, src = {0, 0, 0, 752, 1365, 752, 1365, 0, }, screen = {0, 0, 0, 12032, 21840, 12032, 21840, 0, } },
+    { tex = 1, src = {0, 0, 0, 640, 960, 640, 960, 0, }, screen = {0, 0, 0, 10240, 15360, 10240, 15360, 0, } },
     type = "picture",
 },
 {

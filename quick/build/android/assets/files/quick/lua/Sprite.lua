@@ -8,8 +8,8 @@ local eventMethod = cSpritePack.eventMethod
 
 local ObjectsKeeper = require "quick.lua.ObjectsKeeper"
 local SpritePack = require "quick.lua.SpritePack"
-local SimplePackage = require "quick.lua.SimplePackage"
 local Events = require "quick.lua.Events"
+local Resources = require "quick.lua.Resources"
 
 local setmetatable = setmetatable
 
@@ -48,8 +48,11 @@ function spriteMeta.__newindex(tbl, key, v)
 	error("[Sprite] Unsupport set method : " .. key)
 end
 
-function Sprite.createSprite(packageName, spriteName)
-	local pack, id = SpritePack.query(packageName, spriteName)
+function Sprite.createSprite(packPath, spriteName)
+	if not Resources.isPackageLoaded(packPath) then
+		Resources.loadPackage(packPath)
+	end
+	local pack, id = SpritePack.query(packPath, spriteName)
 	local cSprite = cSpritePack.createSprite(pack, id)
 	local sprite = { cSprite = cSprite }
 	
@@ -62,11 +65,13 @@ end
 ---getter
 --- .x .y .scaleX .scaleY .scale .rotation .visible .width .height .pivotX .pivotY
 --- .frame .totalFrames .type .color .alpha .additive
+--- .actionName
 
 ---
 ---setter
 --- .x .y .scaleX .scaleY .scale .rotation .visible
 --- .frame .color .alpha .additive
+--- .actionName
 
 ---
 ---methods
